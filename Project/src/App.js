@@ -1,9 +1,11 @@
+import React from 'react';
 import './Styles/App.css';
+import Home from './Components/Home';
 
 function App() {
   return (
     <div className="App">
-      <p>aqui é a home... o rsto é historia kskks</p>
+      <Home/>
     </div>
   );
 }
