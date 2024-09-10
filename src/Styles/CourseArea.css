@@ -1,0 +1,66 @@
+/* ./CoursesArea.css */
+.courses-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px 100px;
+  
+}
+
+@media (max-width: 900px) {
+  .courses-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .courses-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.course-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.course-image {
+  max-width: 250px;
+  margin: 10px auto 0;
+}
+
+.course-content {
+  padding: 15px;
+}
+
+.course-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 10px;
+}
+
+.course-description {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.course-button {
+  padding: 10px 15px;
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.course-button:hover {
+  background-color: #303f9f;
+}
