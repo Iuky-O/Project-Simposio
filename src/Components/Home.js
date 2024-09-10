@@ -25,6 +25,7 @@ const Home = () => {
                     
                         <BsArrowRightCircleFill />  
                     </div>
+
                 </div>
                 
                 </div>
