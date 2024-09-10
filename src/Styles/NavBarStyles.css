@@ -1,0 +1,67 @@
+
+  .header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(203, 203, 203, 0.3);
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    width: 100%;
+}
+  .logo{
+    font-size: 2.5rem;
+    color: #2196f3;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s ease;
+    }
+    
+  .navbar-menu-container {
+    display: none;
+    color: #2196f3;
+  }
+  .navbar-links-container a {
+    margin-right: 3rem;
+    text-decoration: none;
+    color: #6a6a6a;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  .navbar-links-container a:hover{
+    background: linear-gradient(to right,  #94E1F2,#9acef8, #6eb8f5, #2196f3);
+                -webkit-background-clip: text; /* Para navegadores WebKit (Chrome, Safari) */
+                -webkit-text-fill-color: transparent; /* Torna o texto transparente */
+                background-clip: text; /* Para outros navegadores */
+  }
+  .primary-button {
+    padding: 0.9rem 1.75rem;
+    background-color: white;
+    outline: none;
+    border: none;
+    border-radius: 5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+  }
+  .navbar-cart-icon {
+    font-size: 1.15rem;
+  }
+  .primary-button:hover {
+    background-color: rgb(234, 234, 234);
+  }
+  .navbar-menu-container svg {
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .nav-logo-container{
+    padding: 1rem;
+    margin-left: 2.5rem;
+    transition: 0.3s ease;
+  }
+  .nav-logo-container:hover{
+    transform: scale(1.1);
+  }

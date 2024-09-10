@@ -1,10 +1,8 @@
 import React from "react";
 import Logo from "../Assets/Logo.svg";
+import NavBarStyles from "../Styles/NavBarStyles.css"
 import { useState} from "react";
-import RoutesComponent from "./RoutesComponent"
 import { Link } from 'react-router-dom';
-import ContactArea from "./ContactArea"
-import { BsCart2 } from "react-icons/bs";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import {
     Box, 
@@ -21,6 +19,7 @@ import InfoIcon from "@mui/icons-material/Info"
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded"
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded"
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded"
+import { SiCodenewbie } from "react-icons/si";
 
 
 const Navbar = () => {
@@ -66,9 +65,11 @@ const Navbar = () => {
     ];
 
     return (
-        <nav>
+        <nav className="header">
             <div className="nav-logo-container">
-                <img src={Logo} alt=""/>
+                <Link to="/" class="logo">
+                    <SiCodenewbie />
+                </Link>
             </div>
             <div className="navbar-links-container">
                 <Link to="/">Home</Link>

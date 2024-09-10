@@ -1,0 +1,98 @@
+@import "/src/Styles/index.css";
+
+
+.home-container{
+  margin-top: 2rem;
+}
+.btn{
+  display: inline-block;
+  padding: 0.5rem 2.6rem;
+  background: linear-gradient(to right,  #94E1F2,#9acef8);
+  box-shadow: 0 0 25px var(--azul);
+  border-radius: 4rem;
+  font-size: 1.3rem;
+  color: var(--preto);
+  border: 2px solid transparent;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+.btn:hover{
+  transform: scale(1.05);
+  box-shadow: 0 0 50px var(--azul);
+}
+.info-btn{
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.home-banner-container {
+    position: relative;
+    display: flex;
+    padding-top: 3rem;
+  }
+  .home-bannerImage-container {
+    position: absolute;
+    top: -100px;
+    right: -170px;
+    z-index: -2;
+    max-width: 700px;
+  }
+  .home-image-section {
+    max-width: 500px;
+    flex: 1;
+  }
+  .home-text-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .heading {
+    font-size: clamp(2rem, 5vw, 4rem);
+    color: var(--preto);
+    /* line-height: 5rem; */
+    max-width: 600px;
+    
+  }
+  .heading span {
+    background: linear-gradient(to right,  #94E1F2,#9acef8, #6eb8f5, #2196f3);
+                -webkit-background-clip: text; /* Para navegadores WebKit (Chrome, Safari) */
+                -webkit-text-fill-color: transparent; /* Torna o texto transparente */
+                background-clip: text; /* Para outros navegadores */
+    transition: color 0.3s ease-in-out; 
+  }
+  .heading span:hover {
+    transform: scale(1.1);
+  }
+  .primary-text {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    max-width: 500px;
+    color: #6a6a6a;
+    margin: 1.5rem 0rem;
+  }
+  
+  .secondary-button {
+    padding: 1rem 2.5rem;
+    background-color: #fe9e0d;
+    outline: none;
+    border: none;
+    border-radius: 5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: white;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .secondary-button svg {
+    margin-left: 0.75rem;
+    font-size: 1.5rem;
+  }
+  .secondary-button:hover {
+    background-color: #e48f0f;
+  }
