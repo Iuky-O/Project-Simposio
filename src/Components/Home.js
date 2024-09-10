@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 const Home = () => {
     return (
         <div className="home-container">
-            <Navbar/>
+            <p>uu</p>
         </div>
     )
 }

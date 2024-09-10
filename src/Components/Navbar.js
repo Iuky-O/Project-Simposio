@@ -1,6 +1,9 @@
 import React from "react";
 import Logo from "../Assets/Logo.svg";
 import { useState} from "react";
+import RoutesComponent from "./RoutesComponent"
+import { Link } from 'react-router-dom';
+import ContactArea from "./ContactArea"
 import { BsCart2 } from "react-icons/bs";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import {
@@ -68,15 +71,15 @@ const Navbar = () => {
                 <img src={Logo} alt=""/>
             </div>
             <div className="navbar-links-container">
-                <a href="">Home</a>
-                <a href="">Sobre</a>
-                <a href="">Inscrições</a>
-                <a href="">Contato</a>
-                <a href="">Cronograma</a>
-                <a href="">Colaboradores</a>
-                <a href="">Palestrantes</a>
-                <a href="">Palestras</a>
-                <a href="">Cursos</a>
+                <Link to="/">Home</Link>
+                <Link to="">Sobre</Link>
+                <Link to="">Inscrições</Link>
+                <Link to="/contact">Contato</Link>
+                <Link to="">Cronograma</Link>
+                <Link to="">Colaboradores</Link>
+                <Link to="">Palestrantes</Link>
+                <Link to="">Palestras</Link>
+                <Link to="/course">Cursos</Link>
             </div>   
             <div className="navbar-menu-container">
                 <HiOutlineBars3 onClick={() => setOpenMenu(true)}/>

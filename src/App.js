@@ -1,15 +1,18 @@
 import React from 'react';
 import './Styles/App.css';
-import Home from './Components/Home';
-import CourseArea from './Components/CourseArea';
-import ContactArea from './Components/ContactArea';
+import { BrowserRouter as Router } from 'react-router-dom';
+import RoutesComponent from "./Components/RoutesComponent"
+import Navbar from './Components/Navbar';
 
 function App() {
+  
   return (
-    <div className="App">
-      <Home />
-      <ContactArea />
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <RoutesComponent/>
+      </div>
+    </Router>
   );
 }
 
