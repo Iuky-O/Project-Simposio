@@ -5,33 +5,33 @@ import img from "../Assets/iameg.png";
 const CourseArea = () => {
     const [courses] = useState([
         {
-            title: "Desenvolvimento de menores",
-            description: "O crime compensa, quando o governo e a lei não fazem sentido.",
+            title: "Desenvolvimento Web",
+            description: "Descrição",
             imgUrl: img,
         },
         {
-            title: "Arquitetura de biqueira",
-            description: "O crime compensa, quando o governo e a lei não fazem sentido.",
+            title: "Arquitetura de Rede",
+            description: "Descrição",
             imgUrl: img,
         },
         {
-            title: "Análise e projeto de furto",
-            description: "O crime compensa, quando o governo e a lei não fazem sentido.",
+            title: "Análise e Projeto de Software",
+            description: "Descrição",
             imgUrl: img,
         },
         {
-            title: "Montagem e manutenção de granada",
-            description: "O crime compensa, quando o governo e a lei não fazem sentido.",
+            title: "Montagem e Manutenção de Computadores",
+            description: "Descrição",
             imgUrl: img,
         },
         {
-            title: "Aula de tiro",
-            description: "O crime compensa, quando o governo e a lei não fazem sentido.",
+            title: "Engenharia de Computação",
+            description: "Descrição",
             imgUrl: img,
         },
         {
-            title: "Engenharia de Favela",
-            description: "O crime compensa, quando o governo e a lei não fazem sentido.",
+            title: "Engenharia de Software",
+            description: "Descrição",
             imgUrl: img,
         },
     ]);
