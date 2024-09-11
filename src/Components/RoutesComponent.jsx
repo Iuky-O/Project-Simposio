@@ -5,6 +5,7 @@ import ContactArea from './ContactArea';
 import Cursos from './CourseArea';
 import EnrollmentArea from './EnrollmentArea';
 import Speakers from './Speakers';
+import TimelineArea from './TimelineArea';
 
 
 function RoutesComponent() {
@@ -13,7 +14,8 @@ function RoutesComponent() {
       <Route path="/" element={<Home />} />
       <Route path="/contact" element={<ContactArea />} />
       <Route path="/course" element={<Cursos />} />
-      <Route path="/enrollment" element={<EnrollmentArea/>} />
+      <Route path="/enrollment" element={<EnrollmentArea />} />
+      <Route path="/timeline" element={<TimelineArea />} />
       <Route path="/speakers" element={<Speakers />} />
     </Routes>
   );
