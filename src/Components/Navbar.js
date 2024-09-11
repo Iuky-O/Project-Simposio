@@ -91,8 +91,13 @@ const Navbar = () => {
             </div>
             <div className="navbar-links-container">
                 <Link to="/">Home</Link>
+<<<<<<< HEAD
+                <Link to="">Sobre</Link>
+                <Link to="/enrollment">Inscrições</Link>
+=======
                 <Link to="/home">Sobre</Link>
                 <Link to="/home">Inscrições</Link>
+>>>>>>> 2c1d478a78336e909260ec764bd2a37908cff70d
                 <Link to="/contact">Contato</Link>
                 <Link to="/home">Cronograma</Link>
                 <Link to="/home">Colaboradores</Link>
