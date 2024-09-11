@@ -1,8 +1,9 @@
 import React from "react";
 import HomeStyle from "../Styles/HomeStyle.css"
 import Navbar from "./Navbar";
-import Logo from "../Assets/LOGO 1.1.png"
+import Image from "../Assets/Image-Background.png"
 import { BsArrowRightCircleFill } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
@@ -19,18 +20,18 @@ const Home = () => {
                 <p className="primary-text">
                    Embarque nessa jornada com a gente!
                 </p>
-                <div className="btn">
+                <Link to="/registrations" className="btn">
                     <div className="info-btn">
                       <h6>Increva-se</h6>
                     
                         <BsArrowRightCircleFill />  
                     </div>
 
-                </div>
+                </Link>
                 
                 </div>
                 <div className="home-image-section">
-                <img src={Logo} alt="" />
+                <img src={Image} alt="" />
                 </div>
             </div>
         </div>
