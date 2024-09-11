@@ -16,7 +16,7 @@ const EnrollmentArea = () => {
                 <text> Incrições abertas até o dia 25/10, não perca a oportunidade de participar do maior evento da américa do sul.  </text>
             </div>
             <div className='title'>
-                <h1>Simposio Regional de Engenharia de Software</h1>
+                Simposio Regional de Engenharia de Software
             </div>
             <button className="inscricao-btn">
                 Inscreva-se
