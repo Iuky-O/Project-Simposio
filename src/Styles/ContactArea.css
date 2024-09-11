@@ -8,11 +8,13 @@
 .contact-area h1 {
     font-size: 50px;
     text-align: center;
+    color: white;
 }
 .contact-area p {
     text-align: center;
     font-size: 20px;
     padding: 20px;
+    color: white;
 }
 .text-section {
     padding: 10px;

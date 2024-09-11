@@ -1,11 +1,11 @@
 import React from "react";
 import "../Styles/ContactArea.css";
-import gmail from "../Assets/gmailPreto.png";
-import whatsapp from "../Assets/whatsappPreto.png";
+import gmail from "../Assets/gmailBranco.png";
+import whatsapp from "../Assets/whatsappBranco.png";
 
 const ContactArea = () => {
     return (
-        <footer className="contact-area">
+        <div className="contact-area">
             <div className="contact-content">
                 <div className="text-section">
                     <h1>Entre em contato</h1>
@@ -18,7 +18,7 @@ const ContactArea = () => {
                     </div>
                 </div>
             </div>
-        </footer>
+        </div>
     );
 };
 
