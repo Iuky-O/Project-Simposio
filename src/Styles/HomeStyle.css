@@ -7,7 +7,11 @@
 .btn{
   display: inline-block;
   padding: 0.5rem 2.6rem;
-  background: linear-gradient(to right,  #94E1F2,#9acef8);
+  background: linear-gradient(to right,  #F2A2D6,
+                                            #BA71D9,
+                                            #94E1F2,
+                                            #94FD8E,
+                                            #F2C879);
   box-shadow: 0 0 25px var(--azul);
   border-radius: 4rem;
   font-size: 1.3rem;
@@ -40,7 +44,7 @@
     max-width: 700px;
   }
   .home-image-section {
-    max-width: 500px;
+    max-width: 700px;
     flex: 1;
   }
   .home-text-section {
@@ -51,14 +55,19 @@
     align-items: flex-start;
   }
   .heading {
-    font-size: clamp(2rem, 5vw, 4rem);
-    color: var(--preto);
+    font-size: clamp(2rem, 3.5vw, 4rem);
+    color: var(--branco);
     /* line-height: 5rem; */
     max-width: 600px;
     
   }
   .heading span {
-    background: linear-gradient(to right,  #94E1F2,#9acef8, #6eb8f5, #2196f3);
+    font-size: clamp(2rem, 4vw, 4rem);
+    background: linear-gradient(to right,  #F2A2D6,
+                                            #BA71D9,
+                                            #94E1F2,
+                                            #94FD8E,
+                                            #F2C879);
                 -webkit-background-clip: text; /* Para navegadores WebKit (Chrome, Safari) */
                 -webkit-text-fill-color: transparent; /* Torna o texto transparente */
                 background-clip: text; /* Para outros navegadores */
@@ -70,7 +79,7 @@
   .primary-text {
     font-size: clamp(1rem, 3vw, 1.5rem);
     max-width: 500px;
-    color: #6a6a6a;
+    color: #edecec;
     margin: 1.5rem 0rem;
   }
   
@@ -95,4 +104,18 @@
   }
   .secondary-button:hover {
     background-color: #e48f0f;
+  }
+
+
+  @media (max-width: 600px){
+    .home-image-section{
+      max-width: 400px;
+      max-height: 350px;
+    }
+    .heading,
+    .primary-text,
+    .btn {
+      text-align: center;
+      align-self: center;
+    }
   }
