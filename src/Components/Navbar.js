@@ -74,7 +74,7 @@ const Navbar = () => {
             <div className="navbar-links-container">
                 <Link to="/">Home</Link>
                 <Link to="">Sobre</Link>
-                <Link to="">Inscrições</Link>
+                <Link to="/enrollment">Inscrições</Link>
                 <Link to="/contact">Contato</Link>
                 <Link to="">Cronograma</Link>
                 <Link to="">Colaboradores</Link>

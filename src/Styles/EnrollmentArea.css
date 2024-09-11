@@ -1,0 +1,65 @@
+@import "/src/Styles/index.css";
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 130vh;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    font-size: clamp(1rem, 3vw, 1rem);
+    max-width: 80rem;
+    color: #6a6a6a;
+    margin: 1rem 0rem;
+}
+
+.title {
+    justify-content: center;
+    margin: 0 0 5vh 0;
+    font-size: 25px;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+}
+
+.card-end {
+  display: flex;
+  justify-content: space-around; 
+  align-items: center;
+  max-height: 250px;
+}
+.card-item{
+    text-align: center;
+    padding: 8rem;
+}
+.card-number{
+    font-size: clamp(4rem, 3vw, 2rem);
+    color: var(--preto);
+    margin: 0;
+}
+.card-text{ 
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    color: var(--preto);
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+.inscricao-btn {
+    display: inline-block;
+    padding: 0.5rem 2.5rem;
+    margin: 5vh 0 5vh 0;
+    color: #0D0D0D;
+    background-color: #94FD8E;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-size: clamp(0.5rem, 2vw, 1rem);
+}
+
+.inscricao-btn:hover {
+    background-color: #F2C879;
+    color: #BA71D9;
+}
