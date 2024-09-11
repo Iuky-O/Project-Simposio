@@ -6,11 +6,11 @@ import { useState } from "react";
 import { Link } from 'react-router-dom';
 import { HiOutlineBars3 } from "react-icons/hi2";
 import {
-    Box, 
-    Drawer, 
-    ListItem, 
-    ListItemButton, 
-    ListItemIcon, 
+    Box,
+    Drawer,
+    ListItem,
+    ListItemButton,
+    ListItemIcon,
     ListItemText
 } from "@mui/material";
 import Divider from "@mui/material/Divider";
@@ -78,8 +78,8 @@ const Navbar = () => {
     ];
 
     const handleNavigation = (path) => {
-        setOpenMenu(false);  
-        navigate(path);     
+        setOpenMenu(false);
+        navigate(path);
     };
 
     return (
@@ -92,18 +92,18 @@ const Navbar = () => {
             <div className="navbar-links-container">
                 <Link to="/">Home</Link>
                 <Link to="/home">Sobre</Link>
-                <Link to="/home">Inscrições</Link>
+                <Link to="/enrollment">Inscrições</Link>
                 <Link to="/contact">Contato</Link>
-                <Link to="/home">Cronograma</Link>
+                <Link to="/timeline">Cronograma</Link>
                 <Link to="/home">Colaboradores</Link>
                 <Link to="/speakers">Palestrantes</Link>
                 <Link to="/home">Palestras</Link>
                 <Link to="/course">Cursos</Link>
-            </div>   
+            </div>
             <div className="navbar-menu-container">
                 <HiOutlineBars3 onClick={() => setOpenMenu(true)} />
             </div>
-            
+
             <Drawer open={openMenu} onClose={() => setOpenMenu(false)} anchor="right">
                 <Box
                     sx={{ width: 250 }}
