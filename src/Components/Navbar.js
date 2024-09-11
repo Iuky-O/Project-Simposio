@@ -96,7 +96,7 @@ const Navbar = () => {
                 <Link to="/contact">Contato</Link>
                 <Link to="/home">Cronograma</Link>
                 <Link to="/home">Colaboradores</Link>
-                <Link to="/home">Palestrantes</Link>
+                <Link to="/speakers">Palestrantes</Link>
                 <Link to="/home">Palestras</Link>
                 <Link to="/course">Cursos</Link>
             </div>   

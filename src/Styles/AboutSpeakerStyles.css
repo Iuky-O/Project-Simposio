@@ -1,0 +1,94 @@
+@import "/src/Styles/index.css";
+
+.about-speaker{
+    margin-top: 6.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+    color: white;
+}
+
+.about-speaker-img{
+    border-radius: 50%;
+}
+.about-speaker-img img{
+    position: relative;
+    border-radius: 50%;
+    box-shadow: 0 0 25px var(--rosa);
+    top: 1rem;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+    width: 20rem;
+    height: 20rem;
+   
+}
+.about-speaker-img img:hover{
+    box-shadow: 0 0 25px var(--rosa),
+                0 0 50px var(--rosa)
+}
+.heading-about-speaker{
+    text-align: center;
+    font-size: 3rem;
+}
+.about-content{
+    max-width: 600px;
+}
+.about-content h2{
+    text-align: center;
+    line-height: 1.5;
+    background: linear-gradient(to right,  #F2A2D6,
+                                            #BA71D9,
+                                            #94E1F2,
+                                            #94FD8E,
+                                            #F2C879);
+                -webkit-background-clip: text; /* Para navegadores WebKit (Chrome, Safari) */
+                -webkit-text-fill-color: transparent; /* Torna o texto transparente */
+                background-clip: text; /* Para outros navegadores */
+}
+.about-content p{
+    font-size: 1rem;
+    margin: 2rem 0 3rem;
+    text-align: justify;
+}
+.about-speaker .heading-about-speaker{
+    margin: 0;
+}
+.card-info{
+    background-color: #94E1F2;
+    
+
+}
+.card-info p{
+    padding: 1rem;
+}
+
+/*responsive*/
+
+@media(max-width:1285px){
+    html{
+        font-size: 55%;
+    }
+}
+@media(max-width:991px){
+
+}
+
+@media(max-width:895px){
+
+    .about{
+        flex-direction: column-reverse;
+        padding: 10rem 9% 10rem;
+    }
+    .about .heading{
+        margin: 3rem 0;
+    }
+    .about img{
+        width: 56vw;
+        height: 56vw;
+    }
+}
+@media(max-width:750px){
+ 
+
+}

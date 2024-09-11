@@ -1,0 +1,173 @@
+@import "/src/Styles/index.css";
+
+.speakers{
+    margin-top: 6.5rem;
+}
+.topic{
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    text-align: center;
+}
+.heading-speaker {
+    font-size: clamp(2rem, 3.5vw, 4rem);
+    color: var(--branco);
+    /* line-height: 5rem; */
+    text-align: center;
+    
+  }
+  .speakers .heading-speaker span {
+    background: linear-gradient(to right,  #F2A2D6,
+                                            #BA71D9,
+                                            #94E1F2,
+                                            #94FD8E,
+                                            #F2C879);
+                -webkit-background-clip: text; /* Para navegadores WebKit (Chrome, Safari) */
+                -webkit-text-fill-color: transparent; /* Torna o texto transparente */
+                background-clip: text; /* Para outros navegadores */
+    transition: color 0.3s ease-in-out; 
+  }
+
+
+  .speakers-container{
+    display: grid;
+    grid-template-columns:repeat(5,1fr);
+    place-items: center;
+    align-items: center;
+    align-content: center;
+    margin: 4rem 0;
+    gap: 2.5rem;
+    row-gap: 2.5rem;
+}
+.speaker-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--rosa);
+    height: 80%;
+    width: 100%;
+    border-radius: 3rem;
+    border: 5px solid transparent;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+}
+.speaker-card:hover{
+    border-color: var(--rosa);
+    transform: scale(1.03);
+}
+.speaker-card {
+    position: relative; 
+    display: flex;
+    align-items: flex-end; 
+    justify-content: flex-end;
+    height: 210px;
+    width: 100%;
+    border-radius: 3rem;
+    border: 5px solid transparent;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+    overflow: hidden;
+}
+.speaker-info {
+    position: relative;
+    z-index: 2; /*Deixa o texto na frente da imagem*/
+    width: 100%;
+    height: 30%;
+    background: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    text-align: center;
+    color: white;
+}
+.speaker-info h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+}
+.speaker-info p{
+    font-size: 0.7rem;
+}
+.speaker-card img{
+    font-size: 10rem;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /*fica atrás*/
+}
+.speaker-info .text-container {
+    width: 100%;
+    padding: 1rem;
+}
+
+
+@media (max-width: 1200px){
+    .speakers-container{
+        gap: 1.5rem;
+        row-gap: 3rem;
+    }
+    .speaker-card{
+        border-radius: 2.2rem;
+    }
+    .speaker-info h4{
+        font-size: 0.8rem;
+        font-weight: 600;
+
+    }
+    .speaker-info p{
+        text-align: center;
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 991px){
+    .speakers-container{
+        gap: 1.5rem;
+        row-gap: 3rem;
+    }
+    .speaker-info h4{
+        font-size: 0.8rem;
+        font-weight: 600;
+
+    }
+    .speaker-info p{
+        font-size: 0px;
+    }
+}
+
+@media (max-width: 895px){
+    .speakers-container{
+        grid-template-columns:repeat(4,1fr);
+        margin: 2rem 0;
+        gap: 1rem;
+        row-gap: 1rem;
+    }
+    .speaker-card{
+        height: 165px;
+        border-radius: 2rem;
+    }
+
+}
+
+@media (max-width: 600px){
+
+.speakers-container{
+    grid-template-columns:repeat(3,1fr);
+    margin: 2rem 0;
+    gap: 1rem;
+    row-gap: 1rem;
+}
+.speaker-info h4{
+    font-size: 10px;
+    font-weight: 600;
+    text-align: left;
+
+}
+.speaker-card{
+    height: 8.5rem;
+    border-radius: 1rem;
+}
+html, body {
+    overflow:visible;
+}
+}
