@@ -1,5 +1,4 @@
 @import "/src/Styles/index.css";
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
 .container {
     display: flex;
     flex-direction: column;
@@ -22,7 +21,7 @@
     margin: 0 0 5vh 0;
     font-size: 3rem;
     color: var(--branco);
-    font-family: 'reboto-slab';
+    font-family: bold;
 
 }
 
@@ -50,9 +49,9 @@
     margin-top: 0.5rem;
 }
 
-.inscricao-btn, .link {
+.inscricao-btn{
     display: inline;
-    padding: 0.5rem 1rem;
+    padding: 1rem 2rem;
     color: #0D0D0D;
     background: linear-gradient(to right,  #F2A2D6,
                                             #BA71D9,
@@ -65,7 +64,10 @@
     font-size: clamp(1rem, 3vw, 1.5rem);
     text-decoration: none;
 }
-
+.link{
+    text-decoration: none;
+    color: #0D0D0D;
+}
 .inscricao-btn:hover {
     box-shadow: 0 0 10px #F2C879;
 }
