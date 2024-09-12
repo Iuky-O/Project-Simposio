@@ -91,7 +91,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-links-container">
                 <Link to="/">Home</Link>
-                <Link to="/home">Sobre</Link>
+                <Link to="/about">Sobre</Link>
                 <Link to="/enrollment">Inscrições</Link>
                 <Link to="/contact">Contato</Link>
                 <Link to="/timeline">Cronograma</Link>
@@ -101,7 +101,7 @@ const Navbar = () => {
                 <Link to="/course">Cursos</Link>
             </div>
             <div className="navbar-menu-container">
-                <HiOutlineBars3 onClick={() => setOpenMenu(true)} />
+                <HiOutlineBars3 className="ha" onClick={() => setOpenMenu(true)} />
             </div>
 
             <Drawer open={openMenu} onClose={() => setOpenMenu(false)} anchor="right">

@@ -7,6 +7,7 @@ import EnrollmentArea from './EnrollmentArea';
 import Speakers from './Speakers';
 import AboutSpeaker from './AboutSpeaker';
 import TimelineArea from './TimelineArea';
+import About from './About';
 
 function RoutesComponent() {
   return (
@@ -18,6 +19,7 @@ function RoutesComponent() {
       <Route path="/timeline" element={<TimelineArea />} />
       <Route path="/speakers" element={<Speakers />} />
       <Route path="/aboutspeaker/:id" element={<AboutSpeaker />} /> 
+      <Route path="/about/" element={<About />} /> 
     </Routes>
   );
 }

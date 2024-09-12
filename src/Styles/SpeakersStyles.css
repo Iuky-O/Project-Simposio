@@ -110,24 +110,26 @@
         border-radius: 2.2rem;
     }
     .speaker-info h4{
-        font-size: 0.8rem;
+        font-size: 13px;
         font-weight: 600;
+        text-align: center;
 
     }
     .speaker-info p{
         text-align: center;
-        font-size: 9px;
+        font-size: 0px;
     }
 }
 
 @media (max-width: 991px){
     .speakers-container{
         gap: 1.5rem;
-        row-gap: 3rem;
+        row-gap: 5rem;
     }
     .speaker-info h4{
-        font-size: 0.8rem;
+        font-size: 13px;
         font-weight: 600;
+        text-align: center;
 
     }
     .speaker-info p{
@@ -136,6 +138,10 @@
 }
 
 @media (max-width: 895px){
+    .topic .heading-speaker{
+        font-size: 3.5rem;
+    }
+
     .speakers-container{
         grid-template-columns:repeat(4,1fr);
         margin: 2rem 0;
@@ -146,28 +152,20 @@
         height: 165px;
         border-radius: 2rem;
     }
-
 }
 
 @media (max-width: 600px){
 
-.speakers-container{
-    grid-template-columns:repeat(3,1fr);
-    margin: 2rem 0;
-    gap: 1rem;
-    row-gap: 1rem;
-}
-.speaker-info h4{
-    font-size: 10px;
-    font-weight: 600;
-    text-align: left;
-
-}
-.speaker-card{
-    height: 8.5rem;
-    border-radius: 1rem;
-}
-html, body {
-    overflow:visible;
-}
+    .speakers-container{
+        grid-template-columns:repeat(2,1fr);
+        margin: 2rem 0;
+        gap: 2rem;
+        row-gap: 2rem;
+        padding-bottom: 50px;
+    }
+    .speaker-card{
+        height: 17rem;
+        border-radius: 1rem;
+    }
+    
 }

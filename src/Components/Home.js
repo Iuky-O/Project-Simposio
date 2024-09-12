@@ -7,14 +7,15 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
-        <div className="home-container">
+        <div className="home">
       
             <div className="home-banner-container">
                 <div className="home-bannerImage-container">
                 <img src="{BannerBackground}" alt="" />
                 </div>
+
                 <div className="home-text-section">
-                <h1 className="heading">
+                <h1 className="heading-home">
                     I Simpósio Regional de <span>Engenharia de Software</span>
                 </h1>
                 <p className="primary-text">
@@ -22,7 +23,7 @@ const Home = () => {
                 </p>
                 <Link to="/registrations" className="btn">
                     <div className="info-btn">
-                      <h6>Increva-se</h6>
+                      <h6>Inscreva-se</h6>
                     
                         <BsArrowRightCircleFill />  
                     </div>

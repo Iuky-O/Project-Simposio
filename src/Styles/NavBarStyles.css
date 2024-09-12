@@ -13,7 +13,7 @@
 }
   .logo{
     font-size: 2.5rem;
-    color: #2196f3;
+    color: white;
     font-weight: 800;
     cursor: pointer;
     transition: 0.3s ease;
@@ -21,7 +21,7 @@
     
   .navbar-menu-container {
     display: none;
-    color: #2196f3;
+    color: white;
   }
   .navbar-links-container {
     display: flex; /* Exibe o menu de links no layout normal */
@@ -74,6 +74,19 @@
     transform: scale(1.1);
   }
 
+  @media (max-width: 1200px){
+    
+    .logo,
+    .navbar-menu-container .haburguer{
+      font-size: 3.5rem;
+      }
+    .header{
+      height: 7rem;
+    }
+    .navbar-menu-container{
+      font-size: 4rem;
+    }
+  }
 
   @media (max-width: 600px) {
     .navbar-links-container {
@@ -83,5 +96,15 @@
     .navbar-menu-container {
       display: flex; 
       margin-right: 2rem; 
+    }
+    .logo,
+    .navbar-menu-container .haburguer{
+      font-size: 3.5rem;
+      }
+    .header{
+      height: 7rem;
+    }
+    .navbar-menu-container{
+      font-size: 4rem;
     }
   }

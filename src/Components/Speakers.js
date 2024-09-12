@@ -27,7 +27,6 @@ function Speakers() {
             <div className='speaker-info'>
               <div className='text-container'>
                 <h4>{item.name}</h4>
-                <p>{item.title}</p>
               </div>
             </div>
           </div>

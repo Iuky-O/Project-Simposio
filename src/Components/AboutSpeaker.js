@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import {Styles} from '../Styles/AboutSpeakerStyles.css'
 import { Options_Speakers } from '../Data/SpeakersData';
+import { FcNext } from "react-icons/fc";
 
 function AboutSpeaker() {
 
@@ -13,26 +14,26 @@ function AboutSpeaker() {
   }
 
   return (
-    <div className='about-speaker'>
-        <div className='about-speaker-img'>
+    <div class="about-speaker" id="about">
+            <div class="about-img">
             <img src={speaker.image} alt={speaker.name} />
-        </div>
-       
-        <div class="about-content">
-            <h2 className='heading-about-speaker'>{speaker.name}</h2>
-            <p>{speaker.title}</p>
-
-            <h2>Assuntos que irá ministrar</h2>
-
-            <div className='lectures-course'>
-                <div className='card-info'>
-                   <p>{speaker.lectures}</p> 
-                </div> 
             </div>
-            
+
+            <div class="about-content">
+                <h2 class="heading">{speaker.name}</h2>
+                
+                <p>{speaker.title}</p>
+
+                <div className='participations'>
+                  <h3 className='topic-part'>Participações no Evento:</h3>
+
+                  <div className='card-info'>
+                    <p>{speaker.lectures}</p> 
+                  </div> 
+                </div>
+     
+            </div>
         </div>
-      
-    </div>
   );
 }
 
