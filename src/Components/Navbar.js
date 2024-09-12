@@ -101,7 +101,7 @@ const Navbar = () => {
                 <Link to="/course">Cursos</Link>
             </div>
             <div className="navbar-menu-container">
-                <HiOutlineBars3 className="ha" onClick={() => setOpenMenu(true)} />
+                <HiOutlineBars3 className="haburguer" onClick={() => setOpenMenu(true)} />
             </div>
 
             <Drawer open={openMenu} onClose={() => setOpenMenu(false)} anchor="right">
