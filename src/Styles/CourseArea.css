@@ -1,37 +1,39 @@
 /* ./CoursesArea.css */
-
 .courses-container {
   display: grid;
-  grid-template-columns: repeat(3, minmax(200px, 1fr));
-  grid-column-gap: 20px; /* Espaçamento horizontal entre as caixas */
-  grid-row-gap: 20px;    /* Espaçamento vertical entre as caixas */
-  width: 80%;
-  margin: 70px auto;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 300px)); /* Define largura minima e maxima */
+  grid-auto-rows: 1fr; /* Garante que todas as linhas tenham a mesma altura */
+  grid-auto-columns: 1fr; /* Garante que todas as colunas tenham a mesma altura */
+  grid-gap: 30px;
+  margin: 90px auto;
+  justify-content: center;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1250px) {
   .courses-container {
-    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    grid-template-columns: repeat(2, minmax(200px, 350px));
+    grid-gap: 30px;
   }
 }
 
 @media (max-width: 700px) {
   .courses-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(1, minmax(200px, 350px));
+    grid-gap: 30px;
   }
 }
 
 .course-card {
   background-color: #0D0D0D;
-  border: 1px solid #ddd;
+  border: 1px solid #F2C879;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 8px 8px 8px #94E1F2;
+  box-shadow: 8px 8px 8px #F2A2D6;
   flex-direction: column;
 }
 
 .course-image {
-  max-width: 250px;
+  max-width: 180px;
   margin: 10px auto 0;
 }
 
@@ -54,7 +56,7 @@
 
 .course-button {
   padding: 10px 15px;
-  background: #94E1F2;
+  background: #F2A2D6;
   color: #0D0D0D;
   border: #FFFFFF 1px solid;
   border-radius: 5px;
@@ -67,6 +69,5 @@
 }
 
 .course-button:active {
-  background-color: #f2a2d6;
-  ;
+  background-color: #94E1F2;
 }
