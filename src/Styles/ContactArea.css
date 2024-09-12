@@ -1,4 +1,5 @@
 .contact-area {
+    margin-top: 80px;
     padding: 5rem 0rem;
     display: flex;
     justify-content: center;
@@ -6,20 +7,35 @@
     height: 80vh;    
 }
 .contact-area h1 {
-    font-size: 50px;
+    font-size: 80px;
     text-align: center;
-    color: white;
+    color: #F2C879;
+}
+.contact-area h2 {
+    font-size: 30px;
+    text-align: center;
+    color: #94E1F2;
+}
+.contact-area h2:hover {
+    background: linear-gradient(to right,  #F2A2D6,
+    #BA71D9,
+    #94E1F2,
+    #94FD8E,
+    #F2C879);
+-webkit-background-clip: text; /* Para navegadores WebKit (Chrome, Safari) */
+-webkit-text-fill-color: transparent; /* Torna o texto transparente */
+background-clip: text; /* Para outros navegadores */
 }
 .contact-area p {
     text-align: center;
-    font-size: 20px;
+    font-size: 30px;
     padding: 20px;
-    color: white;
+    color: #F2C879;
 }
 .text-section {
     padding: 10px;
 }
-.social-icon-footer { /*Caso queira remover os icones centralizados é só apagar esse aqui*/
+.social-icon-footer { /*Caso queira remover a centralização dos icones, é só apagar esse aqui*/
     display: flex;
     justify-content: center;
 }
