@@ -10,6 +10,8 @@ const ContactArea = () => {
                 <div className="text-section">
                     <h1>Entre em contato</h1>
                     <p>Em caso de dúvida, sugestão ou queira saber mais sobre o Simpósio Regional de Engenharia de Software entre em contato conosco</p>
+                    <h2>Email: simpósioregional@gmail.com</h2>
+                    <h2>Número: 4002-8922</h2>
                 </div>
                 <div className="social-section">
                     <div className="social-icon-footer">
