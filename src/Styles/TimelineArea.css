@@ -1,12 +1,23 @@
 @import "../Styles/index.css";
 .timeline-area{
-    color: var(--roxo);
+    color: var(--branco);
+}
+h2{
+    font-size: 8vb;
 }
 .text-date{
-    max-width: 10rem;
-    padding: 0.5rem;
-    background-color: var(--verde);
-    border-radius: 2rem; 
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    margin: 0.5rem;
+    background: linear-gradient(45deg, rgba(255, 0, 150, 0.7), rgba(0, 230, 230, 0.7), #94FD8E);
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+     
+}
+.text-date:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    color: #000;
 }
 .text-palestra,.text-curso{
     max-height: 2rem;
@@ -14,4 +25,12 @@
     padding: 0.5rem;
     background-color: var(--azul);
     border-radius: 2rem;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    margin: 0.5rem;
+    background: linear-gradient(45deg,#94FD8E, #F2C879, #F2A2D6);
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #000;
 }
