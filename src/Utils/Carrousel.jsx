@@ -4,7 +4,7 @@ import '../Styles/Carousel.css';
 import setaD from "../Assets/setadireita.png";
 import setaE from "../Assets/setaesquerda.png";
 const Carousel = ({ children, slidesToScroll = 1, slidesVisible = 1 }) => {
-  const options = { slidesToScroll, align: 'start' };
+  const options = { loop: true, slidesToScroll, align: 'start' };
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);

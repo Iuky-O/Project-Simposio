@@ -38,7 +38,7 @@ const EnrollmentArea = () => {
                     </text>
                 </div>
                 <div className='card-item'>
-                    <text className='card-number'>2
+                    <text className='card-number'>5
                         <p className='card-text'>dias</p>
                     </text>
                 </div>
