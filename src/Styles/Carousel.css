@@ -1,7 +1,6 @@
 .carousel {
     overflow: hidden;
     width: 100%;
-    justify-content: center;
   }
   
   .carousel__container {
@@ -10,36 +9,40 @@
   }
   
   .carousel__slide {
-    min-width: 70%; /* Cada slide ocupa a tela inteira */
-    padding: 15vb;
+    min-width: 50%; 
+    padding: 10vb;
     margin-top: 10rem;
     box-sizing: border-box;
     text-align: center;
-    align-items: center;
-    background-color: #f0f0f0; 
     border-radius: 4.5rem;
   }
 .carousel__button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: var(--amarelo);
-    color: white;
-    padding: 10px;
+
+    padding: 2px;
     cursor: pointer;
   }
   
   .carousel__button.prev {
     left: 20px;
     border-radius: 5px;
+    max-width: 3rem;
+    max-height: 3rem;
+    background-color: transparent;
+    border: none;
   }
   
-  .carousel__button.next {
+  .carousel__button.next{
+    background-color: transparent;
+    border: none;
     right: 10px;
     border-radius: 5px;
-    margin-right: 20px;
+    right: 20px;
+    max-width: 3rem;
+    max-height: 3rem;
   }
-  
   .carousel__button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
