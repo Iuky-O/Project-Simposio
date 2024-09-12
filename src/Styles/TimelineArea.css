@@ -1,4 +1,17 @@
 @import "../Styles/index.css";
 .timeline-area{
-    color: var(--rosa);
+    color: var(--roxo);
+}
+.text-date{
+    max-width: 10rem;
+    padding: 0.5rem;
+    background-color: var(--verde);
+    border-radius: 2rem; 
+}
+.text-palestra,.text-curso{
+    max-height: 2rem;
+    max-width: 12rem;
+    padding: 0.5rem;
+    background-color: var(--azul);
+    border-radius: 2rem;
 }

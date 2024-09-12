@@ -1,17 +1,17 @@
 @import "/src/Styles/index.css";
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 130vh;
+    height: 120vb;
 }
 
 .text {
     display: flex;
     flex-direction: column;
     justify-content: end;
-    font-size: clamp(1rem, 3vw, 1rem);
     max-width: 80rem;
     color: #6a6a6a;
     margin: 1rem 0rem;
@@ -20,46 +20,52 @@
 .title {
     justify-content: center;
     margin: 0 0 5vh 0;
-    font-size: 25px;
-    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-size: 3rem;
+    color: var(--branco);
+    font-family: 'reboto-slab';
+
 }
 
 .card-end {
   display: flex;
   justify-content: space-around; 
   align-items: center;
-  max-height: 250px;
+  max-height: 200px;
 }
 .card-item{
     text-align: center;
     padding: 8rem;
+    max-width: 15rem;
 }
 .card-number{
     font-size: clamp(4rem, 3vw, 2rem);
-    color: var(--preto);
+    color: var(--verde);
     margin: 0;
 }
 .card-text{ 
+    text-align: center;
     font-size: clamp(1rem, 3vw, 1.2rem);
-    color: var(--preto);
+    color: rgb(rgb(247, 189, 227));
     text-transform: uppercase;
     margin-top: 0.5rem;
-    font-weight: 500;
 }
 
-.inscricao-btn {
-    display: inline-block;
-    padding: 0.5rem 2.5rem;
-    margin: 5vh 0 5vh 0;
+.inscricao-btn, .link {
+    display: inline;
+    padding: 0.5rem 1rem;
     color: #0D0D0D;
-    background-color: #94FD8E;
+    background: linear-gradient(to right,  #F2A2D6,
+                                            #BA71D9,
+                                            #94E1F2,
+                                            #94FD8E,
+                                            #F2C879);
     border: none;
     border-radius: 2rem;
     cursor: pointer;
-    font-size: clamp(0.5rem, 3vw, 1rem);
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    text-decoration: none;
 }
 
 .inscricao-btn:hover {
-    background-color: #F2C879;
-    color: #BA71D9;
+    box-shadow: 0 0 10px #F2C879;
 }
