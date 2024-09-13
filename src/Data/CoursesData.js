@@ -14,56 +14,56 @@ export const Options_Courses = [
     {
       id: 1,
       title: "Desenvolvimento Web",
-      description: "Descrição",
+      description: "Modelo: Virtual - Via Meet - Org: Estácio - Castanhal",
       imgUrl: img,
       days: 'No 3°, 4° e 5° dia'
     },
     {
       id: 2,
       title: "Arquitetura de Rede",
-      description: "Descrição",
+      description: "Modelo: Presencial - Local: Estácio - Castanhal",
       imgUrl: img2,
       days: 'No 1°, 2° e 3° dia'
     },
     {
       id: 3,
       title: "Análise e Projeto de Software",
-      description: "Descrição",
+      description: "Modelo: Virtual - Via Meet - Org: UEPA - Castanhal",
       imgUrl: img3,
       days: 'No 1°, 2° e 3° dia'
     },
     {
       id: 4,
       title: "Manutenção de Computadores",
-      description: "Descrição",
+      description: "Modelo: presencial - Local: UEPA - Castanhal",
       imgUrl: img4,
       days: 'No 1° e 3° dia'
     },
     {
       id: 5,
       title: "Engenharia de Computação",
-      description: "Descrição",
+      description: "Modelo: Virtual - Via Meet - Org: UFPA - Castanhal",
       imgUrl: img5,
-      days: 'No 2° e 3° dia'
+      days: 'No 1°, 2° e 3° dia'
     },
     {
       id: 6,
       title: "Engenharia de Software",
-      description: "Descrição",
+      description: "Modelo: Presencial - Local: UEPA - Castanhal",
       imgUrl: img6,
-      days: 'No 4° dia'
+      days: 'No 4° e 5° dia'
     },
     {
       id: 7,
       title: "Engenharia de Requisitos",
-      description: "Descrição",
+      description: "Modelo: Presencial - Local: UFPA - Castanhal",
       imgUrl: img7,
       days: 'No 4° e 5° dia'
     },
     {
       id: 8,
       title: "Análise de Sistemas",
-      description: "Descrição",
+      description: "Modelo: Virtual - Via Meet - Org: UFRA - Belém",
       imgUrl: img8,
       days: ' No 5° dia'
     }
