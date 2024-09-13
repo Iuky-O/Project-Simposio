@@ -1,0 +1,122 @@
+.colaboradores {
+    margin-top: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.colaboradores-container {
+    text-align: center;
+}
+
+.heading-colaboradores {
+    font-size: clamp(2rem, 2.5vw, 4rem);
+    color: var(--branco);
+    padding-top: 3rem;
+}
+
+.heading-colaboradores span {
+    background: linear-gradient(to right, #F2A2D6, #BA71D9, #94E1F2, #94FD8E, #F2C879);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: color 0.3s ease-in-out;
+}
+
+.carts-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-top: 3rem;
+    text-align: center;
+
+}
+
+.colaboradores-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.colaboradores-section p,
+.colaboradores-section ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.colaboradores-section ul li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+
+.colaborador-img {
+    width: 125px;
+    height: auto;
+    margin-right: 1rem;
+}
+
+#leticia{
+    border-radius: 100px;
+}
+
+/* Responsivo */
+@media (max-width: 1250px) {
+    .colaboradores-section {
+        margin-bottom: 2rem;
+    }
+    .heading-colaboradores {
+        font-size: 4.2rem;
+        margin-top: 50px;
+    }
+    .colaboradores-section h2 {
+        font-size: 3rem;
+        line-height: 2;
+        margin-top: 50px;
+    }
+    .colaboradores-section p,
+    .colaboradores-section ul {
+        font-size: 1.6rem;
+    }
+}
+@media (max-width: 991px) {
+    .carts-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .colaboradores-section {
+        margin-bottom: 1rem;
+    }
+    .colaboradores-section h2 {
+        font-size: 2rem;
+        margin-top: 0px;
+    }
+    .colaboradores-section p,
+    .colaboradores-section ul {
+        font-size: 1.4rem;
+        text-align: justify;
+    }
+}
+
+@media (max-width: 600px) {
+    .colaboradores-container {
+        margin-top: -5rem;
+    }
+    .heading-colaboradores {
+        font-size: 2.5rem;
+    }
+
+    .colaboradores-section h2 {
+        font-size: 1.6rem;
+    }
+
+    .colaboradores-section p,
+    .colaboradores-section ul {
+        font-size: 1.4rem;
+    }
+}
