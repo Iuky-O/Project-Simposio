@@ -6,8 +6,11 @@ import Cursos from './CourseArea';
 import EnrollmentArea from './EnrollmentArea';
 import Speakers from './Speakers';
 import AboutSpeaker from './AboutSpeaker';
+import AboutCourses from './AboutCourses';
 import TimelineArea from './TimelineArea';
 import About from './About';
+import Collaborators from './Collaborators';
+import Lectures from './Lectures';
 
 function RoutesComponent() {
   return (
@@ -19,7 +22,10 @@ function RoutesComponent() {
       <Route path="/timeline" element={<TimelineArea />} />
       <Route path="/speakers" element={<Speakers />} />
       <Route path="/aboutspeaker/:id" element={<AboutSpeaker />} /> 
-      <Route path="/about/" element={<About />} /> 
+      <Route path="/aboutscourses/:id" element={<AboutCourses />} /> 
+      <Route path="/about/" element={<About />} />
+      <Route path="/collaborators" element={<Collaborators />} />
+      <Route path='/lectures' element={<Lectures/>} /> 
     </Routes>
   );
 }

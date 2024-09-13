@@ -1,0 +1,82 @@
+.lecture-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 300px));
+    grid-auto-rows: 1fr;
+    grid-gap: 30px;
+    margin: 90px auto;
+    justify-content: center;
+  }
+  
+  @media (max-width: 1250px) {
+    .lecture-container {
+      grid-template-columns: repeat(2, minmax(200px, 350px));
+      grid-gap: 30px;
+    }
+  }
+  
+  @media (max-width: 700px) {
+    .lecture-container {
+      grid-template-columns: repeat(1, minmax(200px, 350px));
+      grid-gap: 30px;
+    }
+  }
+  
+  .lecture-card {
+    background-color: #0D0D0D;
+    border: 1px solid #F2C879;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 8px 8px 8px #F2A2D6;
+    flex-direction: column;
+    margin: 0;
+    min-width: 250px;
+    max-width: 300px;
+    flex-shrink: 0;
+  }
+  
+  .lecture-content {
+    padding: 10px;
+  }
+  
+  .lecture-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 5px;
+    color: #FFFFFF;
+  }
+  
+  .lecture-description {
+    font-size: 14px;
+    color: #FFFFFF;
+    margin-bottom: 5px;
+  }
+  
+  .lecture-button {
+    padding: 10px 12px;
+    margin: 0;
+    background: #F2A2D6;
+    color: #0D0D0D;
+    border: #FFFFFF 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .lecture-button:hover {
+    transform: scale(1.1);
+  }
+  
+  .lecture-button:active {
+    background-color: #94E1F2;
+  }
+  
+  .dia-section {
+    margin-top: 40px;
+  }
+  
+  .dia-title {
+    font-size: 24px;
+    color: #F2C879;
+    margin-bottom: 20px;
+  }
+  

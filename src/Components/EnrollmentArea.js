@@ -14,6 +14,7 @@ const EnrollmentArea = () => {
         <div className="container">
             <div className="text">
                 <text> Inscrições abertas até o dia 25/10, não perca a oportunidade de participar do maior evento da américa do sul.  </text>
+                <text> Taxa de Inscrição: R$ 75.  </text>
             </div>
             <div className='title1'>
                I Simpósio Regional de Engenharia de Software
@@ -33,7 +34,7 @@ const EnrollmentArea = () => {
                     </text>
                 </div>
                 <div className='card-item'>
-                    <text className='card-number'> 6
+                    <text className='card-number'> 8
                         <p className='card-text'>Cursos</p>
                     </text>
                 </div>
