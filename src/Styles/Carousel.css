@@ -1,28 +1,31 @@
 .carousel {
-    overflow: hidden;
+    position: relative;
   }
-  
+
   .carousel__container {
     display: flex;
     transition: transform 0.3s ease;
+    position: absolute;
+    flex-wrap: nowrap;
+    gap: 1.5rem;
   }
   
   .carousel__slide {
-    min-width: 30%; 
     text-align: center;
     padding: 0.5rem 1rem 0 1rem;
     border-radius: 8rem;
     background-color: rgba(255, 255, 255, 0.062);
-    box-shadow: 0 4px 10px rgb(rgba(242, 162, 214, 0.816));
-  transition: box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px #F2A2D6;
+    transition: box-shadow 0.3s ease;
   }
+
   .carousel__slide:hover {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Somente se quiser um efeito de hover */
   }
+
 .carousel__button {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 200px;
     padding: 2px;
     cursor: pointer;
   }
@@ -50,3 +53,11 @@
     cursor: not-allowed;
   }
   
+  @media (max-width: 1280px) {
+    .carousel {
+      top: 100px;
+    }
+    .carousel__button {
+      top: 120px;
+    }
+  }

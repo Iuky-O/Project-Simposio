@@ -16,7 +16,7 @@ const EnrollmentArea = () => {
                 <text> Inscrições abertas até o dia 25/10, não perca a oportunidade de participar do maior evento da américa do sul.  </text>
                 <text> Taxa de Inscrição: R$ 75.  </text>
             </div>
-            <div className='title'>
+            <div className='title1'>
                I Simpósio Regional de Engenharia de Software
             </div>
             <button className="inscricao-btn">
