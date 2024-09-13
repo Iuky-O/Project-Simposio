@@ -1,15 +1,21 @@
 .contact-area {
-    margin-top: 80px;
-    padding: 5rem 0rem;
+    margin-top: 6rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;    
+    color: white; 
 }
 .contact-area h1 {
-    font-size: 80px;
-    text-align: center;
-    color: #F2C879;
+    font-size: clamp(2rem, 4vw, 4rem);
+    padding-top: 3rem;
+    background: linear-gradient(to right,  #F2A2D6,
+    #BA71D9,
+    #94E1F2,
+    #94FD8E,
+    #F2C879);
+-webkit-background-clip: text; /* Para navegadores WebKit (Chrome, Safari) */
+-webkit-text-fill-color: transparent; /* Torna o texto transparente */
+background-clip: text; /* Para outros navegadores */
 }
 .contact-area h2 {
     font-size: 30px;
@@ -28,21 +34,79 @@ background-clip: text; /* Para outros navegadores */
 }
 .contact-area p {
     text-align: center;
-    font-size: 30px;
+    font-size: 1.2rem;
     padding: 20px;
-    color: #F2C879;
 }
-.text-section {
-    padding: 10px;
+
+.carts-container-topics{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    padding-top: 3rem;
+    text-align: left;
 }
-.social-icon-footer { /*Caso queira remover a centralização dos icones, é só apagar esse aqui*/
-    display: flex;
-    justify-content: center;
+.contact-section h2{
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
 }
-.social-icon-footer a {
-    margin: 20px;
+.contact-section p{
+    font-size: 1rem;
+    line-height: 1.6;
 }
-.social-icon-footer a img {
-    width: 50px;
-    height: 50px;
+
+
+/* Responsivo */
+@media (max-width: 1250px) {
+    .contact-section {
+        margin-bottom: 2rem;
+    }
+    .heading-contact {
+        font-size: 4.2rem;
+        margin-top: 50px;
+    }
+    .about-container p{
+        font-size: 2rem;
+    }
+    .contact-section h2 {
+        font-size: 3rem;
+        line-height: 2;
+        margin-top: 50px;
+    }
+    .contact-section p{
+        font-size: 1.6rem;
+    }
+}
+@media (max-width: 991px) {
+    .carts-container-topics {
+        grid-template-columns: 1fr;
+        text-align: center;
+        margin-top: -50px;
+    }
+
+    .contact-section {
+        margin-bottom: -5rem;
+    }
+    .contact-section h2 {
+        font-size: 2.1rem;
+    }
+
+    .contact-section p{
+        font-size: 2rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-container{
+        margin-top: -5rem;
+    }
+    .contact-about {
+        font-size: 2.5rem;
+    }
+
+    .about-container .heading-contact{
+        font-size: 4rem;
+    }
+
+   
 }
