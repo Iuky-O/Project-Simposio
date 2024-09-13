@@ -8,6 +8,7 @@ import Speakers from './Speakers';
 import AboutSpeaker from './AboutSpeaker';
 import TimelineArea from './TimelineArea';
 import About from './About';
+import Collaborators from './Collaborators';
 
 function RoutesComponent() {
   return (
@@ -19,7 +20,8 @@ function RoutesComponent() {
       <Route path="/timeline" element={<TimelineArea />} />
       <Route path="/speakers" element={<Speakers />} />
       <Route path="/aboutspeaker/:id" element={<AboutSpeaker />} /> 
-      <Route path="/about/" element={<About />} /> 
+      <Route path="/about/" element={<About />} />
+      <Route path="/collaborators" element={<Collaborators />} /> 
     </Routes>
   );
 }
