@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: center;
     height: 120vb;
+    max-width: 100%;
 }
 
 .text {
@@ -14,12 +15,13 @@
     max-width: 80rem;
     color: #6a6a6a;
     margin: 1rem 0 0 0;
+    font-size: clamp(0.5rem, 3vw, 1.5rem);
 }
 
-.title {
-    justify-content: center;
-    margin: 0 0 2vh 0;
-    font-size: clamp(1rem 5vw 3rem);
+.title1 {
+    margin: 1rem 0 2vh 0;
+    font-size: clamp(0.5rem, 3vw, 4rem);
+    text-align: center;
     color: var(--branco);
     font-family: bold;
 }
@@ -70,3 +72,32 @@
 .inscricao-btn:hover {
     box-shadow: 0 0 10px #F2C879;
 }
+
+@media (max-width: 760px) {
+    .title1 {
+        margin: 5rem 0 4vh 0;
+        font-size: clamp(2rem, 4vw, 3rem);
+        text-align: center;
+        color: var(--branco);
+        font-family: bold;
+    }
+    .text {
+        text-align: center;
+        color: #6a6a6a;
+        font-size: clamp(1rem, 4vw, 1.6rem);
+    }
+  }
+
+@media (max-width: 760px) {
+    .card-item{
+        text-align: center;
+        padding: 4rem;
+        max-width: 5rem;
+    }
+    .card-text{ 
+        text-align: center;
+        font-size: clamp(0.8rem, 2vw, 1rem);
+        display: flex;
+
+    }
+  }
