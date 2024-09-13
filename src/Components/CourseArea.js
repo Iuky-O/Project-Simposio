@@ -61,19 +61,7 @@ const CourseArea = () => {
       title: "Análise de Sistemas",
       description: "Descrição",
       imgUrl: img8,
-    },
-    {
-      id: 9,
-      title: "Estrutura de Dados",
-      description: "Descrição",
-      imgUrl: img9,
-    },
-    {
-      id: 10,
-      title: "Gestão de Projetos",
-      description: "Descrição",
-      imgUrl: img10,
-    },
+    }
   ]);
 
   return (
