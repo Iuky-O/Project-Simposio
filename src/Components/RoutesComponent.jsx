@@ -11,6 +11,7 @@ import TimelineArea from './TimelineArea';
 import About from './About';
 import Collaborators from './Collaborators';
 import Lectures from './Lectures';
+import AboutLectures from './AboutLectures';
 
 function RoutesComponent() {
   return (
@@ -23,6 +24,7 @@ function RoutesComponent() {
       <Route path="/speakers" element={<Speakers />} />
       <Route path="/aboutspeaker/:id" element={<AboutSpeaker />} /> 
       <Route path="/aboutscourses/:id" element={<AboutCourses />} /> 
+      <Route path="/aboutslectures/:id" element={<AboutLectures />} /> 
       <Route path="/about/" element={<About />} />
       <Route path="/collaborators" element={<Collaborators />} />
       <Route path='/lectures' element={<Lectures/>} /> 

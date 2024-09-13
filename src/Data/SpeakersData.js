@@ -53,7 +53,7 @@ export const Options_Speakers = [
     {
       image: Alexa, name: 'Prof. Dr Solange', title: 'Prof. Dr. Solange, formada em Engenharia de Software pela UEPA, é uma especialista em microserviços e arquitetura de sistemas. Em sua participação no evento, ela abordou Microservices e Arquitetura Orientada a Serviços, detalhando os benefícios, desafios e boas práticas na implementação de microserviços. Sua apresentação explorou como a adoção de microserviços pode aprimorar a escalabilidade e a flexibilidade dos sistemas, além de oferecer estratégias para enfrentar os desafios e implementar práticas recomendadas para garantir a eficácia e a eficiência dos sistemas distribuídos.', 
       desc: '', 
-      lectures: 'Microservices e Arquitetura Orientada a Serviços: Benefícios, desafios e boas práticas na implementação de microserviços.',
+      lectures: 'Segurança em Aplicações Web: Protegendo seus Sistemas Contra Ameaças Atuais',
       course: ''
     },
     {

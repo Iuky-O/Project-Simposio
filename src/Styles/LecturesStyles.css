@@ -1,6 +1,6 @@
 .lecture-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 300px));
+    grid-template-columns: repeat(5, minmax(250px, 300px));
     grid-auto-rows: 1fr;
     grid-gap: 30px;
     margin: 90px auto;
@@ -24,14 +24,22 @@
   .lecture-card {
     background-color: #0D0D0D;
     border: 1px solid #F2C879;
-    border-radius: 8px;
+    border-radius: 2rem;
     overflow: hidden;
     box-shadow: 8px 8px 8px #F2A2D6;
     flex-direction: column;
-    margin: 0;
+    margin: 10px;
+    margin-bottom: 40px;
+
+    height: 180px;
+
     min-width: 250px;
     max-width: 300px;
     flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
   }
   
   .lecture-content {
@@ -57,7 +65,7 @@
     background: #F2A2D6;
     color: #0D0D0D;
     border: #FFFFFF 1px solid;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
     text-align: center;
   }
@@ -72,6 +80,7 @@
   
   .dia-section {
     margin-top: 40px;
+    padding: 1rem;
   }
   
   .dia-title {

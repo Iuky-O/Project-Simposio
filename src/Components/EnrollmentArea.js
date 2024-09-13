@@ -12,16 +12,10 @@ import '../Styles/EnrollmentArea.css';
 const EnrollmentArea = () => {
     return (
         <div className="container">
-            <div className="text">
-                <text> Inscrições abertas até o dia 25/10, não perca a oportunidade de participar do maior evento da américa do sul.  </text>
-                <text> Taxa de Inscrição: R$ 75.  </text>
-            </div>
+            
             <div className='title1'>
-               I Simpósio Regional de Engenharia de Software
+               I Simpósio Regional de <span>Engenharia de Software</span>
             </div>
-            <button className="inscricao-btn">
-                <a className='link' href="https://forms.gle/oW43Tdii6kwG7VNu5" target="_blank"> Inscreva-se</a> 
-            </button>
             <div className='card-end'>
                 <div className='card-item'>
                     <text className='card-number'>10
@@ -49,6 +43,13 @@ const EnrollmentArea = () => {
                     </text>
                 </div>
             </div>
+            <div className="text">
+                <text> Inscrições abertas até o dia 25/10, não perca a oportunidade de participar do maior evento da américa do sul.  </text>
+                <text> Taxa de Inscrição: R$ 75.  </text>
+            </div>
+            <button className="inscricao-btn">
+                <a className='link' href="https://forms.gle/oW43Tdii6kwG7VNu5" target="_blank"> Inscreva-se</a> 
+            </button>
         </div>
     );
 };

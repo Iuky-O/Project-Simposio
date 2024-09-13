@@ -10,7 +10,7 @@ function AboutCourses() {
   const course =  Options_Courses[id]; // Encontrar o palestrante pelo id
 
   if (!course) {
-    return <h2>Palestrante não encontrado</h2>;
+    return <h2>Curso não encontrado</h2>;
   }
 
   return (
