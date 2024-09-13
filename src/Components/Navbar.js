@@ -97,7 +97,7 @@ const Navbar = () => {
                 <Link to="/timeline">Cronograma</Link>
                 <Link to="/collaborators">Colaboradores</Link>
                 <Link to="/speakers">Palestrantes</Link>
-                <Link to="/home">Palestras</Link>
+                <Link to="/lectures">Palestras</Link>
                 <Link to="/course">Cursos</Link>
             </div>
             <div className="navbar-menu-container">
