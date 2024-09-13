@@ -1,5 +1,5 @@
 import React from "react";
-import CollaboratorsStyle from "../Styles/CollaboratorsStyles.css";
+import "../Styles/CollaboratorsStyles.css";
 import ufpaImage from '../Assets/realização/UFPA.png';
 import uepa from "../Assets/realização/uepa.png";
 import estacio from "../Assets/realização/estacio.png"
