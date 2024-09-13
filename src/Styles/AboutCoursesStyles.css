@@ -92,6 +92,9 @@
     font-size: 1.5rem;
 }
 
+.participations iframe{
+    padding: 10px;
+}
 
 
 /*responsive*/

@@ -29,6 +29,8 @@ function AboutCourses() {
 
                   <div className='card-info'>
                     <p>{course.days}</p> 
+                    <iframe src={course.local} style={{width:"600", height:"450", border:0}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
                   </div> 
                 </div>
      
