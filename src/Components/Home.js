@@ -1,5 +1,5 @@
 import React from "react";
-import HomeStyle from "../Styles/HomeStyle.css"
+import "../Styles/HomeStyle.css"
 import Navbar from "./Navbar";
 import Image from "../Assets/Image-Background.png"
 import { BsArrowRightCircleFill } from "react-icons/bs";
@@ -21,7 +21,7 @@ const Home = () => {
                 <p className="primary-text">
                    Embarque nessa jornada com a gente!
                 </p>
-                <Link to="/enrollment" className="btn">
+                <Link to="/register" className="btn">
                     <div className="info-btn">
                       <h6>Inscreva-se</h6>
                     

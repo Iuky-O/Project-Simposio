@@ -1,0 +1,180 @@
+/* Estilos básicos */
+
+
+.register {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh; 
+}
+
+
+.background-rotated {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../Assets/Background-açai-1.png'); /* Caminho da imagem de fundo */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0; /* Coloca a imagem de fundo atrás do conteúdo */
+}
+
+
+.container-register {
+    margin-top: 2rem;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 90vh;
+    z-index: 1;
+}
+
+/* Layout das seções */
+.sections-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.section-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.section-info img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.section-info p {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 0 20px;
+    color: #ffffff;
+}
+
+.section-form {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.form-cadastro h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.form-cadastro p {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.btn-cadastro {
+    width: 100%;
+    padding: 1rem;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1.5rem;
+}
+
+.btn-cadastro:hover {
+    background-color: #45a049;
+}
+
+.progress-indicator {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: lightgray; /* Cor padrão dos pontos */
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: #4caf50; /* Cor dos pontos ativos */
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .sections-container {
+        grid-template-columns: 1fr;
+        
+    }
+    .background-rotated {
+        height: 100vh;
+        background-size: cover; /* Garante que a imagem continue cobrindo a tela */
+        background-position: top center; /* Ajusta a posição da imagem em telas pequenas */
+        min-height: 100vh;
+        margin-top: -130px;
+        transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            -webkit-transform: rotate(90deg);
+    }
+
+    .section-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .section-info img {
+       
+        margin-top: 20px;
+        width: 35%; /* Ajusta o tamanho da imagem para caber melhor na tela menor */
+        max-width: 200px; /* Limita o tamanho máximo */
+    }
+    .section-info, .section-form {
+        text-align: center;
+    }
+
+    .section-form {
+        padding: 20px;
+    }
+}

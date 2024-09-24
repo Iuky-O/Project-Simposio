@@ -13,6 +13,16 @@
   position: relative; /* Garante que a posição do fundo se mantenha no body */
   overflow-x: hidden; 
 }
+.home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.599); /* Troque a cor e opacidade conforme necessário */
+  z-index: -0; /* Coloca o overlay atrás dos elementos de conteúdo */
+}
 
 .home-container{
   margin-top: 2rem;
@@ -20,7 +30,7 @@
   max-width: 1200px; /* Limita a largura dos elementos, mas não afeta o fundo */
   margin-left: auto;
   margin-right: auto;
-  
+  z-index: 1;
 }
 .btn{
   display: inline-block;
@@ -135,8 +145,11 @@
 }
 
 @media (max-width: 991px){
+
   .home {
-    background-size: contain; /* Ajusta para que a imagem inteira seja exibida */
+    background-size: cover; /* Garante que a imagem continue cobrindo a tela */
+    background-position: top center; /* Ajusta a posição da imagem em telas pequenas */
+    min-height: 100vh; /* Garante que cubra a altura da viewport */
   }
 }
 
@@ -172,8 +185,9 @@
   }
 }
   @media (max-width: 600px){
-    .home {
-      background-position: top; /* Ajusta a posição em telas menores */
+  
+    .home-container {
+      margin-top: 0; 
     }
     .home-text-section .heading-home{
       font-size: 3rem;

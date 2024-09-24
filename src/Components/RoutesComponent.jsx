@@ -12,6 +12,7 @@ import About from './About';
 import Collaborators from './Collaborators';
 import Lectures from './Lectures';
 import AboutLectures from './AboutLectures';
+import Register from './Register';
 
 function RoutesComponent() {
   return (
@@ -27,7 +28,8 @@ function RoutesComponent() {
       <Route path="/aboutslectures/:id" element={<AboutLectures />} /> 
       <Route path="/about/" element={<About />} />
       <Route path="/collaborators" element={<Collaborators />} />
-      <Route path='/lectures' element={<Lectures/>} /> 
+      <Route path= "/lectures" element={<Lectures/>} /> 
+      <Route path= "/register" element={<Register/>} /> 
     </Routes>
   );
 }
