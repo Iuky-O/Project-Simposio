@@ -5,7 +5,17 @@ const Colors = {
     Verde: '#94FD8E',
     Amarelo: '#F2C879',
     Preto: '#0D0D0D',
-    Branco: '#FFFFFF'
+
+
+    Branco: '#FFFFFF',
+
+    Primary_Color: '#471A3D',
+
+    Secundary_Color: '#9C061F',
+
+    Dark_Green: '#1B5C27',
+
+    Light_Green: '#069C22',
 }
 
 export default Colors;

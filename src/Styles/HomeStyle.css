@@ -1,8 +1,26 @@
 @import "/src/Styles/index.css";
 
+.home {
+  /* Define a imagem de fundo, cobrindo toda a área e mantendo a responsividade */
+  background-image: url('../Assets/Background-image-1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh; /* Garante que a altura cubra toda a tela */
+  margin: 0; /* Remove qualquer margem que possa limitar a largura */
+  padding: 0; /* Remove qualquer padding */
+  position: relative; /* Garante que a posição do fundo se mantenha no body */
+  overflow-x: hidden; 
+}
 
 .home-container{
   margin-top: 2rem;
+  width: 100%;
+  max-width: 1200px; /* Limita a largura dos elementos, mas não afeta o fundo */
+  margin-left: auto;
+  margin-right: auto;
+  
 }
 .btn{
   display: inline-block;
@@ -117,7 +135,9 @@
 }
 
 @media (max-width: 991px){
-
+  .home {
+    background-size: contain; /* Ajusta para que a imagem inteira seja exibida */
+  }
 }
 
 @media (max-width: 895px){
@@ -152,6 +172,9 @@
   }
 }
   @media (max-width: 600px){
+    .home {
+      background-position: top; /* Ajusta a posição em telas menores */
+    }
     .home-text-section .heading-home{
       font-size: 3rem;
       text-align: center;
