@@ -35,14 +35,11 @@
     font-weight: 600;
   }
   .navbar-links-container a:hover{
-    background: linear-gradient(to right,  #F2A2D6,
-                                            #BA71D9,
-                                            #94E1F2,
-                                            #94FD8E,
-                                            #F2C879);
-                -webkit-background-clip: text; /* Para navegadores WebKit (Chrome, Safari) */
-                -webkit-text-fill-color: transparent; /* Torna o texto transparente */
-                background-clip: text; /* Para outros navegadores */
+    transform: scale(1.1);
+    z-index: 1; 
+    font-size: 1.2rem;
+    transition: transform 0.3s ease, font-size 0.3s ease; 
+    text-decoration:underline;
   }
   .primary-button {
     padding: 0.9rem 1.75rem;
