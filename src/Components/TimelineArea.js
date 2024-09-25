@@ -1,7 +1,6 @@
 import React from 'react';
 import Carousel from '../Utils/Carrousel';
 import '../Styles/TimelineArea.css';
-import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
 
 const slides = [
     <div>
