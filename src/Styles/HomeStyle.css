@@ -20,7 +20,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.721);
+  background-color: rgba(0, 0, 0, 0.751);
   z-index: -0; 
 }
 
@@ -35,20 +35,20 @@
 .btn{
   display: inline-block;
   padding: 0.5rem 2.6rem;
-  box-shadow: 0 0 15px var(--azul);
-  background-color: #edecec;
   border-radius: 4rem;
   font-size: 1.3rem;
-  color: var(--preto);
+  color: var(--branco);
   border: 2px solid transparent;
   letter-spacing: 0.1rem;
   font-weight: 600;
   transition: 0.3s ease-in-out;
   cursor: pointer;
+  border-color: #edecec;
+  text-decoration: none;
 }
 .btn:hover{
   transform: scale(1.05);
-  box-shadow: 0 0 25px var(--azul);
+  box-shadow: 0 0 25px var(--branco);
 }
 .info-btn{
   display: flex;
@@ -59,7 +59,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    padding: 7rem; /*foi alterado*/
+    padding: 4rem; /*foi alterado*/
   }
   .home-bannerImage-container {
     position: absolute;
@@ -69,36 +69,61 @@
     max-width: 700px;
   }
   .home-image-section {
-    max-width: 700px;
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Espaçamento entre os losangos */
+    margin-right: 10rem;
+    padding-top: 2rem;
   }
+  
+  .home-image-section img {
+    width: 400px; /* Ajuste o tamanho conforme necessário */
+    height: 300px; 
+    object-fit: cover;
+    
+    border-radius: 20px; /* Bordas arredondadas para suavizar */
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .home-image-section img:hover {
+    transform: scale(1.05); /* Efeito de hover para aumentar o losango */
+  }
+  
   .home-text-section {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center; /*foi alteado ... era flex-end*/
+
     
   }
   .home-text-section p{
-    opacity: 0.7;
+    opacity: 0.8;
   }
   .heading-home {
-    font-size: clamp(2rem, 3.5vw, 4rem);
+    font-size: 3rem;
     color: var(--branco);
     /* line-height: 5rem; */
     max-width: 600px;
+    text-align: center;
+    font-style: italic;
     
     
   }
   .heading-home span {
-    font-size: clamp(2rem, 4vw, 4rem);
+    font-size: 4rem;
     background: linear-gradient(to right,  #F2A2D6,
                                             #F2C879);
                 -webkit-background-clip: text; /* Para navegadores WebKit (Chrome, Safari) */
                 -webkit-text-fill-color: transparent; /* Torna o texto transparente */
                 background-clip: text; /* Para outros navegadores */
     transition: color 0.3s ease-in-out; 
+   
   }
   .heading-home span:hover {
     transform: scale(1.1);

@@ -1,106 +1,122 @@
-.about {
-    margin-top: 6rem;
+/* Container principal */
+.About {
+    min-height: 100vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
-}
-
-.about-container {
-    align-items: center;
+  }
+  
+  /* Container principal da tela */
+  .container-about {
+    width: 100%;
+    height: 100vh; /* Preenche 100% da tela */
+    display: flex;
+    position: relative;
+  }
+  
+  /* Seção de imagem à esquerda */
+  .section-image-about {
+    width: 50%; /* Metade da tela */
+    background-size: cover; /* Imagem cobre toda a área */
+    background-position: center; /* Centraliza a imagem */
+    height: 100%; /* Preenche 100% da altura */
+  }
+  
+  /* Seção de informações à direita */
+  .section-info-about {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    height: 100%;
+  }
+  
+  /* Centraliza o texto na seção */
+  .info-text {
     text-align: center;
-}
-
-.heading-about {
-    font-size: clamp(2rem, 2.5vw, 4rem);
-    color: var(--branco);
-    padding-top: 3rem;
-}
-
-.heading-about span {
-    background: linear-gradient(to right, #F2A2D6, #BA71D9, #94E1F2, #94FD8E, #F2C879);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    transition: color 0.3s ease-in-out;
-}
-
-.carts-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-    padding-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  /* Estilização do título h1 */
+  .section-info-about h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
     text-align: left;
-}
-
-.about-section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-
-.about-section p,
-.about-section ul {
+    width: 100%;
+  }
+  
+  /* Texto principal */
+  .section-info-about p {
+    font-size: 1.2rem;
+    text-align: left;
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+  
+  /* Botão fixado na parte inferior */
+  .btn-prosseguir {
+    margin-top: auto;
+    padding: 10px 20px;
+    background-color: var(--Primary-Color);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
     font-size: 1rem;
-    line-height: 1.6;
-}
-
-.about-section ul li {
-    margin-bottom: 1rem;
-}
-
-/* Responsivo */
-@media (max-width: 1250px) {
-    .about-section {
-        margin-bottom: 2rem;
+    align-self: flex-start; /* Alinha à esquerda */
+  }
+  
+  .btn-prosseguir:hover {
+    background-color: var(--Primary-Color-Dark);
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .container-about {
+      flex-direction: column;
     }
-    .heading-about {
-        font-size: 4.2rem;
-        margin-top: 50px;
+  
+    .section-image-about {
+      width: 100%;
+      height: 50vh; /* Metade da altura para telas pequenas */
     }
-    .about-section h2 {
-        font-size: 3rem;
-        line-height: 2;
-        margin-top: 50px;
+  
+    .section-info-about {
+      width: 100%;
+      padding: 20px;
     }
-    .about-section p,
-    .about-section ul {
-        font-size: 1.6rem;
+  
+    .section-info-about h1 {
+      font-size: 2.5rem;
     }
-}
-@media (max-width: 991px) {
-    .carts-container {
-        grid-template-columns: 1fr;
-        text-align: center;
+  
+    .section-info-about p {
+      font-size: 1rem;
     }
-
-    .about-section {
-        margin-bottom: 1rem;
+  
+    .btn-prosseguir {
+      align-self: center;
     }
-    .about-section h2 {
-        font-size: 2rem;
-        margin-top: 0px;
+  }
+  
+  @media (max-width: 480px) {
+    .section-info-about h1 {
+      font-size: 2rem;
     }
-    .about-section p,
-    .about-section ul {
-        font-size: 1.4rem;
-        text-align: justify;
+  
+    .section-info-about p {
+      font-size: 0.9rem;
     }
-}
-
-@media (max-width: 600px) {
-    .about-container{
-        margin-top: -5rem;
+  
+    .btn-prosseguir {
+      font-size: 0.9rem;
     }
-    .heading-about {
-        font-size: 2.5rem;
-    }
-
-    .about-section h2 {
-        font-size: 1.6rem;
-    }
-
-    .about-section p,
-    .about-section ul {
-        font-size: 1.4rem;
-    }
-}
+  }
+  

@@ -7,7 +7,7 @@ const Register = () => {
     const [step, setStep] = useState(1); // Estado para controlar o passo atual
 
     const handleNextStep = () => {
-        setStep((prevStep) => Math.min(prevStep + 1, 5)); // Limita o passo máximo em 5
+        setStep((prevStep) => Math.min(prevStep + 1, 4)); // Limita o passo máximo em 5
     };
 
     const handlePrevStep = () => {
