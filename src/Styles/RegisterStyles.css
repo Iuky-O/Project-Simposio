@@ -103,19 +103,19 @@
 }
 
 .btn-cadastro {
-    width: 100%;
+    width: 30%;
     padding: 1rem;
-    background-color: #4CAF50;
+    background-color: var(--Primary-Type-2);
     border: none;
-    color: white;
     font-size: 1rem;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 1.5rem;
+    color: white;
 }
 
 .btn-cadastro:hover {
-    background-color: #45a049;
+    background-color: var(--Primary-Color);
 }
 
 .progress-indicator {
@@ -135,9 +135,29 @@
 }
 
 .dot.active {
-    background-color: #4caf50; /* Cor dos pontos ativos */
+    background-color: var(--Primary-Color); /* Cor dos pontos ativos */
 }
 
+
+.navigation-buttons button{
+    display: inline-block;
+  padding: 0.3rem 2rem;
+  box-shadow: 0 0 15px var(--Primary-Color);
+  border-radius: 4rem;
+  font-size: 1rem;
+  color: var(--preto);
+  border: 2px solid transparent;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+
+  margin: 20px;
+}
+
+.navigation-buttons .btn-cadastro{
+  color: rgba(233, 230, 230, 0.953);
+}
 
 /* Responsividade */
 @media (max-width: 768px) {
