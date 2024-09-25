@@ -1,13 +1,6 @@
 import React from 'react';
-import {
-    Table,
-    TableHeader,
-    TableBody,
-    TableColumn,
-    TableRow,
-    TableCell
-} from "@nextui-org/table";
 import '../Styles/EnrollmentArea.css';
+import { Link } from 'react-router-dom';
 
 const EnrollmentArea = () => {
     return (
@@ -47,9 +40,12 @@ const EnrollmentArea = () => {
                 <text> Inscrições abertas até o dia 25/10, não perca a oportunidade de participar do maior evento da américa do sul.  </text>
                 <text> Taxa de Inscrição: R$ 75.  </text>
             </div>
-            <button className="inscricao-btn">
-                <a className='link' href="https://forms.gle/oW43Tdii6kwG7VNu5" target="_blank"> Inscreva-se</a> 
-            </button>
+            <Link to="/profile" className="btn">
+                    <div className="info-btn">
+                      <h6>Inscreva-se</h6>
+                    </div>
+
+                </Link>
         </div>
     );
 };
