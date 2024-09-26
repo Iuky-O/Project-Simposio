@@ -42,22 +42,27 @@
     text-decoration:underline;
   }
   .primary-button {
-    padding: 0.9rem 1.75rem;
-    background-color: white;
+    padding: 0.2rem 1.75rem;
     outline: none;
-    border: none;
+    border: 2px solid var(--Primary-Color); /* Borda com cor dourada */
     border-radius: 5rem;
     font-size: 1.1rem;
     cursor: pointer;
     font-weight: 600;
     transition: 0.2s;
-  }
+    text-decoration: none; /* Remove underline */
+    color: black; /* Define a cor do texto */
+}
+
+.primary-button:hover {
+    background-color: var(--Primary-Type-2); 
+    border-color: var(--Primary-Type-2);
+}
+
   .navbar-cart-icon {
     font-size: 1.15rem;
   }
-  .primary-button:hover {
-    background-color: rgb(234, 234, 234);
-  }
+
   .navbar-menu-container svg {
     font-size: 1.5rem;
     cursor: pointer;

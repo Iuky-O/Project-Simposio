@@ -1,5 +1,10 @@
 /* Estilos básicos */
 
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
 
 .register {
     min-height: 100vh;
@@ -16,11 +21,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../Assets/Background-açai-1.png'); /* Caminho da imagem de fundo */
+    background-image: url('../Assets/Background-açai-2.png'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    z-index: 0; /* Coloca a imagem de fundo atrás do conteúdo */
+    z-index: 0;
 }
 
 
@@ -88,17 +93,11 @@
     margin-bottom: 1rem;
 }
 
-.input-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-}
-
 .input-group input,
 .input-group select {
     width: 100%;
     padding: 0.5rem;
-    border-radius: 5px;
+    border-radius: 20px;
     border: 1px solid #ccc;
 }
 

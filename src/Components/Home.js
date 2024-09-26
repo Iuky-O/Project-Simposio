@@ -19,7 +19,7 @@ const Home = () => {
                     <p className="primary-text">
                     Embarque nessa jornada com a gente!
                     </p>
-                    <Link to="/register" className="btn">
+                    <Link to="/enrollment" className="btn">
                         <div className="info-btn">
                         <h6>Inscreva-se</h6>
                         

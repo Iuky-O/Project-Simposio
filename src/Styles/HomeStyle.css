@@ -2,10 +2,7 @@
 
 .home {
   
-  background-image: url('../Assets/Tucano.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+
   width: 100%;
   min-height: 100vh; 
   margin: 0; 
@@ -13,6 +10,7 @@
   position: relative; 
   overflow-x: hidden; 
 }
+/*
 .home::before {
   content: "";
   position: absolute;
@@ -23,6 +21,7 @@
   background-color: rgba(0, 0, 0, 0.751);
   z-index: -0; 
 }
+  */
 
 .home-container{
   margin-top: 2rem;
@@ -38,18 +37,19 @@
   border-radius: 4rem;
   font-size: 1.3rem;
   color: var(--branco);
-  border: 2px solid transparent;
-  letter-spacing: 0.1rem;
-  font-weight: 600;
   transition: 0.3s ease-in-out;
-  cursor: pointer;
-  border-color: #edecec;
   text-decoration: none;
+  background-color: var(--Primary-Type-2);
+  border: none;
+  cursor: pointer;
+  color: white;
+  margin-top: 1rem;
 }
 .btn:hover{
   transform: scale(1.05);
-  box-shadow: 0 0 25px var(--branco);
+  box-shadow: 0 0 25px var(--Primary-Type-2);
   color: white;
+  background-color: var(--Primary-Color);
 }
 .info-btn{
   display: flex;
@@ -108,18 +108,19 @@
   }
   .heading-home {
     font-size: 3rem;
-    color: var(--branco);
-    /* line-height: 5rem; */
+    color: var(--preto);
     max-width: 600px;
+    padding-bottom: 2rem;
+    font-weight: bold;
     text-align: center;
-    font-style: italic;
-    
+    margin: 0; 
     
   }
   .heading-home span {
     font-size: 4rem;
-    background: linear-gradient(to right,  #F2A2D6,
-                                            #F2C879);
+    background: linear-gradient(to right, #471A3D,
+                                            #8e427d,
+                                            #BA71D9);
                 -webkit-background-clip: text; /* Para navegadores WebKit (Chrome, Safari) */
                 -webkit-text-fill-color: transparent; /* Torna o texto transparente */
                 background-clip: text; /* Para outros navegadores */
@@ -132,7 +133,7 @@
   .primary-text {
     font-size: clamp(1rem, 3vw, 1.5rem);
     max-width: 500px;
-    color: #edecec;
+    color: #000000;
     margin: 1.5rem 0rem;
   }
   
@@ -177,6 +178,20 @@
   .home-image-section{
     max-width: 400px;
     max-height: 350px;
+  }
+  .home-image-section {
+    flex-direction: row;
+    gap: 0px; 
+    margin-right: 0;
+    padding-top: 0;
+  }
+  
+  .home-image-section img {
+    width: 400px; 
+    height: 300px; 
+    border-radius: 0; 
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
   .home-text-section .heading-home{
     font-size: 3rem;

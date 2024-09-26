@@ -24,10 +24,9 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
 import { SiCodenewbie } from "react-icons/si";
 
-
 const Navbar = () => {
     const [openMenu, setOpenMenu] = useState(false);
-    const navigate = useNavigate(); // Hook para navegação
+    const navigate = useNavigate();
 
     const menuOptions = [
         {
@@ -99,6 +98,7 @@ const Navbar = () => {
                 <Link to="/speakers">Palestrantes</Link>
                 <Link to="/lectures">Palestras</Link>
                 <Link to="/course">Cursos</Link>
+                <Link to="/login" className="primary-button">Login</Link>
             </div>
             <div className="navbar-menu-container">
                 <HiOutlineBars3 className="haburguer" onClick={() => setOpenMenu(true)} />
@@ -122,10 +122,14 @@ const Navbar = () => {
                         ))}
                     </List>
                     <Divider />
+                    <ListItem disablePadding>
+                        <ListItemButton onClick={() => handleNavigation('/login')}>
+                            <ListItemText primary="Login" />
+                        </ListItemButton>
+                    </ListItem>
                 </Box>
             </Drawer>
         </nav>
-        
     );
 };
 

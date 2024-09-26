@@ -21,7 +21,7 @@ const Register = () => {
             <div className="container-register">
                 <div className="sections-container">
                     <div className="section-info">
-                        <div className="info-parts">
+                        <div className="info-parts-res">
                             <img src={Image} alt="" />
                             <p>descrição</p>
                         </div>
@@ -33,76 +33,98 @@ const Register = () => {
 
                             {step === 1 && (
                                 <>
-                                    <div className="input-group">
+                                    <div>
                                         <label htmlFor="nome">Nome:</label>
-                                        <input type="text" id="nome" name="nome" required />
+                                        <div className="input-group">
+                                            <input type="text" id="nome" name="nome" required />
+                                        </div>   
                                     </div>
-
-                                    <div className="input-group">
+                                    
+                                    <div>
                                         <label htmlFor="sobrenome">Sobrenome:</label>
-                                        <input type="text" id="sobrenome" name="sobrenome" required />
-                                    </div>
-                                    <div className="input-group">
-                                        <label htmlFor="email">Email:</label>
-                                        <input type="email" id="email" name="email" required />
+                                        <div className="input-group">
+                                            <input type="text" id="sobrenome" name="sobrenome" required />
+                                        </div>
                                     </div>
 
-                                    <div className="input-group">
-                                        <label htmlFor="numero">Número:</label>
-                                        <input type="tel" id="numero" name="numero" required />
+                                    <div>
+                                        <label htmlFor="email">Email:</label>
+                                        <div className="input-group">
+                                            <input type="email" id="email" name="email" required />
+                                        </div>
                                     </div>
+
+                                    <div>
+                                        <label htmlFor="numero">Número:</label>
+                                       <div className="input-group">
+                                        <input type="tel" id="numero" name="numero" required />
+                                        </div> 
+                                    </div>
+                                    
                                 </>
                             )}
 
                             {step === 2 && (
                                 <>
-                                    <h2>Endereço</h2>
-                                    <div className="input-group">
+                                    <div>
                                         <label htmlFor="pais">País:</label>
-                                        <input type="text" id="pais" name="pais" required />
+                                        <div className="input-group">
+                                            <input type="text" id="pais" name="pais" required />
+                                        </div>
                                     </div>
-
-                                    <div className="input-group">
+                            
+                                    <div>
                                         <label htmlFor="estado">Estado:</label>
-                                        <input type="text" id="estado" name="estado" required />
+                                        <div className="input-group">
+                                            <input type="text" id="estado" name="estado" required />
+                                        </div>
                                     </div>
 
-                                    <div className="input-group">
+                                    <div>
                                         <label htmlFor="cidade">Cidade:</label>
-                                        <input type="text" id="cidade" name="cidade" required />
+                                        <div className="input-group">
+                                            <input type="text" id="cidade" name="cidade" required />
+                                        </div>
                                     </div>
                                 </>
                             )}
 
                             {step === 3 && (
                                 <>
-                                    <div className="input-group">
+                                    <div>
                                         <label htmlFor="tipoUsuario">Tipo de Usuário:</label>
-                                        <select id="tipoUsuario" name="tipoUsuario" required>
-                                            <option value="">Selecione</option>
-                                            <option value="aluno">Aluno</option>
-                                            <option value="professor">Professor</option>
-                                            <option value="profissional">Profissional</option>
-                                            <option value="empresa">Empresa</option>
-                                        </select>
+                                        <div className="input-group">
+                                            <select id="tipoUsuario" name="tipoUsuario" required>
+                                                <option value="">Selecione</option>
+                                                <option value="aluno">Aluno</option>
+                                                <option value="professor">Professor</option>
+                                                <option value="profissional">Profissional</option>
+                                                <option value="empresa">Empresa</option>
+                                            </select>
+                                        </div>
                                     </div>
 
-                                    <div className="input-group">
+                                    <div>
                                         <label htmlFor="vinculo">Vínculo (Instituição ou Empresa):</label>
-                                        <input type="text" id="vinculo" name="vinculo" required/>
+                                        <div className="input-group">
+                                            <input type="text" id="vinculo" name="vinculo" required/>
+                                        </div>
                                     </div>
 
-                                    <div className="input-group">
+                                    <div>
                                         <label htmlFor="escolaridade">Nível de Escolaridade:</label>
-                                        <input type="text" id="escolaridade" name="escolaridade" required />
+                                        <div className="input-group">
+                                            <input type="text" id="escolaridade" name="escolaridade" required />
+                                        </div>
                                     </div>
                                 </>
                             )}
 
                             {step === 4 && (
                                 <>
+                                <div>
+                                    <label htmlFor="sexo">Sexo:</label>
                                     <div className="input-group">
-                                        <label htmlFor="sexo">Sexo:</label>
                                         <select id="sexo" name="sexo" required>
                                             <option value="">Selecione</option>
                                             <option value="masculino">Masculino</option>
@@ -110,16 +132,21 @@ const Register = () => {
                                             <option value="outro">Outro</option>
                                         </select>
                                     </div>
-
+                                </div>
+                                    
+                                <div>
+                                    <label htmlFor="nomeSocial">Nome Social (Opcional):</label>
                                     <div className="input-group">
-                                        <label htmlFor="nomeSocial">Nome Social (Opcional):</label>
                                         <input type="text" id="nomeSocial" name="nomeSocial" />
                                     </div>
+                                </div>
 
+                                <div>
+                                    <label htmlFor="senha">Senha:</label>
                                     <div className="input-group">
-                                        <label htmlFor="senha">Senha:</label>
                                         <input type="password" id="senha" name="senha" required />
                                     </div>
+                                </div>
                                 </>
                             )}
 

@@ -39,8 +39,20 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.5; /* Define a opacidade da imagem */
-    z-index: -1; /* Coloca a imagem atrás do conteúdo */
+    background-color: rgba(0, 0, 0, 0.5); /* Cor preta com opacidade */
+    z-index: -1; /* Garante que fique atrás do conteúdo */
+}
+
+/* Aplicando um efeito de escuridão */
+.about-img-speaker::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Cor preta com transparência */
+    z-index: -1; /* Fica atrás do conteúdo */
 }
 
 
@@ -49,7 +61,7 @@
     grid-template-rows: repeat(2, 1fr);
     gap: 5rem;
 }
-/* Imagem circular que "sai" para o lado direito */
+
 .about-img-speaker img {
     position: relative;
     top: 5rem;
@@ -63,21 +75,18 @@
     font-size: 3rem;
     padding-bottom: 2rem;
     font-weight: bold;
-    background: linear-gradient(to right, #471A3D, #8e427d, #BA71D9);
-                                -webkit-background-clip: text;
-                                -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-/* Faixa Vertical de Ícones */
-/* Faixa Vertical de Ícones */
+
 .icon-container {
-    flex: 0 0 20%; /* Ocupa 20% da largura */
+    flex: 0 0 10%;
     display: flex;
     flex-direction: column; 
     justify-content: center; 
     align-items: center; 
     row-gap: 7rem;
+    margin-right: 100px;
 
     margin-top: -150px;
 
@@ -90,7 +99,7 @@
     border-radius: 50%;
     border: 4px solid var(--branco);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    display: flex; /* Alinha o ícone no centro */
+    display: flex;
     justify-content: center;
     align-items: center;
     transition: 0.3s ease-in-out;
@@ -100,16 +109,16 @@
     transform: scale(1.1);
 }
 
-/* Estilização do ícone */
+
 .icon {
-    font-size: 2.5rem; /* Ajusta o tamanho do ícone */
-    color: var(--Secundary-Color); /* Cor do ícone */
+    font-size: 2.5rem; 
+    color: var(--Secundary-Color); 
 }
 
 
-/* Seção de informações à direita */
+
 .about-content-speaker {
-    flex: 0 0 40%; /* Ocupa 40% da largura */
+    flex: 0 0 40%;
     text-align: center;
     padding: 20px;
     height: 100%; 
@@ -119,7 +128,7 @@
     margin-top: 100px;
 }
 
-/* Estilização do título e texto dentro da seção */
+
 .about-content-speaker h2 {
     font-size: 3rem;
     padding-bottom: 2rem;
@@ -138,19 +147,60 @@
 }
 
 /* Responsividade */
-@media(max-width: 768px) {
+@media (max-width: 768px) {
     .container-sections {
-        flex-direction: column; /* Alinha as seções verticalmente */
-        height: auto; /* Ajusta a altura para auto em telas menores */
+        flex-direction: column;
+        height: auto; 
     }
-    .about-img-speaker {
-        width: 100%; /* Seção de imagem ocupa 100% da largura */
+    
+    .about-img-speaker, .about-content-speaker {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+
+        margin-bottom: -100px;
     }
+    .about-img-speaker img {
+        margin-top: 7rem;
+    }
+    
+    .about-img-speaker h2 {
+        color: black;
+        margin: -50px;
+    }
+
+    /* Ocultar o background para telas menores */
+    .about-img-speaker::before,
+    .about-img-speaker::after {
+        display: none;
+    }
+
     .icon-container {
-        width: 100%; /* Faixa de ícones ocupa 100% da largura */
+        width: 100%; 
+        margin: 20px 0;
+        flex-direction: row; 
+        justify-content: center; 
+        gap: 20px;
+        background-color: transparent;
+        margin-top: -100px;
     }
+
+    .icon-btn {
+        width: 60px;
+        height: 60px;
+    }
+
+    .icon {
+        font-size: 1.5rem;
+    }
+
+    .icon-btn + p {
+        font-size: 0.8rem;
+        margin-top: 5px;
+        text-align: center;
+    }
+
     .about-content-speaker {
-        width: 100%; /* Seção de conteúdo ocupa 100% da largura */
-        padding: 10px; /* Ajusta o padding em telas menores */
+        padding: 10px;
     }
 }
