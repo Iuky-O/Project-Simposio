@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../Styles/AboutStyles.css";
 import Image1 from "../Assets/Fundo-Açai.jpeg";
 import Image2 from "../Assets/Fundo-Guaraná.jpeg";
+import Image3 from "../Assets/Tucano.jpg";
 
 const About = () => {
   const [step, setStep] = useState(0); // Controla o estado da etapa atual
@@ -27,7 +28,7 @@ const About = () => {
     {
       title: "Público-Alvo",
       text: `Área acadêmica com professores e alunos, pessoas do mercado e entusiastas de Engenharia de Software.`,
-      img: Image1,
+      img: Image3,
     },
   ];
 
@@ -48,10 +49,11 @@ const About = () => {
     <div className="About">
       <div className="container-about">
         <div className="sections-container">
-          <div
-            className="section-image-about"
+          <div className="section-image-about"
             style={{ backgroundImage: `url(${sections[step].img})` }}
-          ></div>
+          >
+            <img src={sections[step].img} alt="" className="circular-image"/>
+          </div>
           <div className="section-info-about">
             <div className="info-text">
               <h1>{sections[step].title}</h1>
@@ -59,6 +61,15 @@ const About = () => {
                 <p dangerouslySetInnerHTML={{ __html: sections[step].text }}></p>
               </div>
               
+            </div>
+            {/* Indicador de Progresso */}
+            <div className="progress-indicator">
+              {sections.map((_, index) => (
+                <span
+                  key={index}
+                  className={`dot ${step === index ? 'active' : ''}`}
+                ></span>
+              ))}
             </div>
             <button onClick={handleNextStep} className="btn-prosseguir">
               Prosseguir

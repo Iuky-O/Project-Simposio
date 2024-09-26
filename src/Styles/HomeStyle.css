@@ -49,6 +49,7 @@
 .btn:hover{
   transform: scale(1.05);
   box-shadow: 0 0 25px var(--branco);
+  color: white;
 }
 .info-btn{
   display: flex;

@@ -128,14 +128,14 @@
     height: 10px;
     width: 10px;
     margin: 0 5px;
-    background-color: lightgray; /* Cor padrão dos pontos */
+    background-color: lightgray; 
     border-radius: 50%;
     display: inline-block;
     transition: background-color 0.3s;
 }
 
 .dot.active {
-    background-color: var(--Primary-Color); /* Cor dos pontos ativos */
+    background-color: var(--Primary-Color); 
 }
 
 
@@ -167,8 +167,8 @@
     }
     .background-rotated {
         height: 100vh;
-        background-size: cover; /* Garante que a imagem continue cobrindo a tela */
-        background-position: top center; /* Ajusta a posição da imagem em telas pequenas */
+        background-size: cover;
+        background-position: top center;
         min-height: 100vh;
         margin-top: -130px;
         transform: rotate(90deg);
@@ -185,10 +185,10 @@
     }
 
     .section-info img {
-       
-        margin-top: 20px;
-        width: 35%; /* Ajusta o tamanho da imagem para caber melhor na tela menor */
-        max-width: 200px; /* Limita o tamanho máximo */
+       position:static;
+        margin-top: 50px;
+        width: 35%; 
+        max-width: 200px; 
     }
     .section-info, .section-form {
         text-align: center;
