@@ -5,9 +5,8 @@
   grid-auto-rows: 1fr; /* Garante que todas as linhas tenham a mesma altura */
   grid-auto-columns: 1fr; /* Garante que todas as colunas tenham a mesma altura */
   grid-gap: 30px;
-  margin: 90px auto;
+  margin: 120px auto;
   justify-content: center;
-
   text-align: center;
 }
 
@@ -31,11 +30,11 @@
 }
 
 .course-card {
-  background-color: #0D0D0D;
-  border: 1px solid #F2C879;
+  background-color: #ffffff;
+  border: 1px solid #9C061F;
   border-radius: 3rem;
   overflow: hidden;
-  box-shadow: 8px 8px 8px #F2A2D6;
+  box-shadow: 8px 8px 8px #471A3D;
   flex-direction: column;
 }
 .courses-container .course-card{
@@ -57,19 +56,19 @@
   font-size: 18px;
   font-weight: bold;
   margin: 0 0 10px;
-  color: #FFFFFF;
+  color: black;
 }
 
 .course-description {
   font-size: 12px;
-  color: rgb(177, 169, 169);
+  color: grey;
   margin-bottom: 10px;
 }
 
 .course-button {
   padding: 10px 15px;
-  background: #F2A2D6;
-  color: #0D0D0D;
+  background: #471A3D;
+  color: #ffffff;
   border: #FFFFFF 1px solid;
   border-radius: 1rem;
   cursor: pointer;
@@ -81,5 +80,5 @@
 }
 
 .course-button:active {
-  background-color: #94E1F2;
+  background-color: #9C061F;
 }
