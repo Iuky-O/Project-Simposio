@@ -13,7 +13,7 @@ import Collaborators from './Collaborators';
 import Lectures from './Lectures';
 import AboutLectures from './AboutLectures';
 import Register from './Register';
-import Profile from './UserPage';
+import Profile from '../Components/UserPages/UserPage';
 
 function RoutesComponent() {
   return (
