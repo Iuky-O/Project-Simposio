@@ -1,48 +1,84 @@
-import React from "react";
-import AboutStyle from "../Styles/AboutStyles.css";
+import React, { useState, useEffect } from "react";
+import "../Styles/AboutStyles.css";
+import Image1 from "../Assets/Fundo-Açai.jpeg";
+import Image2 from "../Assets/Fundo-Guaraná.jpeg";
+import Image3 from "../Assets/Tucano.jpg";
 
 const About = () => {
-    return (
-        <div className="about">
-            <div className="about-container">
-                <h1 className="heading-about">
-                    I Simpósio Regional de <span>Engenharia de Software</span>
-                </h1>
+  const [step, setStep] = useState(0); // Controla o estado da etapa atual
+  const sections = [
+    {
+      title: "Sobre o Evento",
+      text: `O I Simpósio Regional de Engenharia de Software é um evento inovador
+             voltado para a troca de conhecimentos e experiências entre
+             profissionais da área acadêmica, estudantes, pesquisadores e pessoas
+             do mercado tecnológico. O simpósio reúne professores, alunos e entusiastas
+             para uma imersão em palestras e cursos.`,
+      img: Image1,
+    },
+    {
+      title: "Objetivos",
+      text: `
+        <li>Promover o intercâmbio de conhecimento entre acadêmicos, profissionais e entusiastas da área de Engenharia de Software.</li>
+        <li>Debater as principais tendências e desafios tecnológicos, focando em inovações e boas práticas no desenvolvimento de software.</li>
+        <li>Estimular a colaboração entre o setor acadêmico e o mercado, criando oportunidades para networking e parcerias.</li>
+        <li>Aprimorar as habilidades técnicas dos participantes por meio de palestras e workshops práticos conduzidos por especialistas da área.</li>`,
+      img: Image2,
+    },
+    {
+      title: "Público-Alvo",
+      text: `Área acadêmica com professores e alunos, pessoas do mercado e entusiastas de Engenharia de Software.`,
+      img: Image3,
+    },
+  ];
 
-                <div className="carts-container">
-                    {/* Tópico e descrição do evento */}
-                    <div className="about-section">
-                        <h2>O Evento</h2>
-                        <p>
-                            O I Simpósio Regional de Engenharia de Software é um evento inovador voltado para a troca de conhecimentos 
-                            e experiências entre profissionais da área acadêmica, estudantes, pesquisadores, e pessoas do mercado tecnológico. 
-                            Com o objetivo de promover discussões sobre as tendências atuais, desafios e inovações na Engenharia de Software, 
-                            o simpósio reúne professores, alunos e entusiastas para uma imersão em palestras e cursos.
-                        </p>
-                    </div>
+  // Função para avançar manualmente
+  const handleNextStep = () => {
+    setStep((prevStep) => (prevStep + 1) % sections.length); // Volta ao início
+  };
 
-                    {/* Tópico e descrição dos objetivos */}
-                    <div className="about-section">
-                        <h2>Objetivos</h2>
-                        <ul>
-                            <li>Promover o intercâmbio de conhecimento entre acadêmicos, profissionais e entusiastas da área de Engenharia de Software.</li>
-                            <li>Debater as principais tendências e desafios tecnológicos, focando em inovações e boas práticas no desenvolvimento de software.</li>
-                            <li>Estimular a colaboração entre o setor acadêmico e o mercado, criando oportunidades para networking e parcerias.</li>
-                            <li>Aprimorar as habilidades técnicas dos participantes por meio de palestras e workshops práticos conduzidos por especialistas da área.</li>
-                        </ul>
-                    </div>
+  // Avança automaticamente a cada 10 segundos
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStep((prevStep) => (prevStep + 1) % sections.length);
+    }, 10000); // Troca a cada 10 segundos
+    return () => clearInterval(interval); // Limpa o intervalo ao desmontar
+  }, []);
 
-                    {/* Tópico e descrição do público-alvo */}
-                    <div className="about-section">
-                        <h2>Público-Alvo</h2>
-                        <p>
-                            Área acadêmica com professores e alunos, pessoas do mercado e entusiastas de Engenharia de Software.
-                        </p>
-                    </div>
-                </div>
+  return (
+    <div className="About">
+      <div className="container-about">
+        <div className="sections-container">
+          <div className="section-image-about"
+            style={{ backgroundImage: `url(${sections[step].img})` }}
+          >
+            <img src={sections[step].img} alt="" className="circular-image"/>
+          </div>
+          <div className="section-info-about">
+            <div className="info-text">
+              <h1>{sections[step].title}</h1>
+              <div className="texto">
+                <p dangerouslySetInnerHTML={{ __html: sections[step].text }}></p>
+              </div>
+              
             </div>
+            {/* Indicador de Progresso */}
+            <div className="progress-indicator">
+              {sections.map((_, index) => (
+                <span
+                  key={index}
+                  className={`dot ${step === index ? 'active' : ''}`}
+                ></span>
+              ))}
+            </div>
+            <button onClick={handleNextStep} className="btn-prosseguir">
+              Prosseguir
+            </button>
+          </div>
         </div>
-    );
-}
+      </div>
+    </div>
+  );
+};
 
 export default About;

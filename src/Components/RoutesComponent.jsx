@@ -14,7 +14,7 @@ import Lectures from './Lectures';
 import AboutLectures from './AboutLectures';
 import Register from './Register';
 import Profile from '../Components/UserPages/UserPage';
-
+import Login from './Login';
 function RoutesComponent() {
   return (
     <Routes>
@@ -31,6 +31,7 @@ function RoutesComponent() {
       <Route path="/collaborators" element={<Collaborators />} />
       <Route path="/lectures" element={<Lectures />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/profile" element={<Profile />} />
     </Routes>
   );

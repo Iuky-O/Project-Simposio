@@ -11,17 +11,17 @@
 }
 .heading-speaker {
     font-size: clamp(2rem, 3.5vw, 4rem);
-    color: var(--branco);
-    /* line-height: 5rem; */
+    color: var(--preto);
     text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center; 
     
   }
   .speakers .heading-speaker span {
-    background: linear-gradient(to right,  #F2A2D6,
-                                            #BA71D9,
-                                            #94E1F2,
-                                            #94FD8E,
-                                            #F2C879);
+    background: linear-gradient(to right,   #471A3D,
+                                            #8e427d,
+                                            #BA71D9);
                 -webkit-background-clip: text; /* Para navegadores WebKit (Chrome, Safari) */
                 -webkit-text-fill-color: transparent; /* Torna o texto transparente */
                 background-clip: text; /* Para outros navegadores */
@@ -44,7 +44,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--rosa);
+    background-color: var(--Primary-Type-2);
     height: 80%;
     width: 100%;
     border-radius: 3rem;
@@ -53,7 +53,7 @@
     transition: 0.4s ease-in-out;
 }
 .speaker-card:hover{
-    border-color: var(--rosa);
+    border-color: var(--Primary-Color);
     transform: scale(1.03);
 }
 .speaker-card {

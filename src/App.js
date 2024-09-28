@@ -8,7 +8,7 @@ import Home from './Components/Home';
 
 function App() {
   
-  return (
+  return ( 
     <Router>
       <div className="App">
         <Navbar />

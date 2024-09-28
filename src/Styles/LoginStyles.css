@@ -1,0 +1,165 @@
+/* Estilos básicos */
+.login {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh; 
+}
+
+.container-login {
+    margin-top: 2rem;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 90vh;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centraliza a área de login */
+}
+
+/* Layout das seções */
+.sections-container-login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+}
+
+.section-form-login, .section-info-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+}
+
+.section-info-login {
+    background-image: url('/src/Assets/Fundo-Açai.jpeg');
+    background-size: cover;
+    background-position: center; 
+    min-height: 100vh;
+    height: 100%;
+}
+
+/* Estilos dos elementos dentro da section-form */
+.section-form-login h1, .section-form-login p, .section-form-login .form-login-login {
+    margin: 10px 0; 
+}
+
+.section-form-login h1{
+    font-size: 2.5rem;
+    padding-bottom: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0; 
+}
+
+.password-wrapper {
+    position: relative; 
+    width: 100%;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding: 0.5rem;
+    padding-right: 2.5rem; 
+    border-radius: 20px;
+    border: 1px solid #ccc;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 10px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    cursor: pointer;
+    color: #666; 
+}
+
+.eye-icon:hover {
+    color: var(--Primary-Color); 
+}
+
+.logo-container {
+    padding: 2rem;
+    margin: 0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease;
+}
+
+.logo-container:hover {
+    transform: scale(1.1);
+}
+
+/* Estilo dos inputs e botões */
+.input-group-login {
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.input-group-login input {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    
+}
+
+.navigation-buttons .btn-login{
+    color: white;
+}
+
+.btn-login {
+    width: 70%;
+    background-color: var(--Primary-Type-2);
+    border: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    margin-top: 1rem;
+
+}
+
+.btn-login:hover {
+    background-color: var(--Primary-Color);
+}
+
+/* Estilos da seção de informações */
+.section-info-login img {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+    border-radius: 10px;
+}
+
+.info-parts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .sections-container-login {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .container-login {
+        margin-top: 0;
+    }
+
+    .section-info-login img {
+        width: 50%;
+        max-width: 150px;
+    }
+}
