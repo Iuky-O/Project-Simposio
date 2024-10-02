@@ -78,34 +78,41 @@
   .info-section {
     align-items: center;
     margin-bottom: 2rem;
+    margin-top: 10vw;
   }
+
 
   .course-img img {
-    width: 200px;
-    height: 200px;
+    width: 20vh;
+    height: 20vh;
   }
 
-  .course-title {
-    font-size: 2rem;
+  .course-titlee {
+    font-size: 4vw;
   }
 
   .course-description,
   .days-info {
-    font-size: 1rem;
+    font-size: 2vw;
+  }
+
+  .course-map {
+    margin-top: -10vw;
+    height: 30vw;
+    width: 40vw;
   }
 }
 
 @media (max-width: 600px) {
-  .course-title {
-    font-size: 1.8rem;
-  }
-
   .course-description,
   .days-info {
     font-size: 0.9rem;
   }
 
   .course-map {
-    height: 300px;
+    width: 90vw;
+    height: 50vh;
+    margin-bottom: 2rem;
+    margin-top: -2rem;
   }
 }

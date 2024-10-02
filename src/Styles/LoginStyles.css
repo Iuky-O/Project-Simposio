@@ -4,7 +4,6 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    min-height: 100vh; 
 }
 
 .container-login {
@@ -26,8 +25,8 @@
     gap: 20px;
     align-items: center;
     justify-content: center;
-    width: 80%;
-    height: 100%;
+    width: 90vw;
+    height: 100vh;
 }
 
 .section-form-login, .section-info-login {
@@ -74,7 +73,7 @@
 
 .eye-icon {
     position: absolute;
-    right: 10px; 
+    right: 1vw; 
     top: 50%; 
     transform: translateY(-50%); 
     cursor: pointer;
@@ -161,5 +160,13 @@
     .section-info-login img {
         width: 50%;
         max-width: 150px;
+    }
+    .eye-icon {
+        right: 1.3vw; 
+    }
+}
+@media (max-width: 650px) {
+    .section-info-login{
+        display: none;
     }
 }
