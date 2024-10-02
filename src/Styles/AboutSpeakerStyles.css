@@ -159,15 +159,17 @@
         width: 100%;
         margin: 0;
         padding: 0;
-
         margin-bottom: -100px;
-
     }
     .about-img-speaker{
-        margin-top: -40vh;
+        margin-top: -80%;
     }
     .about-img-speaker img {
-        margin-top: 7rem;
+        margin-top: 50vh;
+        margin-bottom: -100px;
+        height: 30vh;
+        width: 30vh;
+        position:static;
     }
     
     .about-img-speaker h2 {
@@ -202,12 +204,23 @@
     }
 
     .icon-btn + p {
-        font-size: 0.8rem;
+        font-size: 8rem;
         margin-top: 5px;
         text-align: center;
     }
 
     .about-content-speaker {
         padding: 10px;
+    }
+    .about-content-speaker p{
+        font-size: 2vw;
+        margin-top: -20px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .about-img-speaker{
+        margin-top: -95%;
     }
 }

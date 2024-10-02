@@ -90,7 +90,6 @@ const Register = () => {
                     <div className="section-info">
                         <div className="info-parts-res">
                             <img src={Image} alt="" />
-                            <p>descrição</p>
                         </div>
                     </div>
                     <div className="section-form">
