@@ -1,7 +1,9 @@
 .container {
     background: linear-gradient(to bottom, #5c2c54 50%, #ffffff 50%);
+    max-width: 200vb;
     max-height: 100vb;
     text-align: justify;
+    margin-top: 10rem;
 }
 .Btn, .Btn-img {
     height: 2.5rem;
