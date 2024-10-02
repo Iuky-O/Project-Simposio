@@ -1,171 +1,111 @@
 @import "/src/Styles/index.css";
 
-
-.about-content h2{
-    text-align: center;
-    line-height: 1.5;
-    background: linear-gradient(to right,  #F2A2D6,
-                                            #BA71D9,
-                                            #94E1F2,
-                                            #94FD8E,
-                                            #F2C879);
-                -webkit-background-clip: text; /* Para navegadores WebKit (Chrome, Safari) */
-                -webkit-text-fill-color: transparent; /* Torna o texto transparente */
-                background-clip: text; /* Para outros navegadores */
+/* Estilo geral */
+.about-courses {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 5vw;
+  border-radius: 15px;
+  color: white;
+  gap: 2rem;
 }
 
+/* Seção de informações e imagem */
+.info-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 2rem;
+}
 
-/*About*/
+.course-img img {
+  border-radius: 15%;
+  width: 250px;
+  height: 250px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
 
-.about-speaker{
-    
-    margin-top: 6rem;
-    display: flex;
-    justify-content: center;
+.course-details {
+  text-align: center;
+  color: var(--preto);
+}
+
+.course-titlee {
+    font-size: 2.5vw;
+    color: var(--preto);
+    font-weight: bold;
+    text-align: center;
+}
+
+.course-description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.course-days {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+}
+
+.days-info {
+  font-size: 1.1rem;
+}
+
+/* Seção do Mapa */
+.map-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.course-map {
+  width: 45vw;
+  height: 90vh;
+  border: none;
+}
+
+/* Responsividade */
+@media (max-width: 991px) {
+  .about-courses {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .info-section {
     align-items: center;
-    gap: 10rem;
-    color: white;
-}
-.about-img{
-    border-radius: 50%;
-}
-.about-img img{
-    position: relative;
-    border-radius: 50%;
-    box-shadow: 0 0 25px var(--rosa);
-    top: 5rem;
-    cursor: pointer;
-    transition: 0.4s ease-in-out;
+    margin-bottom: 2rem;
+  }
 
-    width: 30rem;
-    height: 30rem;
-}
-.heading{
-    text-align: center;
-    font-size: 3rem;
-    
-}
-.about-content{
-    max-width: 600px;
-    text-align: center;
-}
-.about-content h2{
-    text-align: center;
-    line-height: 1.5;
-}
-.about-content p{
+  .course-img img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .course-title {
+    font-size: 2rem;
+  }
+
+  .course-description,
+  .days-info {
     font-size: 1rem;
-    margin: 2rem 0 3rem;
-    text-align: justify;
+  }
 }
 
-.card-info{
-    display: grid;
-    grid-template-columns:repeat(1,1fr);
-    place-items: center;
-    align-items: center;
-    align-content: center;
-    gap: 2.5rem;
-    row-gap: 2.5rem;
+@media (max-width: 600px) {
+  .course-title {
+    font-size: 1.8rem;
+  }
 
-    margin-top: 20px;
-    background-color: black ;
-    border-radius: 1rem;
-    border: 3px solid transparent;
-    border-color:rgba(241, 70, 253, 0.3);
+  .course-description,
+  .days-info {
+    font-size: 0.9rem;
+  }
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 20%;
-    width: 100%;
-    transition: 0.4s ease-in-out;
-      
-}
-.card-info p{
-    padding-left: 1rem;
-    padding-right: 1rem;
-    text-align: center;
-}
-.participations .topic-part{
-    color: white;
-    font-size: 1.5rem;
-}
-
-.participations iframe{
-    padding: 10px;
-}
-
-
-/*responsive*/
-
-@media(max-width:1285px){
-    html{
-        font-size: 55%;
-    }
-    .about-speaker{
-        margin-top: 13rem;
-    }
-    .about-content{
-        max-width: 500px;
-    }
-    .about-content h2{
-        font-size: 5rem;
-    }
-    .about-content p{
-        font-size: 2rem;
-    }
-    .participations .topic-part{
-        font-size: 2.1rem;
-    }
-    .card-info p{
-        font-size: 15px;
-    }
-    
-}
-@media(max-width:991px){
-    .about-speaker{
-        flex-direction: column-reverse;
-        padding: 10rem 9% 10rem;
-        margin-top: -1rem;
-    }
-    .about-speaker img{
-        top: -5rem;
-        width: 20rem;
-        height: 20rem;
-    }
-}
-
-@media(max-width:895px){
-    
-    .about-content p{
-        font-size: 1.7rem;
-    }
-    .card-info p{
-        font-size: 11px;
-    }
-    .participations .topic-part{
-        color: white;
-        font-size: 2rem;
-    }
-}
-@media(max-width:600px){
-    .about-speaker{
-        margin-top: -3rem;
-    }
-
-    .about-content h2{
-        font-size: 4rem;
-    }
-    .about-content p{
-        font-size: 1.5rem;
-    }
-    .card-info p{
-        font-size: 11px;
-    }
-    .participations .topic-part{
-        color: white;
-        font-size: 2rem;
-    }
-
+  .course-map {
+    height: 300px;
+  }
 }

@@ -1,13 +1,68 @@
 /* ./CoursesArea.css */
 .courses-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 300px)); /* Define largura minima e maxima */
+  grid-template-columns: repeat(auto-fill, minmax(20vw, 300px)); /* Define largura minima e maxima */
   grid-auto-rows: 1fr; /* Garante que todas as linhas tenham a mesma altura */
   grid-auto-columns: 1fr; /* Garante que todas as colunas tenham a mesma altura */
   grid-gap: 30px;
   margin: 120px auto;
   justify-content: center;
   text-align: center;
+}
+
+.course-card {
+  background-color: #ffffff;
+  border: 1px solid #9C061F;
+  border-radius: 3rem;
+  overflow: hidden;
+  box-shadow: 8px 8px 8px #471A3D;
+  flex-direction: column;
+}
+.courses-container .course-card{
+  align-items: center;
+  align-self: center;
+  
+}
+
+.course-image {
+  max-width: 100px;
+  padding: 1rem;
+}
+
+.course-content {
+  padding: 15px;
+}
+
+.course-title {
+  font-size: 1.2vw;
+  font-weight: bold;
+  margin: 0 0 10px;
+  color: black;
+}
+
+.course-content .course-description {
+  font-size: 1vw;
+  color: grey;
+  margin-bottom: 10px;
+}
+
+.course-button {
+  padding: 10px 15px;
+  background: #471A3D;
+  color: #ffffff;
+  border: #FFFFFF 1px solid;
+  border-radius: 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: ease-in 0.3s;
+}
+
+.course-button:hover {
+  transform: scale(1.1);
+}
+
+.course-button:active {
+  background-color: #9C061F;
 }
 
 @media (max-width: 1250px) {
@@ -27,58 +82,4 @@
   .course-card {
     margin-bottom: 1rem;
   }
-}
-
-.course-card {
-  background-color: #ffffff;
-  border: 1px solid #9C061F;
-  border-radius: 3rem;
-  overflow: hidden;
-  box-shadow: 8px 8px 8px #471A3D;
-  flex-direction: column;
-}
-.courses-container .course-card{
-  align-items: center;
-  align-self: center;
-  
-}
-
-.course-image {
-  max-width: 150px;
-  padding: 1rem;
-}
-
-.course-content {
-  padding: 15px;
-}
-
-.course-title {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 0 0 10px;
-  color: black;
-}
-
-.course-description {
-  font-size: 12px;
-  color: grey;
-  margin-bottom: 10px;
-}
-
-.course-button {
-  padding: 10px 15px;
-  background: #471A3D;
-  color: #ffffff;
-  border: #FFFFFF 1px solid;
-  border-radius: 1rem;
-  cursor: pointer;
-  text-align: center;
-}
-
-.course-button:hover {
-  transform: scale(1.1);
-}
-
-.course-button:active {
-  background-color: #9C061F;
 }

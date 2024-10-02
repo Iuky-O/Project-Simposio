@@ -21,7 +21,7 @@ const Home = () => {
                     </p>
                     <Link to="/enrollment" className="btn">
                         <div className="info-btn">
-                        <h6>Inscreva-se</h6>
+                            <h5>Inscreva-se</h5>
                         
                             <BsArrowRightCircleFill />  
                         </div>

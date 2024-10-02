@@ -1,6 +1,6 @@
 @import "/src/Styles/index.css"; 
 .countdown-container {
-    margin-top: 15rem;
+    margin-top: 25vh;
     align-items: center;
     justify-content: center;
     height: 100vh;
@@ -9,17 +9,20 @@
     text-align: center;
   }
 
-  .chamada h1 {
-    font-size: 3rem;
+  .chamada{
+    font-size: 3vw;
+    padding-bottom: 2rem;
     font-weight: bold;
+    text-align: center;
+    margin: 0; 
   }
   
-  .subtexto p {
-    font-size: 1.2rem;
+  .subtexto{
+    font-size: 1.2vw;
   }
   
   .ticket-button {  
-    margin-top: 5rem;
+    margin-top: 3.5vw;
     max-height: 100%;
     padding: 10px 20px;
     background-color: var(--Dark-Green);
@@ -35,7 +38,7 @@
   }
   
   .countdown {
-    margin-top: 5rem;
+    margin-top: 5vw;
     justify-content: center;
     display: flex;
     gap: 30px;

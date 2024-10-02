@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom'; // Removemos o "Router"
+import { Routes, Route, Navigate } from 'react-router-dom'; 
 import Home from './Home';
 import ContactArea from './ContactArea';
 import Cursos from './CourseArea';
@@ -33,6 +33,8 @@ function RoutesComponent() {
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/profile" element={<Profile />} />
+
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 }
