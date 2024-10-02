@@ -15,6 +15,8 @@ import AboutLectures from './AboutLectures';
 import Register from './Register';
 import Profile from '../Components/UserPages/UserPage';
 import Login from './Login';
+import UserPage from './UserPages/UserPage'
+
 function RoutesComponent() {
   return (
     <Routes>
@@ -33,6 +35,7 @@ function RoutesComponent() {
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/userpage" element={<UserPage />} />
 
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>

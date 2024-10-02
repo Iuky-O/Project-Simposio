@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import "../Styles/LoginStyles.css";
+import { UserContext } from "../Scripts/UserContext"; 
+import { auth } from '../Firebase/firebaseConfig';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { SiCodenewbie } from "react-icons/si";
-import Image from "../Assets/Open Peeps - Bust.png";
-import userPage from "./UserPages/UserPage";
-import { Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -12,44 +14,31 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false); 
+  const { fetchUserData } = useContext(UserContext)
+  const navigate = useNavigate(); 
+
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
 
-  const handleSubmit = async (e) => {
+  const userLogin = (e) => {
     e.preventDefault(); 
-    setError(null); 
-    setIsLoading(true); 
-  
-    try {
-      const response = await fetch('http://127.0.0.1:5001/simposio/us-central1/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
+    setIsLoading(true);
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        fetchUserData(email); 
+        alert("Login efetuado com sucesso!");
+        navigate('/userpage'); 
+      })
+      .catch((error) => {
+        setError("Erro ao efetuar login: " + error.message);
+      })
+      .finally(() => {
+        setIsLoading(false); 
       });
-  
-      const data = await response.json();
-  
-      if (response.ok) {
-        // Armazenar o token JWT no localStorage
-        localStorage.setItem('token', data.token);
-  
-        alert('Usuário autenticado com sucesso!');
-        
-        // Redirecionar o usuário para outra página
-        window.location.href = {userPage};
-      } else {
-        setError(data.error || 'Erro na autenticação. Verifique seus dados.');
-      }
-    } catch (err) {
-      setError('Erro de rede ou na API.');
-    } finally {
-      setIsLoading(false); // Desativa o estado de carregamento
-    }
   };
-  
 
   return (
     <div className="login">
@@ -63,7 +52,7 @@ const Login = () => {
             </div>
             <h1>Seja Bem-Vindo</h1>
             <p>Entre com seus dados!</p>
-            <form className="form-login" onSubmit={handleSubmit}>
+            <form className="form-login" onSubmit={userLogin}>
               <div className="inputs">
                 <div className="input-group-login">
                   <input
@@ -76,7 +65,6 @@ const Login = () => {
                     required
                   />
                 </div>
-
                 <div className="input-group-login">
                   <div className="password-wrapper">
                     <input
@@ -103,8 +91,7 @@ const Login = () => {
               </div>
             </form>
           </div>
-          <div className="section-info-login">
-          </div>
+          <div className="section-info-login"></div>
         </div>
       </div>
     </div>
