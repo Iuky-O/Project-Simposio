@@ -5,13 +5,14 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import RoutesComponent from "./Components/RoutesComponent"
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
+import Admin from './Admin/AdminArea';
 function App() {
   
   return ( 
     <Router>
       <div className="App">
-        <Navbar />
-        <RoutesComponent/>
+      <Navbar />
+      <RoutesComponent/>
       </div>
     </Router>
   );
