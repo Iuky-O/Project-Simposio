@@ -22,7 +22,7 @@ const Login = () => {
     setIsLoading(true); 
   
     try {
-      const response = await fetch('http://127.0.0.1:5001/simposio/us-central1/api/auth/login', {
+      const response = await fetch('http://127.0.0.1:5001/simposio/us-central1/api', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

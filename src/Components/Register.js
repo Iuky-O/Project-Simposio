@@ -1,42 +1,43 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import "../Styles/RegisterStyles.css";
 import Image from "../Assets/Open Peeps - Bust.png";
-import api from '../../src/service/api';
 
 const Register = () => {
+    const [formData, setFormData] = useState({
+        nome: "",
+        sobrenome: "",
+        email: "",
+        numero: "",
+        pais: "",
+        estado: "",
+        cidade: "",
+        tipoUsuario: "",
+        vinculo: "",
+        escolaridade: "",
+        sexo: "",
+        nomeSocial: "",
+        password: "",
+    });
 
-    const inputNome = useRef(null);
-    const inputSobrenome = useRef(null);
-    const inputEmail = useRef(null);
-    const inputNumero = useRef(null);
-    const inputPais = useRef(null);
-    const inputEstado = useRef(null);
-    const inputCidade = useRef(null);
-    const inputTipoUsuario = useRef(null);
-    const inputVinculo = useRef(null);
-    const inputEscolaridade = useRef(null);
-    const inputSexo = useRef(null);
-    const inputNomeSocial = useRef(null); // Esse campo é opcional
-    const inputPassword = useRef(null);
+    const [step, setStep] = useState(1); // Estado para controlar o passo atual
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
 
     // Função de validação
     const validateFields = () => {
-        if (
-            !inputNome.current?.value || 
-            !inputSobrenome.current?.value || 
-            !inputEmail.current?.value || 
-            !inputNumero.current?.value || 
-            !inputPais.current?.value || 
-            !inputEstado.current?.value || 
-            !inputCidade.current?.value || 
-            !inputTipoUsuario.current?.value || 
-            !inputVinculo.current?.value || 
-            !inputEscolaridade.current?.value || 
-            !inputSexo.current?.value || 
-            !inputPassword.current?.value
-        ) {
-            alert("Por favor, preencha todos os campos obrigatórios.");
-            return false;
+        const requiredFields = [
+            "nome", "sobrenome", "email", "numero", 
+            "pais", "estado", "cidade", "tipoUsuario", 
+            "vinculo", "escolaridade", "sexo", "password"
+        ];
+        for (let field of requiredFields) {
+            if (!formData[field]) {
+                alert("Por favor, preencha todos os campos obrigatórios.");
+                return false;
+            }
         }
         return true;
     };
@@ -49,29 +50,25 @@ const Register = () => {
 
         // Dados estão validados, podemos enviar para a API
         try {
-            await api.post('/add-users', {
-                nome: inputNome.current?.value,
-                Sobrenome: inputSobrenome.current?.value,
-                email: inputEmail.current?.value,
-                numero: inputNumero.current?.value,
-                pais: inputPais.current?.value,
-                cidade: inputCidade.current?.value,
-                estado: inputEstado.current?.value,
-                tipoUsuario: inputTipoUsuario.current?.value,
-                vinculo: inputVinculo.current?.value,
-                escolaridade: inputEscolaridade.current?.value,
-                sexo: inputSexo.current?.value,
-                nomeSocial: inputNomeSocial.current?.value || '', // Nome social pode ser vazio
-                password: inputPassword.current?.value,
+            const response = await fetch('http://127.0.0.1:5001/simposio/us-central1/api/add-users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
             });
+
+            if (!response.ok) {
+                throw new Error(`Erro: ${response.status} ${response.statusText}`);
+            }
+
+            const result = await response.json(); // Aqui você pode obter o resultado se necessário
             alert('Cadastro realizado com sucesso!');
         } catch (error) {
             alert('Erro ao realizar o cadastro.');
             console.error(error);
         }
     }
-
-    const [step, setStep] = useState(1); // Estado para controlar o passo atual
 
     const handleNextStep = () => {
         setStep((prevStep) => Math.min(prevStep + 1, 4)); // Limita o passo máximo em 4
@@ -83,8 +80,7 @@ const Register = () => {
 
     return (
         <div className="register">
-            <div className="background-rotated">
-            </div>
+            <div className="background-rotated"></div>
             <div className="container-register">
                 <div className="sections-container">
                     <div className="section-info">
@@ -93,7 +89,7 @@ const Register = () => {
                         </div>
                     </div>
                     <div className="section-form">
-                        <form className="form-cadastro" >
+                        <form className="form-cadastro">
                             <h1>Cadastro</h1>
                             <p>Faça seu cadastro para participar do evento!</p>
 
@@ -102,31 +98,58 @@ const Register = () => {
                                     <div>
                                         <label htmlFor="nome">Nome:</label>
                                         <div className="input-group">
-                                            <input type="text" id="nome" name="nome" required ref={inputNome} />
+                                            <input 
+                                                type="text" 
+                                                id="nome" 
+                                                name="nome" 
+                                                required 
+                                                value={formData.nome} 
+                                                onChange={handleChange} 
+                                            />
                                         </div>
                                     </div>
 
                                     <div>
                                         <label htmlFor="sobrenome">Sobrenome:</label>
                                         <div className="input-group">
-                                            <input type="text" id="sobrenome" name="sobrenome" required ref={inputSobrenome} />
+                                            <input 
+                                                type="text" 
+                                                id="sobrenome" 
+                                                name="sobrenome" 
+                                                required 
+                                                value={formData.sobrenome} 
+                                                onChange={handleChange} 
+                                            />
                                         </div>
                                     </div>
 
                                     <div>
                                         <label htmlFor="email">Email:</label>
                                         <div className="input-group">
-                                            <input type="text" id="email" name="email" required ref={inputEmail} />
+                                            <input 
+                                                type="text" 
+                                                id="email" 
+                                                name="email" 
+                                                required 
+                                                value={formData.email} 
+                                                onChange={handleChange} 
+                                            />
                                         </div>
                                     </div>
 
                                     <div>
                                         <label htmlFor="numero">Número:</label>
                                         <div className="input-group">
-                                            <input type="text" id="numero" name="numero" required ref={inputNumero} />
+                                            <input 
+                                                type="text" 
+                                                id="numero" 
+                                                name="numero" 
+                                                required 
+                                                value={formData.numero} 
+                                                onChange={handleChange} 
+                                            />
                                         </div>
                                     </div>
-
                                 </>
                             )}
 
@@ -135,21 +158,42 @@ const Register = () => {
                                     <div>
                                         <label htmlFor="pais">País:</label>
                                         <div className="input-group">
-                                            <input type="text" id="pais" name="pais" required ref={inputPais} />
+                                            <input 
+                                                type="text" 
+                                                id="pais" 
+                                                name="pais" 
+                                                required 
+                                                value={formData.pais} 
+                                                onChange={handleChange} 
+                                            />
                                         </div>
                                     </div>
 
                                     <div>
                                         <label htmlFor="estado">Estado:</label>
                                         <div className="input-group">
-                                            <input type="text" id="estado" name="estado" required ref={inputEstado} />
+                                            <input 
+                                                type="text" 
+                                                id="estado" 
+                                                name="estado" 
+                                                required 
+                                                value={formData.estado} 
+                                                onChange={handleChange} 
+                                            />
                                         </div>
                                     </div>
 
                                     <div>
                                         <label htmlFor="cidade">Cidade:</label>
                                         <div className="input-group">
-                                            <input type="text" id="cidade" name="cidade" required ref={inputCidade} />
+                                            <input 
+                                                type="text" 
+                                                id="cidade" 
+                                                name="cidade" 
+                                                required 
+                                                value={formData.cidade} 
+                                                onChange={handleChange} 
+                                            />
                                         </div>
                                     </div>
                                 </>
@@ -160,7 +204,13 @@ const Register = () => {
                                     <div>
                                         <label htmlFor="tipoUsuario">Tipo de Usuário:</label>
                                         <div className="input-group">
-                                            <select id="tipoUsuario" name="tipoUsuario" required ref={inputTipoUsuario}>
+                                            <select 
+                                                id="tipoUsuario" 
+                                                name="tipoUsuario" 
+                                                required 
+                                                value={formData.tipoUsuario} 
+                                                onChange={handleChange}
+                                            >
                                                 <option value="">Selecione</option>
                                                 <option value="aluno">Aluno</option>
                                                 <option value="professor">Professor</option>
@@ -173,14 +223,28 @@ const Register = () => {
                                     <div>
                                         <label htmlFor="vinculo">Vínculo (Instituição ou Empresa):</label>
                                         <div className="input-group">
-                                            <input type="text" id="vinculo" name="vinculo" required ref={inputVinculo} />
+                                            <input 
+                                                type="text" 
+                                                id="vinculo" 
+                                                name="vinculo" 
+                                                required 
+                                                value={formData.vinculo} 
+                                                onChange={handleChange} 
+                                            />
                                         </div>
                                     </div>
 
                                     <div>
                                         <label htmlFor="escolaridade">Nível de Escolaridade:</label>
                                         <div className="input-group">
-                                            <input type="text" id="escolaridade" name="escolaridade" required ref={inputEscolaridade} />
+                                            <input 
+                                                type="text" 
+                                                id="escolaridade" 
+                                                name="escolaridade" 
+                                                required 
+                                                value={formData.escolaridade} 
+                                                onChange={handleChange} 
+                                            />
                                         </div>
                                     </div>
                                 </>
@@ -191,7 +255,13 @@ const Register = () => {
                                     <div>
                                         <label htmlFor="sexo">Sexo:</label>
                                         <div className="input-group">
-                                            <select id="sexo" name="sexo" required ref={inputSexo}>
+                                            <select 
+                                                id="sexo" 
+                                                name="sexo" 
+                                                required 
+                                                value={formData.sexo} 
+                                                onChange={handleChange}
+                                            >
                                                 <option value="">Selecione</option>
                                                 <option value="masculino">Masculino</option>
                                                 <option value="feminino">Feminino</option>
@@ -203,14 +273,27 @@ const Register = () => {
                                     <div>
                                         <label htmlFor="nomeSocial">Nome Social (Opcional):</label>
                                         <div className="input-group">
-                                            <input type="text" id="nomeSocial" name="nomeSocial" ref={inputNomeSocial} />
+                                            <input 
+                                                type="text" 
+                                                id="nomeSocial" 
+                                                name="nomeSocial" 
+                                                value={formData.nomeSocial} 
+                                                onChange={handleChange} 
+                                            />
                                         </div>
                                     </div>
 
                                     <div>
                                         <label htmlFor="senha">Senha:</label>
                                         <div className="input-group">
-                                            <input type="password" id="senha" name="senha" required ref={inputPassword} />
+                                            <input 
+                                                type="password" 
+                                                id="senha" 
+                                                name="senha" 
+                                                required 
+                                                value={formData.password} 
+                                                onChange={handleChange} 
+                                            />
                                         </div>
                                     </div>
                                 </>
@@ -222,27 +305,18 @@ const Register = () => {
                                         Voltar
                                     </button>
                                 )}
-                                {step < 4 ? (
+                                {step < 4 && (
                                     <button type="button" onClick={handleNextStep}>
                                         Próximo
                                     </button>
-                                ) : (
-                                    <button type="button" className="btn-cadastro" onClick={createUsers}>
-                                        Cadastrar-se
+                                )}
+                                {step === 4 && (
+                                    <button type="button" onClick={createUsers}>
+                                        Enviar
                                     </button>
                                 )}
                             </div>
                         </form>
-
-                        {/* Indicador de Progresso */}
-                        <div className="progress-indicator">
-                            {[1, 2, 3, 4].map((num) => (
-                                <span
-                                    key={num}
-                                    className={`dot ${step === num ? 'active' : ''}`}
-                                ></span>
-                            ))}
-                        </div>
                     </div>
                 </div>
             </div>
