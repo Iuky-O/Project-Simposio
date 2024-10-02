@@ -11,8 +11,8 @@ function App() {
   return ( 
     <Router>
       <div className="App">
-        <Navbar />
-        <RoutesComponent/>
+      <Navbar />
+      <RoutesComponent/>
       </div>
     </Router>
   );
