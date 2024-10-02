@@ -9,6 +9,7 @@ import { Dashboard } from './Dashboard.tsx';
 import PostIcon from "@mui/icons-material/Book";
 import UserIcon from "@mui/icons-material/Group";
 
+
 const AdminArea = () => {
   return (
     <Admin dataProvider={dataProvider} dashboard={Dashboard}>
