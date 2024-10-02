@@ -41,7 +41,7 @@ const Login = () => {
       }
     } catch (error) {
       alert('Erro de rede ou na API');
-    }''
+    }
   };
   return (
     <div className="login">
