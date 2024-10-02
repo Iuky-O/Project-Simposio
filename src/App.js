@@ -4,7 +4,8 @@ import './Styles/App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import RoutesComponent from "./Components/RoutesComponent"
 import Navbar from './Components/Navbar';
-
+import Home from './Components/Home';
+import Admin from './Admin/AdminArea';
 function App() {
   
   return ( 
