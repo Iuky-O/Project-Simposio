@@ -1,6 +1,6 @@
 /* Container principal */
 .about-speaker {
-    min-height: 100vh; /* Para garantir que ocupe toda a altura da tela */
+    min-height: 100vh; 
     width: 100%;
     display: flex;
     justify-content: center;
@@ -18,14 +18,14 @@
 
 /* Seção de imagem à esquerda */
 .about-img-speaker {
-    position: relative; /* Para o posicionamento do pseudo-elemento */
-    flex: 0 0 40%; /* Ocupa 40% da largura */
+    position: relative; 
+    flex: 0 0 40%; 
     display: flex;
     flex-direction: column; 
     justify-content: center; 
     align-items: center; 
     row-gap: 7rem;
-    margin-top: -150px;
+    margin-top: -20vh;
 }
 
 .about-img-speaker::before {
@@ -39,8 +39,8 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: rgba(0, 0, 0, 0.5); /* Cor preta com opacidade */
-    z-index: -1; /* Garante que fique atrás do conteúdo */
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: -1;
 }
 
 /* Aplicando um efeito de escuridão */
@@ -51,15 +51,15 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Cor preta com transparência */
-    z-index: -1; /* Fica atrás do conteúdo */
+    background-color: rgba(0, 0, 0, 0.6); 
+    z-index: -1; 
 }
-
 
 .about-img-name{
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     gap: 5rem;
+    margin-top: 30vh;
 }
 
 .about-img-speaker img {
@@ -72,10 +72,11 @@
 }
 
 .about-img-speaker h2 {
-    font-size: 3rem;
+    font-size: 3vw;
     padding-bottom: 2rem;
     font-weight: bold;
     background-clip: text;
+    color: aliceblue;
 }
 
 
@@ -130,7 +131,7 @@
 
 
 .about-content-speaker h2 {
-    font-size: 3rem;
+    font-size: 3vw;
     padding-bottom: 2rem;
     font-weight: bold;
     background: linear-gradient(to right, #471A3D, #8e427d, #BA71D9);
@@ -140,7 +141,7 @@
 }
 
 .about-content-speaker p {
-    font-size: 1rem;
+    font-size: 1.2vw;
     margin: 2rem 0 3rem;
     text-align: justify;
     color: black;
@@ -151,25 +152,33 @@
     .container-sections {
         flex-direction: column;
         height: auto; 
+        align-items: center;
     }
     
     .about-img-speaker, .about-content-speaker {
         width: 100%;
         margin: 0;
         padding: 0;
-
         margin-bottom: -100px;
     }
+    .about-img-speaker{
+        margin-top: -80%;
+    }
     .about-img-speaker img {
-        margin-top: 7rem;
+        margin-top: 50vh;
+        margin-bottom: -100px;
+        height: 30vh;
+        width: 30vh;
+        position:static;
     }
     
     .about-img-speaker h2 {
         color: black;
-        margin: -50px;
+        padding-top: 2rem;
+        text-align: center;
+        font-size: 2rem;
     }
 
-    /* Ocultar o background para telas menores */
     .about-img-speaker::before,
     .about-img-speaker::after {
         display: none;
@@ -182,7 +191,7 @@
         justify-content: center; 
         gap: 20px;
         background-color: transparent;
-        margin-top: -100px;
+        margin-top: -15rem;
     }
 
     .icon-btn {
@@ -195,12 +204,23 @@
     }
 
     .icon-btn + p {
-        font-size: 0.8rem;
+        font-size: 8rem;
         margin-top: 5px;
         text-align: center;
     }
 
     .about-content-speaker {
         padding: 10px;
+    }
+    .about-content-speaker p{
+        font-size: 2vw;
+        margin-top: -20px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .about-img-speaker{
+        margin-top: -95%;
     }
 }

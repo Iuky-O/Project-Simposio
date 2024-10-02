@@ -20,10 +20,10 @@ function AboutSpeaker() {
       <div className="container-sections">
         {/* Imagem do Palestrante */}
         <div className="about-img-speaker">
+          
           <div className='about-img-name'>
             <img src={speaker.image} alt={speaker.name} className='img-speaker' />
             <h2 className="heading">{speaker.name}</h2>
-
           </div>
           
         </div>

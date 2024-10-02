@@ -13,6 +13,7 @@ import img10 from "../Assets/computador10.png";
 export const Options_Courses = [
     {
       id: 1,
+      responsible: 'Prof° Lucas',
       title: "Desenvolvimento Web",
       description: "Modelo: Virtual - Via Meet - Org: Estácio - Castanhal",
       imgUrl: img,
@@ -21,6 +22,7 @@ export const Options_Courses = [
     },
     {
       id: 2,
+      responsible: 'Prof° Lucas',
       title: "Arquitetura de Rede",
       description: "Modelo: Presencial - Local: Estácio - Castanhal",
       imgUrl: img2,
@@ -29,6 +31,7 @@ export const Options_Courses = [
     },
     {
       id: 3,
+      responsible: 'Prof° Lucas',
       title: "Análise e Projeto de Software",
       description: "Modelo: Virtual - Via Meet - Org: UEPA - Castanhal",
       imgUrl: img3,
@@ -37,6 +40,7 @@ export const Options_Courses = [
     },
     {
       id: 4,
+      responsible: 'Prof° Lucas',
       title: "Manutenção de Computadores",
       description: "Modelo: presencial - Local: UEPA - Castanhal",
       imgUrl: img4,
@@ -45,6 +49,7 @@ export const Options_Courses = [
     },
     {
       id: 5,
+      responsible: 'Prof° Lucas',
       title: "Engenharia de Computação",
       description: "Modelo: Virtual - Via Meet - Org: UFPA - Castanhal",
       imgUrl: img5,
@@ -53,6 +58,7 @@ export const Options_Courses = [
     },
     {
       id: 6,
+      responsible: 'Prof° Lucas',
       title: "Engenharia de Software",
       description: "Modelo: Presencial - Local: UEPA - Castanhal",
       imgUrl: img6,
@@ -61,6 +67,7 @@ export const Options_Courses = [
     },
     {
       id: 7,
+      responsible: 'Prof° Lucas',
       title: "Engenharia de Requisitos",
       description: "Modelo: Presencial - Local: UFPA - Castanhal",
       imgUrl: img7,
@@ -69,6 +76,7 @@ export const Options_Courses = [
     },
     {
       id: 8,
+      responsible: 'Prof° Lucas',
       title: "Análise de Sistemas",
       description: "Modelo: Virtual - Via Meet - Org: UFRA - Belém",
       imgUrl: img8,

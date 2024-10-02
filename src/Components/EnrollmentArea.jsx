@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../Styles/EnrollmentArea.css';
-import { Link } from 'react-router-dom';
 
 const EnrollmentArea = () => {
+  const navigate = useNavigate(); 
+
+  const handleSpeakerClick = () => {
+    navigate(`/login`); 
+  };
+
   const calculateTimeLeft = () => {
     const difference = +new Date('2024-10-21') - +new Date();
     let timeLeft = {};
@@ -34,7 +40,11 @@ const EnrollmentArea = () => {
       <div>
         <h1 className='chamada'>Venha fazer parte desta experiência!</h1>
         <p className='subtexto'>Clique no botão abaixo para garantir o seu ingresso por R$ 75,00 reais!</p>
-        <button className="ticket-button">COMPRAR MEU INGRESSO</button>
+        {/* Corrigido onClick */}
+        <button className="ticket-button" id="ticket-button" onClick={() => handleSpeakerClick()}>
+          COMPRAR MEU INGRESSO
+        </button>
+        <div id="message"></div>
       </div>
       <div className="countdown">
         <div className="countdown-item">
@@ -59,4 +69,3 @@ const EnrollmentArea = () => {
 };
 
 export default EnrollmentArea;
-

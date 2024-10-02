@@ -42,7 +42,7 @@ const Navbar = () => {
         {
             text: "Inscrições",
             icon: <PersonAddIcon />,
-            path: "/registrations"
+            path: "/enrollment"
         },
         {
             text: "Contato",
@@ -52,7 +52,7 @@ const Navbar = () => {
         {
             text: "Cronograma",
             icon: <TodayIcon />,
-            path: "/schedule"
+            path: "/timeline"
         },
         {
             text: "Colaboradores",

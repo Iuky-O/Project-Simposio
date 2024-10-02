@@ -1,173 +1,86 @@
-@import "/src/Styles/index.css";
 
-
-.about-content h2{
-    text-align: center;
-    line-height: 1.5;
-    background: linear-gradient(to right,  #F2A2D6,
-                                            #BA71D9,
-                                            #94E1F2,
-                                            #94FD8E,
-                                            #F2C879);
-                -webkit-background-clip: text; /* Para navegadores WebKit (Chrome, Safari) */
-                -webkit-text-fill-color: transparent; /* Torna o texto transparente */
-                background-clip: text; /* Para outros navegadores */
-}
-
-
-/*About*/
-
-.about-speaker{
-    
-    margin-top: 6rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10rem;
-    color: white;
-}
-.about-img{
-    border-radius: 50%;
-}
-.about-img img{
-    position: relative;
-    border-radius: 50%;
-    box-shadow: 0 0 25px var(--rosa);
-    top: 5rem;
-    cursor: pointer;
-    transition: 0.4s ease-in-out;
-
-    width: 30rem;
-    height: 30rem;
-}
-.heading-lectures{
-    font-size: 2.5rem;
-    
-}
-.about-content{
-    max-width: 600px;
-    text-align: center;
-}
-.about-content h2{
-    text-align: center;
-    line-height: 1.5;
-}
-.about-content p{
-    font-size: 1rem;
-    margin: 2rem 0 3rem;
-    text-align: justify;
-}
-
-.card-info{
-    display: grid;
-    grid-template-columns:repeat(1,1fr);
-    place-items: center;
-    align-items: center;
-    align-content: center;
-    gap: 2.5rem;
-    row-gap: 2.5rem;
-
-    margin-top: 20px;
-    background-color: black ;
-    border-radius: 1rem;
-    border: 3px solid transparent;
-    border-color:rgba(241, 70, 253, 0.3);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 20%;
+.about-lectures {
+    min-height: 100vh; 
     width: 100%;
-    transition: 0.4s ease-in-out;
-      
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.card-info p{
-    padding-left: 1rem;
-    padding-right: 1rem;
+
+.container-sections {
+    width: 100%;
+    height: 100vh; 
+    display: flex;
+    position: relative;
+}
+
+.lecture-info {
+    flex: 0 0 50%; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    padding: 20px;
+    color: black;
+}
+
+.heading-lectures {
+    font-size: 2.5vw;
+    margin-bottom: 1rem;
+    font-weight: bold;
     text-align: center;
+    background: linear-gradient(to right, #471A3D, #8e427d, #BA71D9);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
 }
-.participations-lectures{
-    padding-top: 3rem;
-}
-.participations-lectures .topic-part{
-    color: white;
+
+.topic-part {
     font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 
-.participations-lectures iframe{
-    padding: 10px;
+.card-info {
+    background: rgba(255, 255, 255, 0.9); 
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-
-/*responsive*/
-
-@media(max-width:1285px){
-    html{
-        font-size: 55%;
-    }
-    .about-speaker{
-        margin-top: 13rem;
-    }
-    .about-content{
-        max-width: 500px;
-    }
-    .about-content h2{
-        font-size: 5rem;
-    }
-    .about-content p{
-        font-size: 2rem;
-    }
-    .participations-lectures .topic-part{
-        font-size: 2.1rem;
-    }
-    .card-info p{
-        font-size: 15px;
-    }
-    
-}
-@media(max-width:991px){
-    .about-speaker{
-        flex-direction: column-reverse;
-        padding: 10rem 9% 10rem;
-        margin-top: -1rem;
-    }
-    .about-speaker img{
-        top: -5rem;
-        width: 20rem;
-        height: 20rem;
-    }
+.lecture-image-background {
+    flex: 0 0 50%;
+    background-image: url('../Assets/Fundo-Açai.jpeg'); 
+    background-size: cover;
+    background-position: center;
+    position: relative;
 }
 
-@media(max-width:895px){
-    
-    .about-content p{
+.lecture-image-background::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+@media (max-width: 768px) {
+    .container-sections {
+        flex-direction: column;
+        height: auto; 
+        align-items: center;
+    }
+    .heading-lectures {
         font-size: 1.7rem;
+        margin-bottom: 2rem;
     }
-    .card-info p{
-        font-size: 11px;
+    
+    
+    .lecture-info, .lecture-image-background {
+        width: 100%;
+        margin: 0;
+        padding: 10px;
     }
-    .participations-lectures .topic-part{
-        color: white;
-        font-size: 2rem;
+    .lecture-image-background{
+        display: none;
     }
-}
-@media(max-width:600px){
-    .about-speaker{
-        margin-top: -3rem;
-    }
-
-    .about-content h2{
-        font-size: 4rem;
-    }
-    .about-content p{
-        font-size: 1.5rem;
-    }
-    .card-info p{
-        font-size: 11px;
-    }
-    .participations-lectures .topic-part{
-        color: white;
-        font-size: 2rem;
-    }
-
 }

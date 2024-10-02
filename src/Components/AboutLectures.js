@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import '../Styles/AboutLecturesStyles.css';
+import '../Styles/AboutLecturesStyles.css'; // Certifique-se de que o CSS é atualizado para este componente
 import { Options_Lectures } from '../Data/LecturesData';
 
 function AboutLectures() {
@@ -13,19 +13,22 @@ function AboutLectures() {
   }
 
   return (
-    <div className="about-speaker" id="about">
-      <div className="about-content">
-        <h2 className="heading-lectures">{lecture.title}</h2>
-
-        <div className="participations-lectures">
-          <h3 className="topic-part">Informações da Palestra</h3>
-
+    <div className="about-lectures" id="about">
+      <div className="container-sections">
+        {/* Seção da palestra */}
+        <div className="lecture-info">
+          <h2 className="heading-lectures">{lecture.title}</h2>
+          <h3 className="topic-part">Informações da Palestra:</h3>
           <div className="card-info">
             <p>Data: {lecture.data}</p>
             <p>Horário: {lecture.horario}</p>
-            <p>{lecture.responsavel}</p>
+            <p>Responsável: {lecture.responsavel}</p>
             <p>{lecture.description}</p>
           </div>
+        </div>
+
+        {/* Imagem de fundo da palestra */}
+        <div className="lecture-image-background">
         </div>
       </div>
     </div>

@@ -44,14 +44,14 @@
   .primary-button {
     padding: 0.2rem 1.75rem;
     outline: none;
-    border: 2px solid var(--Primary-Color); /* Borda com cor dourada */
+    border: 2px solid var(--branco); 
     border-radius: 5rem;
     font-size: 1.1rem;
     cursor: pointer;
     font-weight: 600;
     transition: 0.2s;
-    text-decoration: none; /* Remove underline */
-    color: black; /* Define a cor do texto */
+    text-decoration: none;
+    color: black; 
 }
 
 .primary-button:hover {
@@ -103,10 +103,10 @@
     }
     .logo,
     .navbar-menu-container .haburguer{
-      font-size: 3.5rem;
+      font-size: 6vh;
       }
     .header{
-      height: 7rem;
+      height: 10vh;
     }
     .navbar-menu-container{
       font-size: 4rem;
