@@ -1,17 +1,7 @@
-export const fetchUserProfile = async () => {
+  export const handleSaveChanges = async (userData) => {
     try {
-      const response = await fetch('https://us-central1-simposio-df298.cloudfunctions.net/api'); //link da api
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Erro no service ao buscar os dados do perfil:', error);
-      throw error;
-    }
-};
-  export const saveUserProfile = async (userData) => {
-    try {
-      const response = await fetch('https://us-central1-simposio-df298.cloudfunctions.net/api/add-users', {
-        method: 'POST',
+      const response = await fetch('http://127.0.0.1:5001/simposio/us-central1/api/user/', {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -29,7 +19,7 @@ export const uploadProfileImage = async (file) => {
     formData.append('image', file);
   
     try {
-      const response = await fetch('https://sua-api.com/uploadImage', {
+      const response = await fetch('http://127.0.0.1:5001/simposio/us-central1/api/uploadImage', {
         method: 'POST',
         body: formData,
       });
@@ -42,7 +32,7 @@ export const uploadProfileImage = async (file) => {
 };
 export const deleteUserProfile = async (userId) => {
     try {
-      const response = await fetch(`https://sua-api.com/deleteProfile/${userId}`, {
+      const response = await fetch(`http://127.0.0.1:5001/simposio/us-central1/api/${userId}`, {
         method: 'DELETE',
       });
       if (!response.ok) {
