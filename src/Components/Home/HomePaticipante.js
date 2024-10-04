@@ -1,5 +1,5 @@
 import React from "react";
-import "../../Styles/HomeStyle.css"
+import "./HomeStyle2.css"
 import Navbar from "./Navbar2";
 import Image1 from "../../Assets/Fundo-Açai.jpeg"
 import Image2 from "../../Assets/Fundo-Guaraná.jpeg"

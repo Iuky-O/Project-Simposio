@@ -8,13 +8,13 @@ import { SiCodenewbie } from "react-icons/si";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ setIsAuthenticated }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false); 
-  const { fetchUserData } = useContext(UserContext)
+  const { fetchUserData } = useContext(UserContext);
   const navigate = useNavigate(); 
 
   const togglePasswordVisibility = () => {
@@ -23,14 +23,21 @@ const Login = () => {
 
   const userLogin = (e) => {
     e.preventDefault(); 
-    setIsLoading(true);
-
+    setIsLoading(true); 
+    setError(null); 
+  
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        fetchUserData(email); 
-        alert("Login efetuado com sucesso!");
-        navigate('/home2'); 
+  
+        // Atualize o estado de autenticação
+        setIsAuthenticated(true);
+  
+        return fetchUserData(user.email)
+          .then(() => {
+            alert("Login efetuado com sucesso!");
+            navigate('/home2'); 
+          });
       })
       .catch((error) => {
         setError("Erro ao efetuar login: " + error.message);

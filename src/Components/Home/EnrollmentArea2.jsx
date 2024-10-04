@@ -6,7 +6,7 @@ const EnrollmentArea = () => {
   const navigate = useNavigate(); 
 
   const handleSpeakerClick = () => {
-    <a className='link' href="https://forms.gle/oW43Tdii6kwG7VNu5" target="_blank"></a> 
+    window.open("https://forms.gle/oW43Tdii6kwG7VNu5", "_blank");
   };
 
   const calculateTimeLeft = () => {
@@ -41,7 +41,7 @@ const EnrollmentArea = () => {
         <h1 className='chamada'>Venha fazer parte desta experiência!</h1>
         <p className='subtexto'>Clique no botão abaixo para garantir o seu ingresso por R$ 75,00 reais!</p>
         {/* Corrigido onClick */}
-        <button className="ticket-button" id="ticket-button" onClick={() => handleSpeakerClick()}>
+        <button className="ticket-button" id="ticket-button" onClick={handleSpeakerClick}>
           COMPRAR MEU INGRESSO
         </button>
         <div id="message"></div>
