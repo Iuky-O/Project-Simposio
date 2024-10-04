@@ -30,7 +30,7 @@ const Login = () => {
         const user = userCredential.user;
         fetchUserData(email); 
         alert("Login efetuado com sucesso!");
-        navigate('/userpage'); 
+        navigate('/home2'); 
       })
       .catch((error) => {
         setError("Erro ao efetuar login: " + error.message);

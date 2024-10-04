@@ -7,12 +7,12 @@ import Navbar from './Components/Navbar';
 import Home from './Components/Home';
 import Admin from './Admin/AdminArea';
 function App() {
-  
-  return ( 
+
+  return (
     <Router>
       <div className="App">
-      <Navbar />
-      <RoutesComponent/>
+        <Navbar />
+        <RoutesComponent />
       </div>
     </Router>
   );
