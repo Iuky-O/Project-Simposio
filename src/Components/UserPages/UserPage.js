@@ -2,72 +2,98 @@ import React, { useState, useEffect } from 'react';
 import { Form, Button, Row, Col, Card } from 'react-bootstrap';
 import Image from "../../Assets/Alexa.png";
 import "../../Styles/UserPage.css";
-import { fetchUserProfile, saveUserProfile, uploadProfileImage } from './ProfileService';
+import { db } from '../../Firebase/firebaseConfig'; 
+import { doc, getDoc, updateDoc } from "firebase/firestore";  
 
 function Profile() {
-  // Estados para os campos do formulário
-  const [username, setUsername] = useState('');
+  const [socialName, setSocialName] = useState('');
+  const [gender, setGenero] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [estado, setEstado] = useState('');
-  const [cidade, setCidade] = useState('');
+  const [country, setCountry] = useState('');
+  const [state, setState] = useState('');
+  const [city, setCity] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [role, setTipo] = useState('');
+  const [institution, setInstitution] = useState('');
+  const [educationLevel, setLevel] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-
+  const userId = 'gZXQi4oM3nGa8D0xdp54';// Defina manualmente o ID do usuário que você deseja carregar
   useEffect(() => {
-    // Requisição GET para buscar os dados do perfil
+     
+
+    // Função para buscar o perfil do Firestore
     const getUserProfile = async () => {
       try {
-        const data = await fetchUserProfile();
-        setUsername(data.username);
-        setFirstName(data.firstName);
-        setLastName(data.lastName);
-        setEstado(data.estado);
-        setCidade(data.cidade);
-        setEmail(data.email);
-        setPhone(data.phone);
-        setPassword(data.password); // Atenção: não é recomendável exibir a senha real
+        const userDoc = doc(db, 'users', userId); // Definir o documento com base no userId
+        const userSnapshot = await getDoc(userDoc);
+
+        if (userSnapshot.exists()) {
+          const userData = userSnapshot.data();
+          setFirstName(userData.name);
+          setGenero(userData.gender);
+          setSocialName(userData.socialName);
+          setLastName(userData.lastName);
+          setCountry(userData.address.country);
+          setState(userData.address.state);
+          setCity(userData.address.city);
+          setEmail(userData.email);
+          setTipo(userData.role);
+          setInstitution(userData.institution);
+          setLevel(userData.educationLevel);
+          setPhone(userData.phoneNumber);
+          setPassword(userData.password);
+        } else {
+          setMessage('Usuário não encontrado.');
+        }
       } catch (error) {
-        console.error('Erro ao salvar os dados: ', error);
+        console.error('Erro ao buscar perfil:', error);
       }
     };
 
     getUserProfile();
   }, []);
 
-  // Função para salvar as mudanças
   const handleSaveChanges = async () => {
+ 
+    if (!userId) {
+      setMessage('ID do usuário não encontrado.');
+      return;
+    }
+    const userDocRef = doc(db, "users", userId);
+  
     const userData = {
-      username,
-      firstName,
+      socialName,
+      name: firstName,
       lastName,
-      cidade,
-      estado,
+      address: {
+        country,
+        city,
+        state,
+      },
       email,
-      phone,
+      role,
+      gender,
+      institution,
+      educationLevel,
+      phoneNumber: phone,
       password,
     };
-
+  
     try {
-      const data = await saveUserProfile(userData);
+      // Atualiza o documento no Firestore
+      await updateDoc(userDocRef, userData);
       setMessage('Perfil atualizado com sucesso!');
-      console.log('Sucesso:', data);
     } catch (error) {
+      console.error("Erro ao atualizar o perfil: ", error);
       setMessage('Erro ao atualizar perfil.');
-      console.error('Erro:', error);
     }
   };
 
-  // Função para fazer o upload da imagem
   const handleImageUpload = async (file) => {
-    try {
-      const data = await uploadProfileImage(file);
-      console.log('Imagem carregada com sucesso:', data);
-    } catch (error) {
-      console.error('Erro ao carregar imagem:', error);
-    }
+    // Lógica de upload de imagem
   };
 
   return (
@@ -75,12 +101,11 @@ function Profile() {
       <hr className="mt-0 mb-4" />
       <Row>
         <Col xl={4}>
-          {/* Profile picture card */}
           <Card className="mb-4 mb-xl-0">
             <Card.Header>Foto de perfil</Card.Header>
             <Card.Body className="text-center">
               <img className="img-account-profile rounded-circle mb-2" src={Image} alt="profile" />
-              <div className="small font-italic text-muted mb-4">JPG ou PNG maximo 5 MB</div>
+              <div className="small font-italic text-muted mb-4">JPG ou PNG máximo 5 MB</div>
               <input
                 type="file"
                 accept="image/*"
@@ -90,22 +115,10 @@ function Profile() {
           </Card>
         </Col>
         <Col xl={8}>
-          {/* Account details card */}
           <Card className="mb-4">
             <Card.Header>Detalhes do perfil</Card.Header>
             <Card.Body>
               <Form>
-                {/* Username */}
-                <Form.Group className="mb-3">
-                  <Form.Label>Nome de usuário (Nome exibido para os usuários do site)</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter your username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                  />
-                </Form.Group>
-
                 <Row className="gx-3 mb-3">
                   <Col md={6}>
                     <Form.Group>
@@ -138,8 +151,8 @@ function Profile() {
                       <Form.Control
                         type="text"
                         placeholder="Enter your location"
-                        value={estado}
-                        onChange={(e) => setEstado(e.target.value)}
+                        value={state}
+                        onChange={(e) => setState(e.target.value)}
                       />
                     </Form.Group>
                   </Col>
@@ -149,25 +162,25 @@ function Profile() {
                       <Form.Control
                         type="text"
                         placeholder="Enter your location"
-                        value={cidade}
-                        onChange={(e) => setCidade(e.target.value)}
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
                       />
                     </Form.Group>
                   </Col>
                 </Row>
-
-                <Form.Group className="mb-3">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control
-                    type="email"
-                    placeholder="Enter your email address"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </Form.Group>
-
                 <Row className="gx-3 mb-3">
-                  <Col md={6}>
+                <Col md={6}>
+                    <Form.Group>
+                      <Form.Label>País</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Enter your location"
+                        value={country}
+                        onChange={(e) => setCountry(e.target.value)}
+                      />
+                    </Form.Group>
+                  </Col>
+                <Col md={6}>
                     <Form.Group>
                       <Form.Label>Telefone</Form.Label>
                       <Form.Control
@@ -178,7 +191,78 @@ function Profile() {
                       />
                     </Form.Group>
                   </Col>
+                  </Row>
+
+                  <Form.Group className="mb-3">
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control
+                    type="email"
+                    placeholder="Enter your email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </Form.Group>
+                <Row className="gx-3 mb-3">
+                <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Intituição</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter your vinculo"
+                    value={institution}
+                    onChange={(e) => setInstitution(e.target.value)}
+                  />
+                </Form.Group>
+                </Col>
+                <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Escolaridade</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter your escolaridade"
+                    value={educationLevel}
+                    onChange={(e) => setLevel(e.target.value)}
+                  />
+                </Form.Group>
+                </Col>
+                </Row>
+                <Row className="gx-3 mb-3">
+                <Col md={6}>
+                    <Form.Group>
+                      <Form.Label>Profissão</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Enter your tipo"
+                        value={role}
+                        onChange={(e) => setTipo(e.target.value)}
+                      />
+                    </Form.Group>
+                  </Col>
                   <Col md={6}>
+                    <Form.Group>
+                      <Form.Label>Genêro</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Enter your genero"
+                        value={gender}
+                        onChange={(e) => setGenero(e.target.value)}
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+                <Row className="gx-3 mb-3">
+                <Col md={6}>
+                    <Form.Group>
+                      <Form.Label>Nome social</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Enter your nome social"
+                        value={socialName}
+                        onChange={(e) => setSocialName(e.target.value)}
+                      />
+                    </Form.Group>
+                  </Col>
+                <Col md={6}>
                     <Form.Group>
                       <Form.Label>Senha</Form.Label>
                       <Form.Control
@@ -188,7 +272,7 @@ function Profile() {
                         onChange={(e) => setPassword(e.target.value)}
                       />
                     </Form.Group>
-                  </Col>
+                  </Col>                  
                 </Row>
                 <Button className="Btn" variant="primary" onClick={handleSaveChanges}>Salvar mudanças</Button>
                 {message && <div className="alert alert-info">{message}</div>}
