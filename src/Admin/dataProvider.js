@@ -1,7 +1,7 @@
 import { DataProvider, fetchUtils } from "react-admin";
 import { stringify } from "query-string";
 
-const apiUrl = "http://127.0.0.1:5001/simposio/us-central1/api";
+const apiUrl = 'http://localhost:5001/simposio/us-central1/api';//localhost, se for web tem que mudar
 const httpClient = fetchUtils.fetchJson;
 
 export const dataProvider = {
