@@ -14,6 +14,10 @@ label {
     min-height: 100vh; 
 }
 
+.input-group .error {
+    border: 2px solid red; 
+}
+
 
 .background-rotated {
     position: absolute;

@@ -1,67 +1,148 @@
-import React from 'react';
-import Carousel from '../Utils/Carrousel';
+import React, { useState } from 'react';
 import '../Styles/TimelineArea.css';
+import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 
-const slides = [
-    <div>
-      <p className='text-date'>21/10/2024</p>
-      <h2> DIA 1</h2>
-      <p className='text-palestra'>Palestra</p>
-      <p className='text-info'> Inteligência Artificial e Machine Learning no Desenvolvimento de Software 17:00 PM</p>
-      <p className='text-palestra'>Palestra</p>
-      <p className='text-info'> DevOps: Cultura e Ferramentas 18:00 PM</p>
-      <p className='text-curso'>Curso </p>
-      <p className='text-info'>não sei nãoo</p>
-    </div>,
-  <div>
-    <p className='text-date'>22/10/2024</p>
-    <h2> DIA 2</h2>
-    <p className='text-palestra'>Palestra </p>
-    <p className='text-info'>Microservices e Arquitetura Orientada a Serviços 17:00 PM</p>
-    <p className='text-palestra'>Palestra</p>
-    <p className='text-info'>Tendências em Desenvolvimento Mobile 18:00 PM</p>
-    <p className='text-curso'>Curso</p>
-    </div>,
-  <div>
-    <p className='text-date'>23/10/2024</p>
-    <h2> DIA 3</h2>
-    <p className='text-palestra'>Palestra</p>
-    <p className='text-info'>Automação de Testes de Software 17:00 PM</p>
-    <p className='text-palestra'>Palestra</p>
-    <p className='text-info'>Cloud Computing: A Jornada para a Escalabilidade e Redução de Custos 18:00 PM</p>
-    <p className='text-curso'>Curso</p>
-    <p className='text-info'> nao sei nao sei 18:00 PM</p>
-    </div>,
-  <div>
-    <p className='text-date'>24/10/2024</p>
-    <h2> DIA 4</h2>
-    <p className='text-palestra'>Palestra </p>
-    <p className='text-info'>Programação Funcional vs. Programação Orientada a Objetos 17:00 PM</p>
-    <p className='text-palestra'>Palestra</p>
-    <p className='text-info'>Segurança em Aplicações Web: Protegendo seus Sistemas Contra Ameaças Atuais 18:00 PM</p>
-    <p className='text-curso'>Curso</p>
-    <p className='text-info'>nao sei nao sei 18:00 PM</p>
-    </div>,
-  <div>
-    <p className='text-date'>25/10/2024</p>
-    <h2> DIA 5</h2>
-    <p className='text-palestra'>Palestra </p>
-    <p className='text-info'> Caminhos de Carreira na Engenharia de Software 17:00 PM</p>
-    <p className='text-curso'>Curso</p>
-    <p className='text-info'> nao sei nao sei 18:00 PM</p>
-    </div>
+const programa = [
+  {
+    dia: 'DIA 1',
+    dia_desc: 'Segunda-feira',
+    data: '21/10/2024',
+    palestra_1_horario: '17:00 PM',
+    palestra_1_local: 'UEPA',
+    palestra_1: 'Inteligência Artificial e Machine Learning no Desenvolvimento de Software',
+    palestra_2_horario: '18:00 PM',
+    palestra_2_local: 'UEPA',
+    palestra_2: 'DevOps: Cultura e Ferramentas',
+    curso_horario: '18:00 PM',
+    curso_local: 'Online via Meet',
+    curso: 'Introdução a robótica',
+  },
+  {
+    dia: 'DIA 2',
+    dia_desc: 'Terça-feira',
+    data: '22/10/2024',
+    palestra_1_horario: '17:00 PM',
+    palestra_1_local: 'UEPA',
+    palestra_1: 'Microservices e Arquitetura Orientada a Serviços',
+    palestra_2_horario: '18:00 PM',
+    palestra_2_local: 'UEPA',
+    palestra_2: 'Tendências em Desenvolvimento Mobile',
+    curso_horario: '',
+    curso_local: '',
+    curso: '',
+  },
+  {
+    dia: 'DIA 3',
+    dia_desc: 'Quarta-feira',
+    data: '23/10/2024',
+    palestra_1_horario: '17:00 PM',
+    palestra_1_local: 'UEPA',
+    palestra_1: 'Automação de Testes de Software',
+    palestra_2_horario: '18:00 PM',
+    palestra_2_local: 'UEPA',
+    palestra_2: 'Cloud Computing: A Jornada para a Escalabilidade e Redução de Custos',
+    curso_horario: '18:00 PM',
+    curso_local: 'Online via Meet',
+    curso: 'Testes Automatizados com Python',
+  },
+  {
+    dia: 'DIA 4',
+    dia_desc: 'Quinta-feira',
+    data: '24/10/2024',
+    palestra_1_horario: '17:00 PM',
+    palestra_1_local: 'UEPA',
+    palestra_1: 'Programação Funcional vs. Programação Orientada a Objetos',
+    palestra_2_horario: '18:00 PM',
+    palestra_2_local: 'UEPA',
+    palestra_2: 'Segurança em Aplicações Web: Protegendo seus Sistemas Contra Ameaças Atuais',
+    curso_horario: '18:00 PM',
+    curso_local: 'Online via Meet',
+    curso: 'Segurança em Aplicações Web na Prática',
+  },
+  {
+    dia: 'DIA 5',
+    dia_desc: 'Sexta-feira',
+    data: '25/10/2024',
+    palestra_1_horario: '17:00 PM',
+    palestra_1_local: 'UEPA',
+    palestra_1: 'Caminhos de Carreira na Engenharia de Software',
+    palestra_2_horario: '',
+    palestra_2_local: '',
+    palestra_2: '',
+    curso_horario: '18:00 PM',
+    curso_local: 'Online via Meet',
+    curso: 'Preparação para Entrevistas Técnicas',
+  }
 ];
+
 const TimelineArea = () => {
+  const [activeDay, setActiveDay] = useState(0);
+
+  const handleDayClick = (index) => {
+    setActiveDay(index);
+  };
+
+  const handleNextDay = () => {
+    setActiveDay((prev) => (prev + 1) % programa.length);
+  };
+
+  const handlePrevDay = () => {
+    setActiveDay((prev) => (prev - 1 + programa.length) % programa.length);
+  };
+
   return (
     <div className="timeline-area">
       <div className='title'>
         <h1>Programação</h1>
       </div>
-      <Carousel slidesToScroll={2} slidesVisible={3}>
-        {slides}
-      </Carousel>
+      <div className="timeline">
+        <button className="arrow" onClick={handlePrevDay}>
+          <FaArrowLeft />
+        </button>
+        {programa.map((item, index) => (
+          <div
+            key={index}
+            className={`day ${activeDay === index ? 'active' : ''}`}
+            onClick={() => handleDayClick(index)}
+          >
+            {item.dia}
+          </div>
+        ))}
+        <button className="arrow" onClick={handleNextDay}>
+          <FaArrowRight />
+        </button>
+      </div>
+      <div className="details">
+        <div className='container-dia'>
+          <h2>{programa[activeDay].dia}</h2>
+          <h2>{programa[activeDay].dia_desc}</h2>
+          <h2>({programa[activeDay].data})</h2>
+        </div>
+        
+        <div className='container_info_pc'>
+          <p className='text-palestra'>Palestra</p>
+          <p className='text-infoo'>{programa[activeDay].palestra_1_horario}</p>
+          <p className='text-principal'>{programa[activeDay].palestra_1}</p>
+          <p className='text-infoo'>({programa[activeDay].palestra_1_local})</p>
+        </div>
+        {programa[activeDay].palestra_2 && (
+          <div className='container_info_pc'>
+            <p className='text-palestra'>Palestra</p>
+            <p className='text-infoo'>{programa[activeDay].palestra_2_horario}</p>
+            <p className='text-principal'>{programa[activeDay].palestra_2}</p>
+            <p className='text-infoo'>({programa[activeDay].palestra_2_local})</p>
+          </div>
+        )}
+        {programa[activeDay].curso && (
+          <div className='container_info_pc'>
+            <p className='text-curso'>Curso</p>
+            <p className='text-infoo'>{programa[activeDay].curso_horario}</p>
+            <p className='text-principal'>{programa[activeDay].curso}</p>
+            <p className='text-infoo'>({programa[activeDay].curso_local})</p>
+          </div>
+        )}
+      </div>
     </div>
-    
   );
 };
 

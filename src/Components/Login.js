@@ -8,13 +8,17 @@ import { SiCodenewbie } from "react-icons/si";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-const Login = ({ setIsAuthenticated }) => {
+const Login = () => {
+  const MAX_ATTEMPTS = 5; 
+  const [attempts, setAttempts] = useState(0);
+  const [loginError, setLoginError] = useState(false);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false); 
-  const { fetchUserData } = useContext(UserContext);
+  const { fetchUserData } = useContext(UserContext)
   const navigate = useNavigate(); 
 
   const togglePasswordVisibility = () => {
@@ -23,28 +27,40 @@ const Login = ({ setIsAuthenticated }) => {
 
   const userLogin = (e) => {
     e.preventDefault(); 
-    setIsLoading(true); 
-    setError(null); 
-  
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-  
-        // Atualize o estado de autenticação
-        setIsAuthenticated(true);
-  
-        return fetchUserData(user.email)
-          .then(() => {
-            alert("Login efetuado com sucesso!");
-            navigate('/home2'); 
-          });
-      })
-      .catch((error) => {
-        setError("Erro ao efetuar login: " + error.message);
-      })
-      .finally(() => {
-        setIsLoading(false); 
-      });
+    setLoginError(false);
+
+    if(email === '' || password === ''){
+      alert('Todos os campos devem ser preenchidos!');
+      return;
+
+    }else if (attempts >= MAX_ATTEMPTS) {
+      alert('Você atingiu o número máximo de tentativas. Tente novamente mais tarde.');
+      return;
+
+    }else{
+      e.preventDefault(); 
+      setIsLoading(true);
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          fetchUserData(email); 
+          alert("Login efetuado com sucesso!");
+          navigate('/home2'); 
+          setLoginError(false);
+
+          setAttempts(0);
+        })
+        .catch((error) => {
+          setError("Erro ao efetuar login! Email ou Senha está errado!");
+          setAttempts((prevAttempts) => prevAttempts + 1);
+          setLoginError(true);
+        })
+        .finally(() => {
+          setIsLoading(false); 
+        });
+
+    }
   };
 
   return (
@@ -70,6 +86,7 @@ const Login = ({ setIsAuthenticated }) => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
+                    className={loginError ? 'input-error' : ''}
                   />
                 </div>
                 <div className="input-group-login">
@@ -82,6 +99,7 @@ const Login = ({ setIsAuthenticated }) => {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
+                      className={loginError ? 'input-error' : ''}
                     />
                     <span className="eye-icon" onClick={togglePasswordVisibility}>
                       {showPassword ? <FaEyeSlash /> : <FaEye />}
