@@ -1,19 +1,29 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './Styles/App.css';
+import React, { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import RoutesComponent from "./Components/RoutesComponent"
-import Navbar from './Components/Navbar';
-import Home from './Components/Home';
-import Admin from './Admin/AdminArea';
+import Login from './Components/Login';
+import Navbar1 from './Components/Navbar';
+import Navbar2 from './Components/Home/Navbar2';
+import RoutesComponent1 from './Components/RoutesComponent';
+import RoutesComponent2 from './Components/Home/RoutesComponent2';
+
 function App() {
-  
-  return ( 
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Controle de autenticação
+
+  return (
     <Router>
-      <div className="App">
-      <Navbar />
-      <RoutesComponent/>
-      </div>
+      {isAuthenticated ? (
+        <>
+          <Login setIsAuthenticated={setIsAuthenticated} /> 
+          <Navbar2 />   {/* Navbar para usuários autenticados */}
+          <RoutesComponent2 />  {/* Rotas para usuários autenticados */}
+        </>
+      ) : (
+        <>
+          <Navbar1 />   {/* Navbar para usuários não autenticados */}
+          <RoutesComponent1 />  {/* Rotas para usuários não autenticados */}
+  
+        </>
+      )}
     </Router>
   );
 }

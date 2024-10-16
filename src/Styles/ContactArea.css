@@ -6,7 +6,7 @@
 
 .contact-area h1 {
     font-size: clamp(2rem, 4vw, 3.5rem);
-    background-color: #9C061F;
+    background-color: black;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

@@ -1,22 +1,19 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Home from './Home';
-import ContactArea from './ContactArea';
-import Cursos from './CourseArea';
-import EnrollmentArea from './EnrollmentArea';
-import Speakers from './Speakers';
-import AboutSpeaker from './AboutSpeaker';
-import AboutCourses from './AboutCourses';
-import TimelineArea from './TimelineArea';
-import About from './About';
-import Collaborators from './Collaborators';
-import Lectures from './Lectures';
-import AboutLectures from './AboutLectures';
-import Register from './Register';
-import Profile from '../Components/UserPages/UserPage';
-import Login from './Login';
-import UserPage from './UserPages/UserPage'
-import Home2 from './Home/HomePaticipante'
+import Home from './HomePaticipante';
+import ContactArea from '../ContactArea';
+import Cursos from '../CourseArea';
+import EnrollmentArea from './EnrollmentArea2';
+import Speakers from '../Speakers';
+import AboutSpeaker from '../AboutSpeaker';
+import AboutCourses from '../AboutCourses';
+import TimelineArea from '../TimelineArea';
+import About from '../About';
+import Collaborators from '../Collaborators';
+import Lectures from '../Lectures';
+import AboutLectures from '../AboutLectures';
+import UserPage from '../UserPages/UserPage'
+import Home2 from './HomePaticipante'
 
 function RoutesComponent() {
   return (
@@ -33,9 +30,6 @@ function RoutesComponent() {
       <Route path="/about/" element={<About />} />
       <Route path="/collaborators" element={<Collaborators />} />
       <Route path="/lectures" element={<Lectures />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/profile" element={<Profile />} />
       <Route path="/userpage" element={<UserPage />} />
       <Route path="/home2" element={<Home2 />} />
 
