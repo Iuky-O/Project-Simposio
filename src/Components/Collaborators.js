@@ -30,10 +30,8 @@ const Collaborators = () =>{
                                     <img src= {uepa} alt="UEPA" className="colaborador-img"/>
                                     <img src= {estacio} alt="Estácio" className="colaborador-img" />
                                 </li>
-
                         </ul>
-                    </div>
-
+                        </div>
                     {/* Seção de patrocinadores */}
                     <div className="colaboradores-section">
                         <h2>Patrocinadores</h2>
