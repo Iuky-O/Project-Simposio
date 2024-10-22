@@ -1,20 +1,8 @@
-import React from "react";
-import Logo from "../Assets/Logo.svg";
-import NavBarStyles from "../Styles/NavBarStyles.css";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { Link } from 'react-router-dom';
+import React, { useContext, useState, useEffect } from "react";
+import "../Styles/NavBarStyles.css";
+import { useNavigate, Link } from "react-router-dom";
 import { HiOutlineBars3 } from "react-icons/hi2";
-import {
-    Box,
-    Drawer,
-    ListItem,
-    ListItemButton,
-    ListItemIcon,
-    ListItemText
-} from "@mui/material";
-import Divider from "@mui/material/Divider";
-import List from "@mui/material/List";
+import { Box, Drawer, ListItem, ListItemButton, ListItemIcon, ListItemText, Divider, List } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import TodayIcon from '@mui/icons-material/Today';
@@ -22,11 +10,17 @@ import SpatialAudioOffIcon from '@mui/icons-material/SpatialAudioOff';
 import Groups3Icon from '@mui/icons-material/Groups3';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
-import { SiCodenewbie } from "react-icons/si";
+import LogoutIcon from '@mui/icons-material/Logout';
+import { AuthContext } from "../Scripts/AuthContext"; 
 
 const Navbar = () => {
     const [openMenu, setOpenMenu] = useState(false);
     const navigate = useNavigate();
+    const { user, logout } = useContext(AuthContext);
+
+    useEffect(() => {
+        console.log("Usuário no Navbar:", user);
+    }, [user]);
 
     const menuOptions = [
         {
@@ -38,16 +32,6 @@ const Navbar = () => {
             text: "Sobre",
             icon: <InfoIcon />,
             path: "/about"
-        },
-        {
-            text: "Inscrições",
-            icon: <PersonAddIcon />,
-            path: "/enrollment"
-        },
-        {
-            text: "Contato",
-            icon: <PhoneRoundedIcon />,
-            path: "/contact"
         },
         {
             text: "Cronograma",
@@ -64,42 +48,66 @@ const Navbar = () => {
             icon: <SpatialAudioOffIcon />,
             path: "/speakers"
         },
-        {
-            text: "Palestras",
-            icon: <HomeIcon />,
-            path: "/lectures"
-        },
-        {
-            text: "Cursos",
-            icon: <HomeIcon />,
-            path: "/course"
-        },
     ];
 
-    const handleNavigation = (path) => {
+    if (user) {
+        menuOptions.push(
+            {
+                text: "Palestras",
+                icon: <HomeIcon />,
+                path: "/lectures"
+            },
+            {
+                text: "Cursos",
+                icon: <HomeIcon />,
+                path: "/course"
+            },
+            {
+                text: "Contato",
+                icon: <PhoneRoundedIcon />,
+                path: "/contact"
+            },
+            {
+                text: "Inscrições",
+                icon: <PersonAddIcon />,
+                path: "/enrollment2"
+            },
+            {
+                text: "Perfil",
+                icon: <PersonAddIcon />,
+                path: "/user"
+            },
+            {
+                text: "Sair",
+                icon: <LogoutIcon />,
+                action: logout
+            }
+        );
+    }
+
+    const handleNavigation = (path, action) => {
         setOpenMenu(false);
-        navigate(path);
+        if (action) {
+            action().then(() => navigate(path));
+            console.log("Usuário no Navbar:", user);
+        } else {
+            navigate(path);
+        }
     };
 
     return (
         <nav className="header">
             <div className="nav-logo-container">
                 <Link to="/" className="logo">
-                    <SiCodenewbie />
+                    Logo
                 </Link>
             </div>
             <div className="navbar-links-container">
-                <Link to="/">Home</Link>
-                <Link to="/about">Sobre</Link>
-                <Link to="/enrollment">Inscrições</Link>
-                <Link to="/contact">Contato</Link>
-                <Link to="/timeline">Cronograma</Link>
-                <Link to="/collaborators">Colaboradores</Link>
-                <Link to="/speakers">Palestrantes</Link>
-                <Link to="/lectures">Palestras</Link>
-                <Link to="/course">Cursos</Link>
-                <Link to="/login" className="primary-button">Login</Link>
+                {menuOptions.map((item) => (
+                    <Link to={item.path} key={item.text}>{item.text}</Link>
+                ))}
             </div>
+
             <div className="navbar-menu-container">
                 <HiOutlineBars3 className="haburguer" onClick={() => setOpenMenu(true)} />
             </div>
@@ -114,7 +122,7 @@ const Navbar = () => {
                     <List>
                         {menuOptions.map((item) => (
                             <ListItem key={item.text} disablePadding>
-                                <ListItemButton onClick={() => handleNavigation(item.path)}>
+                                <ListItemButton onClick={() => handleNavigation(item.path, item.action)}>
                                     <ListItemIcon>{item.icon}</ListItemIcon>
                                     <ListItemText primary={item.text} />
                                 </ListItemButton>
@@ -122,11 +130,22 @@ const Navbar = () => {
                         ))}
                     </List>
                     <Divider />
-                    <ListItem disablePadding>
-                        <ListItemButton onClick={() => handleNavigation('/login')}>
-                            <ListItemText primary="Login" />
-                        </ListItemButton>
-                    </ListItem>
+                    
+                    {user ? (
+                        <>
+                            <ListItem disablePadding>
+                                <ListItemButton onClick={() => handleNavigation("/user")}>
+                                    <ListItemText primary="Perfil" />
+                                </ListItemButton>
+                            </ListItem>
+                        </>
+                    ) : (
+                        <ListItem disablePadding>
+                            <ListItemButton onClick={() => handleNavigation("/login")}>
+                                <ListItemText primary="Login" />
+                            </ListItemButton>
+                        </ListItem>
+                    )}
                 </Box>
             </Drawer>
         </nav>

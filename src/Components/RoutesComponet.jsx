@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from './Home';
 import ContactArea from './ContactArea';
@@ -13,18 +13,25 @@ import Collaborators from './Collaborators';
 import Lectures from './Lectures';
 import AboutLectures from './AboutLectures';
 import Register from './Register';
-import Profile from '../Components/UserPages/UserPage';
+import Userpage from './UserPage';
 import Login from './Login';
-import UserPage from './UserPages/UserPage'
-import Home2 from './Home/HomePaticipante'
+import Admin from '../Admin/AdminArea'
+import EnrollmentArea2 from './EnrollmentArea2';
+import { AuthContext } from '../Scripts/AuthContext';
 
-function RoutesComponent() {
+function PrivateRoute({ children }) {
+  const { user } = useContext(AuthContext);
+  return user ? children : <Navigate to="/login" />;
+}
+
+function RoutesComponet() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/contact" element={<ContactArea />} />
-      <Route path="/course" element={<Cursos />} />
+      <Route path="/contact" element={<PrivateRoute><ContactArea /></PrivateRoute>} />
+      <Route path="/course" element={<PrivateRoute><Cursos /></PrivateRoute>} />
       <Route path="/enrollment" element={<EnrollmentArea />} />
+      <Route path="/enrollment2" element={<PrivateRoute><EnrollmentArea2 /></PrivateRoute>} />
       <Route path="/timeline" element={<TimelineArea />} />
       <Route path="/speakers" element={<Speakers />} />
       <Route path="/aboutspeaker/:id" element={<AboutSpeaker />} />
@@ -32,16 +39,15 @@ function RoutesComponent() {
       <Route path="/aboutslectures/:id" element={<AboutLectures />} />
       <Route path="/about/" element={<About />} />
       <Route path="/collaborators" element={<Collaborators />} />
-      <Route path="/lectures" element={<Lectures />} />
+      <Route path="/lectures" element={<PrivateRoute><Lectures /></PrivateRoute>} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/userpage" element={<UserPage />} />
-      <Route path="/home2" element={<Home2 />} />
+      <Route path="/user" element={<PrivateRoute><Userpage /></PrivateRoute>} />
+      <Route path="/adm" element={<PrivateRoute><Admin /></PrivateRoute>} />
 
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 }
 
-export default RoutesComponent;
+export default RoutesComponet;

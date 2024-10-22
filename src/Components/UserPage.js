@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Form, Button, Row, Col, Card } from 'react-bootstrap';
-import Image from "../../Assets/Alexa.png";
-import "../../Styles/UserPage.css";
-import { db } from '../../Firebase/firebaseConfig'; 
+import Image from "../Assets/Alexa.png";
+import "../Styles/UserPage.css";
+import { db } from '../Firebase/firebaseConfig'; 
 import { doc, getDoc, updateDoc } from "firebase/firestore";  
+import { UserContext } from '../Scripts/UserContext'; 
 
 function Profile() {
+  const { user, fetchUserData } = useContext(UserContext); 
   const [socialName, setSocialName] = useState('');
   const [gender, setGenero] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -20,14 +22,17 @@ function Profile() {
   const [educationLevel, setLevel] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const userId = 'gZXQi4oM3nGa8D0xdp54';// Defina manualmente o ID do usuário que você deseja carregar
-  useEffect(() => {
-     
 
-    // Função para buscar o perfil do Firestore
+  useEffect(() => {
+    
     const getUserProfile = async () => {
+      if (!user?.email) {
+        setMessage('Usuário não autenticado.');
+        return;
+      }
+
       try {
-        const userDoc = doc(db, 'users', userId); // Definir o documento com base no userId
+        const userDoc = doc(db, 'users', user.id); 
         const userSnapshot = await getDoc(userDoc);
 
         if (userSnapshot.exists()) {
@@ -53,17 +58,21 @@ function Profile() {
       }
     };
 
-    getUserProfile();
-  }, []);
+    if (user?.email) {
+      getUserProfile();
+    } else {
+      fetchUserData(); 
+    }
+  }, [user, fetchUserData]);
 
   const handleSaveChanges = async () => {
- 
-    if (!userId) {
+    if (!user?.id) {
       setMessage('ID do usuário não encontrado.');
       return;
     }
-    const userDocRef = doc(db, "users", userId);
-  
+
+    const userDocRef = doc(db, "users", user.id); 
+
     const userData = {
       socialName,
       name: firstName,
@@ -81,9 +90,8 @@ function Profile() {
       phoneNumber: phone,
       password,
     };
-  
+
     try {
-      // Atualiza o documento no Firestore
       await updateDoc(userDocRef, userData);
       setMessage('Perfil atualizado com sucesso!');
     } catch (error) {
@@ -91,6 +99,7 @@ function Profile() {
       setMessage('Erro ao atualizar perfil.');
     }
   };
+
 
   const handleImageUpload = async (file) => {
     // Lógica de upload de imagem
