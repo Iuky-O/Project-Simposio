@@ -1,7 +1,5 @@
-
-
 .colaboradores {
-    margin-top: 5rem;
+    margin-top: 6rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,48 +11,32 @@
 }
 
 .heading-colaboradores {
-    ont-size: clamp(2rem, 3.5vw, 4rem);
-    color: var(--preto);
-    text-align: center;
-    font-size: 3rem;
-    font-weight: bold;
-    text-align: center;
+    font-size: clamp(2rem, 2.5vw, 4rem);
+    color: var(--branco);
+    padding-top: 3rem;
 }
 
 .heading-colaboradores span {
-    background: linear-gradient(to right,   #471A3D,
-                                            #8e427d,
-                                            #BA71D9);
-                -webkit-background-clip: text; /* Para navegadores WebKit (Chrome, Safari) */
-                -webkit-text-fill-color: transparent; /* Torna o texto transparente */
-                background-clip: text; /* Para outros navegadores */
+    background: linear-gradient(to right, #F2A2D6, #BA71D9, #94E1F2, #94FD8E, #F2C879);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     transition: color 0.3s ease-in-out;
 }
 
 .carts-container {
     display: grid;
-    grid-template-columns: repeat(3, 2fr);
-    gap: .5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-top: 3rem;
     text-align: center;
-    
 
-}
-
-.collaborator-card{
-    display: flex;
-    background-color: var(--Primary-Type-2);
-    height: 100%;
-    width: 80%;
-    border-radius: .5rem;
-    border: 5px solid transparent;
-    transition: 0.4s ease-in-out;
 }
 
 .colaboradores-section h2 {
     font-size: 1.8rem;
     margin-bottom: 1rem;
     text-align: center;
-    color: var(--Primary-Type-2);
 }
 
 .colaboradores-section p,
@@ -62,7 +44,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    align-items: center;
 }
 
 .colaboradores-section ul li {
@@ -71,19 +53,11 @@
     align-items: center;
 }
 
-#titulo-realizacao{
-    text-align: center;
-}
-
-#realizacao{
-    margin-top: 4rem;
-}
-
 
 .colaborador-img {
     width: 150px;
     height: auto;
-    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 #leticia{

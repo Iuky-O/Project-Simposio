@@ -5,7 +5,6 @@
     grid-gap: 30px;
     margin: 90px auto;
     justify-content: center;
-    text-align: center;
   }
   
   @media (max-width: 1250px) {
@@ -23,13 +22,24 @@
   }
   
   .lecture-card {
-    background-color: #ffffff;
-    border: 1px solid #9C061F;
-    border-radius: 3rem;
+    background-color: #0D0D0D;
+    border: 1px solid #F2C879;
+    border-radius: 2rem;
     overflow: hidden;
-    box-shadow: 8px 8px 8px #471A3D;
+    box-shadow: 8px 8px 8px #F2A2D6;
     flex-direction: column;
-    margin-bottom: 1.5rem;
+    margin: 10px;
+    margin-bottom: 40px;
+
+    height: 180px;
+
+    min-width: 250px;
+    max-width: 300px;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
   }
   
   .lecture-content {
@@ -37,27 +47,27 @@
   }
   
   .lecture-title {
-    font-size: 1vw;
+    font-size: 18px;
     font-weight: bold;
-    margin: 0 0 5px 10px;
-    color: black;
+    margin: 0 0 5px;
+    color: #FFFFFF;
   }
   
   .lecture-description {
-    font-size: 1vw;
-    color: grey;
-    margin-bottom: 10px;
+    font-size: 14px;
+    color: #FFFFFF;
+    margin-bottom: 5px;
   }
   
   .lecture-button {
-    padding: 10px 15px;
-    background: #471A3D;
-    color: #ffffff;
+    padding: 10px 12px;
+    margin: 0;
+    background: #F2A2D6;
+    color: #0D0D0D;
     border: #FFFFFF 1px solid;
-    border-radius: 1rem;
+    border-radius: 50px;
     cursor: pointer;
     text-align: center;
-    transition: ease-in 0.3s;
   }
   
   .lecture-button:hover {
@@ -65,7 +75,7 @@
   }
   
   .lecture-button:active {
-    background-color: #9C061F;
+    background-color: #94E1F2;
   }
   
   .dia-section {
@@ -75,8 +85,7 @@
   
   .dia-title {
     font-size: 24px;
-    color: var(--Primary-Type-2);
-    font-weight: bold;
+    color: #F2C879;
     margin-bottom: 20px;
   }
   
