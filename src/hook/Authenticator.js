@@ -61,7 +61,7 @@ const Authenticator = ({ children }) => {
         console.log("Desconectando usuário...");
         try {
             await signOut(authInstance);
-            clearCookies(); // Limpa os cookies após o logout
+            clearCookies();
             setUser(null); 
             console.log("Usuário desconectado com sucesso.");
         } catch (error) {

@@ -50,7 +50,7 @@ const Navbar = () => {
             path: "/speakers"
         },
     ];
-    
+
     if (user) {
         menuOptions.push(
             {
@@ -88,18 +88,18 @@ const Navbar = () => {
 
     const handleNavigation = async (path) => {
         setOpenMenu(false);
-    
+
         if (path === "/logout") {
             try {
                 console.log("Chamando a função de logout...");
                 await logout();
                 console.log("Logout realizado com sucesso.");
-                navigate("/login"); 
+                navigate("/login");
             } catch (error) {
                 console.error("Erro durante o logout:", error);
             }
         } else {
-            navigate(path);  
+            navigate(path);
         }
     };
     return (
@@ -109,10 +109,27 @@ const Navbar = () => {
                     <SiCodenewbie style={{ fontSize: '5rem', color: 'var(--Primary-Color)' }} />
                 </Link>
             </div>
-            <div className="navbar-links-container">
-                {menuOptions.map((item) => (
-                    <Link to={item.path} key={item.text}>{item.text}</Link>
-                ))}
+            
+            <div className="navbar-links-container"> 
+                {menuOptions.map((item) => {
+                    if (item.text === "Sair") { //{links e função para sair}
+                        return (
+                            <button
+                                key={item.text}
+                                onClick={logout}
+                                className="navbar-logout-button" 
+                            >
+                                {item.text}
+                            </button>
+                        );
+                    } else {
+                        return (
+                            <Link to={item.path} key={item.text}>
+                                {item.text}
+                            </Link>
+                        );
+                    }
+                })}
             </div>
 
             <div className="navbar-menu-container">
@@ -126,18 +143,18 @@ const Navbar = () => {
                     onClick={() => setOpenMenu(false)}
                     onKeyDown={() => setOpenMenu(false)}
                 >
-                <List>
-                {menuOptions.map((item) => (
-                    <ListItem key={item.text} disablePadding>
-                        <ListItemButton onClick={() => handleNavigation(item.path)}>
-                            <ListItemIcon>{item.icon}</ListItemIcon>
-                            <ListItemText primary={item.text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-                </List>
+                    <List>
+                        {menuOptions.map((item) => (
+                            <ListItem key={item.text} disablePadding>
+                                <ListItemButton onClick={() => handleNavigation(item.path)}>
+                                    <ListItemIcon>{item.icon}</ListItemIcon>
+                                    <ListItemText primary={item.text} />
+                                </ListItemButton>
+                            </ListItem>
+                        ))}
+                    </List>
                     <Divider />
-                    
+
                     {user ? (
                         <>
                             <ListItem disablePadding>
