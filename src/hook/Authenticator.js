@@ -7,9 +7,9 @@ const Authenticator = ({ children }) => {
     const { setUser } = useAuth(); 
     const { fetchUserData } = useContext(UserContext); 
 
-    const [cancelled, setCancelled] = useState(false);
     const authInstance = getAuth(); 
 
+    // Escuta o estado de autenticação do usuário
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(authInstance, (user) => {
             console.log("Estado de autenticação alterado:", user);
@@ -26,6 +26,7 @@ const Authenticator = ({ children }) => {
         return () => unsubscribe(); 
     }, [setUser, fetchUserData]);
 
+    // Função de login
     const login = async (email, password) => {
         console.log(`Tentando fazer login com o email: ${email}`);
         try {
@@ -41,21 +42,32 @@ const Authenticator = ({ children }) => {
         }
     };
 
-    const logout = async () => {
-        if (!cancelled) { 
-            console.log("Desconectando usuário...");
-            await signOut(authInstance);
-            setUser(null); 
-            console.log("Usuário desconectado com sucesso.");
+    // Função para limpar todos os cookies
+    const clearCookies = () => {
+        const cookies = document.cookie.split(";");
+
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i];
+            const eqPos = cookie.indexOf("=");
+            const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/";
         }
+
+        console.log("Todos os cookies foram limpos.");
     };
 
-    useEffect(() => {
-        return () => {
-            console.log("Limpando Authenticator...");
-            setCancelled(true);
-        };
-    }, []);
+    // Função de logout
+    const logout = async () => {
+        console.log("Desconectando usuário...");
+        try {
+            await signOut(authInstance);
+            clearCookies(); // Limpa os cookies após o logout
+            setUser(null); 
+            console.log("Usuário desconectado com sucesso.");
+        } catch (error) {
+            console.error("Erro ao deslogar:", error.message);
+        }
+    };
 
     return (
         <AuthContext.Provider value={{ login, logout, user: authInstance.currentUser }}>

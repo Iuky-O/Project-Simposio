@@ -49,7 +49,7 @@ const Navbar = () => {
             path: "/speakers"
         },
     ];
-
+    
     if (user) {
         menuOptions.push(
             {
@@ -80,21 +80,27 @@ const Navbar = () => {
             {
                 text: "Sair",
                 icon: <LogoutIcon />,
-                action: logout
+                path: "/logout"
             }
         );
     }
 
-    const handleNavigation = (path, action) => {
+    const handleNavigation = async (path) => {
         setOpenMenu(false);
-        if (action) {
-            action().then(() => navigate(path));
-            console.log("Usuário no Navbar:", user);
+    
+        if (path === "/logout") {
+            try {
+                console.log("Chamando a função de logout...");
+                await logout();
+                console.log("Logout realizado com sucesso.");
+                navigate("/login"); 
+            } catch (error) {
+                console.error("Erro durante o logout:", error);
+            }
         } else {
-            navigate(path);
+            navigate(path);  
         }
     };
-
     return (
         <nav className="header">
             <div className="nav-logo-container">
@@ -119,16 +125,16 @@ const Navbar = () => {
                     onClick={() => setOpenMenu(false)}
                     onKeyDown={() => setOpenMenu(false)}
                 >
-                    <List>
-                        {menuOptions.map((item) => (
-                            <ListItem key={item.text} disablePadding>
-                                <ListItemButton onClick={() => handleNavigation(item.path, item.action)}>
-                                    <ListItemIcon>{item.icon}</ListItemIcon>
-                                    <ListItemText primary={item.text} />
-                                </ListItemButton>
-                            </ListItem>
-                        ))}
-                    </List>
+                <List>
+                {menuOptions.map((item) => (
+                    <ListItem key={item.text} disablePadding>
+                        <ListItemButton onClick={() => handleNavigation(item.path)}>
+                            <ListItemIcon>{item.icon}</ListItemIcon>
+                            <ListItemText primary={item.text} />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
+                </List>
                     <Divider />
                     
                     {user ? (
