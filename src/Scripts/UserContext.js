@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useMemo } from 'react';
 import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../Firebase/firebaseConfig'; 
 
@@ -19,8 +19,10 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const value = useMemo(() => ({ userData, fetchUserData }), [userData]);
+
   return (
-    <UserContext.Provider value={{ userData, fetchUserData }}>
+    <UserContext.Provider value={value}>
       {children}
     </UserContext.Provider>
   );

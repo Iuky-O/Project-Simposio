@@ -300,7 +300,7 @@ const Register = () => {
                                     </div>
 
                                     <div>
-                                        <label htmlFor="vinculo">Vínculo (Instituição ou Empresa):</label>
+                                        <label htmlFor="vinculo">Vínculo:</label>
                                         <div className="input-group">
                                             <input
                                                 type="text"
@@ -397,8 +397,8 @@ const Register = () => {
                                         Próximo
                                     </button>
                                 ) : (
-                                    <button type="button" onClick={addLoginUser}>
-                                        Finalizar Cadastro
+                                    <button type="submit" onClick={addLoginUser}>
+                                        Cadastrar
                                     </button>
                                 )}
                             </div>

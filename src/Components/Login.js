@@ -101,7 +101,7 @@ const Login = () => {
                       required
                       className={loginError ? 'input-error' : ''}
                     />
-                    <span className="eye-icon" onClick={togglePasswordVisibility}>
+                    <span className="eye-icon" onClick={togglePasswordVisibility} data-testid="toggle-password-visibility">
                       {showPassword ? <FaEyeSlash /> : <FaEye />}
                     </span>
                   </div>
