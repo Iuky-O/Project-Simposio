@@ -11,7 +11,8 @@ import Groups3Icon from '@mui/icons-material/Groups3';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
 import LogoutIcon from '@mui/icons-material/Logout';
-import { AuthContext } from "../Scripts/AuthContext"; 
+import { AuthContext } from "../Scripts/AuthContext";
+import { SiCodenewbie } from "react-icons/si";
 
 const Navbar = () => {
     const [openMenu, setOpenMenu] = useState(false);
@@ -105,7 +106,7 @@ const Navbar = () => {
         <nav className="header">
             <div className="nav-logo-container">
                 <Link to="/" className="logo">
-                    Logo
+                    <SiCodenewbie style={{ fontSize: '5rem', color: 'var(--Primary-Color)' }} />
                 </Link>
             </div>
             <div className="navbar-links-container">

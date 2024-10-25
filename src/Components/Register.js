@@ -300,7 +300,7 @@ const Register = () => {
                                     </div>
 
                                     <div>
-                                        <label htmlFor="vinculo">Vínculo (Instituição ou Empresa):</label>
+                                        <label htmlFor="vinculo">Vínculo:</label>
                                         <div className="input-group">
                                             <input
                                                 type="text"
@@ -397,8 +397,8 @@ const Register = () => {
                                         Próximo
                                     </button>
                                 ) : (
-                                    <button type="button" onClick={addLoginUser}>
-                                        Finalizar Cadastro
+                                    <button type="submit" onClick={addLoginUser}>
+                                        Cadastrar
                                     </button>
                                 )}
                             </div>
@@ -412,85 +412,3 @@ const Register = () => {
 
 export default Register;
 
-
-
-    /*
-    const validateFields = () => {
-        const requiredFields = [
-            "nome", "sobrenome", "email", "numero",
-            "pais", "estado", "cidade", "tipoUsuario",
-            "vinculo", "escolaridade", "sexo", "password"
-        ];
-        for (let field of requiredFields) {
-            if (!formData[field]) {
-                alert("Por favor, preencha todos os campos obrigatórios.");
-                return false;
-            }
-        }
-        return true;
-    };
-
-    async function createUsers() {
-        if (!validateFields()) {
-            return;
-        }
-
-        const apiData = {
-            name: formData.nome,
-            lastName: formData.sobrenome,
-            email: formData.email,
-            phoneNumber: formData.numero,
-            address: {
-                country: formData.pais,
-                city: formData.cidade,
-                state: formData.estado,
-            },
-            role: formData.tipoUsuario,
-            institution: formData.vinculo,
-            educationLevel: formData.escolaridade,
-            gender: formData.sexo,
-            socialName: formData.nomeSocial,
-            password: formData.password,
-        };
-
-        try {
-            const response = await fetch('http://127.0.0.1:5001/simposio/us-central1/api/add-users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(apiData),
-            });
-
-            if (!response.ok) {
-                const errorText = await response.text();
-                console.error("Erro na resposta:", errorText);
-                throw new Error(`Erro: ${response.status} ${response.statusText}`);
-            }
-
-            const result = await response.json();
-            setFormData({
-                nome: "",
-                sobrenome: "",
-                email: "",
-                numero: "",
-                pais: "",
-                estado: "",
-                cidade: "",
-                tipoUsuario: "",
-                vinculo: "",
-                escolaridade: "",
-                sexo: "",
-                nomeSocial: "",
-                password: "",
-            });
-
-            alert('Cadastro realizado com sucesso!');
-            navigate('/login'); // Redireciona para a tela de login
-        } catch (error) {
-            alert('Erro ao realizar o cadastro. Verifique o console para mais detalhes.');
-            console.error(error);
-        }
-    }
-
-    */
