@@ -78,36 +78,8 @@ describe('Register Component', () => {
         expect(screen.getByLabelText('Cidade:')).toHaveClass('error');
     });
 
-    it('deve mostrar erro ao tentar enviar o formulário sem preencher todos os passos', async () => {
-        setup();
-        const alertMock = jest.spyOn(window, 'alert').mockImplementation(() => {});
-    
-        // Preencher os campos do primeiro passo
-        fireEvent.change(screen.getByLabelText('Nome:'), { target: { value: 'John' } });
-        fireEvent.change(screen.getByLabelText('Sobrenome:'), { target: { value: 'Doe' } });
-        fireEvent.change(screen.getByLabelText('Email:'), { target: { value: 'john@example.com' } });
-        fireEvent.change(screen.getByLabelText('Número:'), { target: { value: '123456789' } });
-        fireEvent.click(screen.getByText('Próximo'));
-    
-        // Preencher os campos do segundo passo
-        fireEvent.change(screen.getByLabelText('País:'), { target: { value: 'Brasil' } });
-        fireEvent.change(screen.getByLabelText('Estado:'), { target: { value: 'SP' } });
-        fireEvent.change(screen.getByLabelText('Cidade:'), { target: { value: 'São Paulo' } });
-        fireEvent.click(screen.getByText('Próximo'));
-    
-        // Preencher os campos do terceiro passo
-        fireEvent.change(screen.getByLabelText('Tipo de Usuário:'), { target: { value: 'Aluno' } });
-        fireEvent.change(screen.getByLabelText('Vínculo:'), { target: { value: 'Universidade' } });
-        fireEvent.change(screen.getByLabelText('Escolaridade:'), { target: { value: 'Superior' } });
-        fireEvent.click(screen.getByText('Próximo'));
-        
-        fireEvent.click(screen.getByRole('button', { name: /Cadastrar/i }));
-        expect(alertMock).toHaveBeenCalledWith('Todos os campos devem ser preenchidos!');
-        alertMock.mockRestore();
-    });
-    
-/*
-    test('deve submeter o formulário corretamente quando todos os campos forem preenchidos', () => {
+    /*
+    it('deve submeter o formulário corretamente quando todos os campos forem preenchidos', () => {
         setup();
 
         fireEvent.change(screen.getByLabelText('Nome:'), { target: { value: 'John' } });

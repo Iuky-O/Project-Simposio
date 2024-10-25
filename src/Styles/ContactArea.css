@@ -14,7 +14,7 @@
 }
 
 .contact-area p {
-    color: #9C061F;
+    color: var(--Primary-Color);
     text-align: center;
     font-size: clamp(1rem, 2vw, 1.4rem);
     padding: 5px;
@@ -58,13 +58,13 @@
 
 .contact-icon {
     font-size: 50px;
-    color: #9C061F;
+    color: var(--Primary-Color);
     margin-bottom: 1rem;
 }
 
 .contact-card h2 {
     font-size: 1.8rem;
-    color: #9C061F;
+    color: var(--Primary-Color);
     margin-bottom: 1rem;
 }
 

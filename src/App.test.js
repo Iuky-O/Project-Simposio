@@ -2,12 +2,13 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import Login from './Components/Login';
-import { UserContext } from "./Scripts/UserContext";
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useAuth } from "./Scripts/AuthContext";
 
-jest.mock('firebase/auth');
+jest.mock('./Scripts/AuthContext', () => ({
+  useAuth: jest.fn()
+}));
 
-const mockFetchUserData = jest.fn();
+const mockLogin = jest.fn();
 const mockNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -16,12 +17,11 @@ jest.mock('react-router-dom', () => ({
 
 describe('Login Component', () => {
   beforeEach(() => {
+    useAuth.mockReturnValue({ login: mockLogin });
     render(
-      <UserContext.Provider value={{ fetchUserData: mockFetchUserData }}>
-        <BrowserRouter>
-          <Login />
-        </BrowserRouter>
-      </UserContext.Provider>
+      <BrowserRouter>
+        <Login />
+      </BrowserRouter>
     );
   });
 
@@ -45,7 +45,7 @@ describe('Login Component', () => {
   });
 
   it('Deve exibir erro ao realizar login com credenciais inválidas', async () => {
-    signInWithEmailAndPassword.mockRejectedValueOnce(new Error('Erro ao efetuar login! Email ou Senha está errado!'));
+    mockLogin.mockRejectedValueOnce(new Error('Erro ao efetuar login! Email ou Senha está errado!'));
     fireEvent.change(screen.getByPlaceholderText(/Email/i), { target: { value: 'email@invalido.com' } });
     fireEvent.change(screen.getByPlaceholderText(/Password/i), { target: { value: 'senhaerrada' } });
     fireEvent.submit(screen.getByRole('button', { name: /Login/i }));
@@ -56,19 +56,13 @@ describe('Login Component', () => {
   });
 
   it('Deve redirecionar para a página home após login bem-sucedido', async () => {
-    signInWithEmailAndPassword.mockResolvedValueOnce({
-      user: { email: 'usuario@valido.com' }
-    });
+    mockLogin.mockResolvedValueOnce({ success: true });
     fireEvent.change(screen.getByPlaceholderText(/Email/i), { target: { value: 'usuario@valido.com' } });
     fireEvent.change(screen.getByPlaceholderText(/Password/i), { target: { value: 'senhaValida' } });
     fireEvent.submit(screen.getByRole('button', { name: /Login/i }));
 
     await waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalledWith('/home2');
-      expect(mockFetchUserData).toHaveBeenCalledWith('usuario@valido.com');
+      expect(mockNavigate).toHaveBeenCalledWith('/');
     });
   });
-    
-})
-
-export default {}
+});
