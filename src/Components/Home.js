@@ -18,7 +18,7 @@ const Home = () => {
                     <p className="primary-text">
                         Embarque nessa jornada com a gente!
                     </p>
-                    <Link to="/enrollment2" className="btn">
+                    <Link to="/enrollment2" className="btnI">
                         <div className="info-btn">
                             <h5>Inscreva-se</h5>
 

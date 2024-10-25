@@ -105,7 +105,7 @@ const Navbar = () => {
     return (
         <nav className="header">
             <div className="nav-logo-container">
-                <Link to="/" className="logo">
+                <Link to="/" className="logoNav">
                     <SiCodenewbie style={{ fontSize: '5rem', color: 'var(--Primary-Color)' }} />
                 </Link>
             </div>
