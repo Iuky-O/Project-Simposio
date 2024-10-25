@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../../Styles/EnrollmentArea.css';
+import '../Styles/EnrollmentArea.css';
 
 const EnrollmentArea = () => {
   const navigate = useNavigate(); 

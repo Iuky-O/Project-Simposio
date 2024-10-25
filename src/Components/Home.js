@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 const Home = () => {
     return (
         <div className="home">
-
             <div className="home-banner-container">
 
                 <div className="home-text-section">
@@ -19,7 +18,7 @@ const Home = () => {
                     <p className="primary-text">
                         Embarque nessa jornada com a gente!
                     </p>
-                    <Link to="/enrollment" className="btn">
+                    <Link to="/enrollment2" className="btn">
                         <div className="info-btn">
                             <h5>Inscreva-se</h5>
 
