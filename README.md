@@ -18,7 +18,7 @@ O sistema é feito com React no front-end, para isso foram utilizados: Hooks, Co
 # Executando o Projeto
 ### Comece clonando o repositório para sua máquina, usando
 ```
-$ git clone https://github.com/IanFranco7/miniblog
+$ git clone https://github.com/leh826/Project-Simposio
 ```
 ### Após isso, vá até a pasta do projeto
 ```
