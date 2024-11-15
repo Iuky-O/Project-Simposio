@@ -5,8 +5,12 @@ import Image1 from "../Assets/Fundo-Açai.jpeg"
 import Image2 from "../Assets/Fundo-Guaraná.jpeg"
 import { BsArrowRightCircleFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
-///enrollment2
+import { useAuth} from "../Scripts/AuthContext";
+
+///enrollment2 - article
 const Home = () => {
+    const { user } = useAuth();
+
     return (
         <div className="home">
             <div className="home-banner-container">
@@ -19,14 +23,21 @@ const Home = () => {
                         Embarque nessa jornada com a gente!
                     </p>
                     
-                    <Link to="/article" className="btnI"> 
-                        <div className="info-btn">
-                            <h5>Inscreva-se</h5>
-
-                            <BsArrowRightCircleFill />
-                        </div>
-
-                    </Link>
+                    {user ? (
+                        <Link to="/article" className="btnI"> 
+                            <div className="info-btn">
+                                <h5>Submeta um Artigo</h5>
+                                <BsArrowRightCircleFill />
+                            </div>
+                        </Link>
+                    ) : (
+                        <Link to="/enrollment2" className="btnI">
+                            <div className="info-btn">
+                                <h5>Inscreva-se</h5>
+                                <BsArrowRightCircleFill />
+                            </div>
+                        </Link>
+                    )}
 
                 </div>
                 <div className="home-image-section">

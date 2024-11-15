@@ -55,6 +55,18 @@ label {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: -100px;
+}
+
+.text-details{
+    margin-top: 50px;
+    text-align: start;
+}
+
+.required{
+    color: red;
+    font-weight: bold;
+    margin-left: 5px;
 }
 
 .details-image img {
@@ -68,7 +80,6 @@ label {
     font-size: 1.2rem;
     text-align: center;
     padding: 0 20px;
-    color: #ffffff;
 }
 
 .section-content {
