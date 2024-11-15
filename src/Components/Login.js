@@ -41,9 +41,9 @@ const Login = () => {
       if (response.success) {
         setAttempts(0);
         navigate('/'); 
-      } else {
-        throw new Error(response.message);
-      }
+      } //else {
+       // throw new Error(response.message);
+     // }
     } catch (error) {
       setError(error.message || "Erro ao efetuar login! Email ou Senha está errado!");
       setAttempts(prevAttempts => prevAttempts + 1);

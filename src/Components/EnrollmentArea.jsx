@@ -10,7 +10,7 @@ const EnrollmentArea = () => {
   };
 
   const calculateTimeLeft = () => {
-    const difference = +new Date('2024-10-21') - +new Date();
+    const difference = +new Date('2024-10-30') - +new Date();
     let timeLeft = {};
 
     if (difference > 0) {

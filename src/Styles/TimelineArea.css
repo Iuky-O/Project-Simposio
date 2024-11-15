@@ -1,18 +1,17 @@
 @import url();
-
 .timeline-area {
-  max-width: 100vw;
-  max-height: 100vh;
   margin: 20px auto;
   text-align: center;
   padding-top: 5rem;
   overflow: hidden; /* Garante que nada saia da tela */
   position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-.title {
+.title h1 {
   margin-bottom: 20px; 
-  font-size: 3rem;
+  font-size: 4rem;
   padding-bottom: 2rem;
   font-weight: bold;
   text-align: center;
@@ -24,7 +23,7 @@
     justify-content: center; /* Centraliza os itens da timeline */
     flex-wrap: wrap; /* Permite que os itens se ajustem na linha seguinte */
     margin-bottom: 20px;
-    gap: 15px; /* Controla o espaçamento entre os itens */
+    gap: 20px; /* Controla o espaçamento entre os itens */
     position: relative; /* Permite que a linha seja posicionada dentro desse container */
   }
 
@@ -48,9 +47,9 @@
   }
 
 .day {
-  width: 50px; /* Aumentei o tamanho das bolinhas para dar mais espaço */
+  width: 100px; /* Aumentei o tamanho das bolinhas para dar mais espaço */
   height: 50px; 
-  border-radius: 50%;
+  border-radius: 8rem;
   border: 2px solid #471A3D; /* Adiciona a borda com a cor desejada */
   background-color: transparent; /* Fundo transparente quando inativo */
   display: flex;
@@ -69,13 +68,13 @@
 }
 
 .details {
-    background: #f7f7f7; /* Fundo claro para detalhes */
-    padding: 15px; 
-    border-radius: 5px;
+    background: #f7f7f7; /* Fundo claro para detalhes */  
+    padding: 10px; 
+    border-radius: 10px;
     max-width: 70vw;
     margin: 0 auto; 
     color: #333; /* Texto em cor escura para melhor leitura */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidade */
+    box-shadow: 0 15px 10px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidade */
   }
 
 #diaaaa {
@@ -85,10 +84,10 @@
 .container_info_pc {
     margin: 10px 0;
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(5, 1fr); 
     border: 1px solid var(--Primary-Type-2); 
     border-radius: 5px;
-    padding: 15px; 
+    padding: 12px; 
     background-color: #ffffff; /* Fundo branco para informações */
   }
 
