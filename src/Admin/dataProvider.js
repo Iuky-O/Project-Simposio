@@ -1,64 +1,29 @@
-import { collection, query, getDocs, updateDoc, doc, getDoc, addDoc, deleteDoc } from "firebase/firestore";
-import { db } from '../Firebase/firebaseConfig';
+import { FirebaseDataProvider } from 'react-admin-firebase';
 
-const DataProvider = {
-    getList: async (resource, params) => {
-        const collectionRef = collection(db, resource);
-        const q = query(collectionRef);
-        
-        try {
-          const querySnapshot = await getDocs(q);
-          const data = querySnapshot.docs.map(doc => ({
-            id: doc.id,  
-            ...doc.data(),
-          }));
-      
-          console.log("Dados de users:", data);
-      
-          return {
-            data,
-            total: querySnapshot.size,
-          };
-        } catch (error) {
-          console.error("Erro ao buscar users:", error);
-          throw new Error("Erro ao buscar users");
-        }
-      },
-      
-
-  getOne: async (resource, params) => {
-    const docRef = doc(db, resource, params.id);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      return {
-        data: { id: docSnap.id, ...docSnap.data() },
-      };
-    }
-    throw new Error("Documento não encontrado");
-  },
-
-  create: async (resource, params) => {
-    const docRef = await addDoc(collection(db, resource), params.data);
-    return {
-      data: { ...params.data, id: docRef.id },
-    };
-  },
-
-  update: async (resource, params) => {
-    const docRef = doc(db, resource, params.id);
-    await updateDoc(docRef, params.data);
-    return {
-      data: { ...params.data, id: params.id },
-    };
-  },
-
-  delete: async (resource, params) => {
-    const docRef = doc(db, resource, params.id);
-    await deleteDoc(docRef);
-    return {
-      data: { id: params.id },
-    };
-  },
+const config = {
+  apiKey: "AIzaSyCpoD20CDvD9li8Ky_ULRRfXbotqg33CQo",
+  authDomain: "simposio-df298.firebaseapp.com",
+  databaseURL: "https://simposio-df298.firebaseio.com",
+  projectId: "simposio-df298",
+  storageBucket: "simposio-df298.appspot.com",
+  messagingSenderId: "518927230386",
+  appId: "1:518927230386:web:6febb33ebb93c277f970ab",
 };
 
-export default DataProvider;
+const options = {
+  logging: true,  // Log para depuração
+  persistence: 'session',  // Persistência da autenticação
+  softDelete: true,  // Deleção suave (não exclui permanentemente)
+  renameMetaFields: {
+    created_at: 'my_created_at',
+    created_by: 'my_created_by',
+    updated_at: 'my_updated_at',
+    updated_by: 'my_updated_by',
+  },
+  lazyLoading: { enabled: false },  // Desabilitando carregamento preguiçoso
+  transformToDb: (resourceName, documentData, documentId) => documentData,  // Não transforma dados antes de salvar
+};
+
+const dataProvider = FirebaseDataProvider(config, options);
+
+export { dataProvider };
