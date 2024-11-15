@@ -5,7 +5,7 @@ import Image1 from "../Assets/Fundo-Açai.jpeg"
 import Image2 from "../Assets/Fundo-Guaraná.jpeg"
 import { BsArrowRightCircleFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
-
+///enrollment2
 const Home = () => {
     return (
         <div className="home">
@@ -18,7 +18,8 @@ const Home = () => {
                     <p className="primary-text">
                         Embarque nessa jornada com a gente!
                     </p>
-                    <Link to="/enrollment2" className="btnI">
+                    
+                    <Link to="/article" className="btnI"> 
                         <div className="info-btn">
                             <h5>Inscreva-se</h5>
 

@@ -16,6 +16,7 @@ import Register from './Register';
 import Userpage from './UserPage';
 import Login from './Login';
 import Admin from '../Admin/AdminArea'
+import Article from "../Components/Article"
 import EnrollmentArea2 from './EnrollmentArea2';
 import { AuthContext } from '../Scripts/AuthContext';
 
@@ -44,6 +45,8 @@ function RoutesComponet() {
       <Route path="/login" element={<Login />} />
       <Route path="/user" element={<PrivateRoute><Userpage /></PrivateRoute>} />
       <Route path="/adm" element={<PrivateRoute><Admin /></PrivateRoute>} />
+      <Route path="/article" element={<Article/>} //depois adicionar o </PrivateRoute>
+      />
 
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
