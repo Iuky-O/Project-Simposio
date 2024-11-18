@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import Register from './Components/Register';  
+import Register from './Components/Register'; 
 import { BrowserRouter as Router } from 'react-router-dom';
 
 describe('Register Component', () => {

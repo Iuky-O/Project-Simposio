@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Styles/ArticleStyles.css";
 import { SiCodenewbie } from "react-icons/si";
+import { GrClose } from "react-icons/gr";
 import { useAuth } from "../Scripts/AuthContext";
 import { salvarArtigoNoFirestore } from "../functions/firebaseFileHandler";
 import { Link } from 'react-router-dom';
@@ -32,8 +33,10 @@ const Article = () => {
                 autores: [...formData.autores, authorInput],
             });
             setAuthorInput("");
+            setErrorFields((prevErrors) => ({ ...prevErrors, autores: false }));
         }
     };
+    
 
     const handleAuthorInputChange = (e) => {
         setAuthorInput(e.target.value);
@@ -58,6 +61,16 @@ const Article = () => {
         }
     };
 
+    const validateForm = () => {
+        const errors = {};
+        if (!formData.titulo.trim()) errors.titulo = true;
+        if (formData.autores.length === 0) errors.autores = true;
+        if (!formData.resumo.trim()) errors.resumo = true;
+        if (!formData.arquivo) errors.arquivo = true;
+        setErrorFields(errors);
+        return Object.keys(errors).length === 0;
+    };
+
     const addArticle = async (e) => {
         e.preventDefault();
 
@@ -67,6 +80,10 @@ const Article = () => {
         }
         if (!user) {
             alert("Você precisa estar logado para submeter um artigo!");
+            return;
+        }
+        if (!validateForm()) {
+            alert("Por favor, preencha todos os campos obrigatórios!");
             return;
         }
 
@@ -110,7 +127,7 @@ const Article = () => {
 
                     <div className="section-content">
                         <form className="form-article" onSubmit={addArticle}>
-                            <h1>Cadastro de Artigo</h1>
+                            <h1></h1>
 
                             <div>
                                 <label htmlFor="titulo">
@@ -138,6 +155,7 @@ const Article = () => {
                                     <input
                                         type="text"
                                         id="authorInput"
+                                        className={`input-group ${errorFields.autores ? "error" : ""}`}
                                         value={authorInput}
                                         onChange={handleAuthorInputChange}
                                         placeholder="Digite o nome dos autores e clique em adicionar."
@@ -165,7 +183,7 @@ const Article = () => {
                                                     cursor: 'pointer'
                                                 }}
                                             >
-                                                ✖
+                                                <GrClose style={{color:'black'}}/>
                                             </button>
                                         </li>
                                     ))}
@@ -209,9 +227,12 @@ const Article = () => {
                                 </div>
                             </div>
                             
-                            <button type="submit">
-                                Submeter
-                            </button>
+                            <div className="navigation-submit">
+                                <button type="submit" className="btn-article">
+                                    Submeter
+                                </button>
+                            </div>
+                            
                         </form>
                     </div>
                 </div>
