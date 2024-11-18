@@ -1,19 +1,26 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import {AuthProvider}  from "./Scripts/AuthContext";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './Scripts/AuthContext';
 import Navbar from './Components/Navbar';
-import RoutesComponent from './Components/RoutesComponet'; 
+import RoutesComponent from './Components/RoutesComponet';
 import Authenticator from './hook/Authenticator';
-import Submite from './Components/SubmiteTimelineArea';
+import AdminArea from './Admin/AdminArea'; // Importando o React Admin
 
 function App() {
   return (
     <div className="App">
-     <AuthProvider>
+      <AuthProvider>
         <Authenticator>
           <Router>
-            <Navbar />
-            <RoutesComponent />
+            {/* Rotas Gerais */}
+            <Routes>
+              <Route path="/*" element={<><Navbar /><RoutesComponent /></>} />
+            </Routes>
+
+            {/* Isolando o React Admin */}
+            <Routes>
+              <Route path="/admin/*" element={<AdminArea />} />
+            </Routes>
           </Router>
         </Authenticator>
       </AuthProvider>
@@ -22,6 +29,7 @@ function App() {
 }
 
 export default App;
+
 /*
  <Router>
     <Submite/>

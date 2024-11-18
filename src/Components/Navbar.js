@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import "../Styles/NavBarStyles.css";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import { Box, Drawer, ListItem, ListItemButton, ListItemIcon, ListItemText, Divider, List } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
@@ -17,11 +17,19 @@ import { SiCodenewbie } from "react-icons/si";
 const Navbar = () => {
     const [openMenu, setOpenMenu] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
     const { user, logout } = useContext(AuthContext);
 
     useEffect(() => {
         console.log("Usuário no Navbar:", user);
     }, [user]);
+
+    const isAdminPage = location.pathname.startsWith("/adm") || location.pathname.startsWith("/users") || location.pathname.startsWith("/dashboard");
+
+    if (isAdminPage) {
+        return null;
+    }
+
 
     const menuOptions = [
         {

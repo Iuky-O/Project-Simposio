@@ -7,3 +7,5 @@ export const Dashboard = () => (
         <CardContent>Essa é a Dashboard do administrador</CardContent>
     </Card>
 );
+
+export default Dashboard;

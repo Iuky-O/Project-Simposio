@@ -13,7 +13,7 @@ const config = {
 const options = {
   logging: true,  // Log para depuração
   persistence: 'session',  // Persistência da autenticação
-  softDelete: true,  // Deleção suave (não exclui permanentemente)
+  softDelete: false,  // Deleção suave (não exclui permanentemente)
   renameMetaFields: {
     created_at: 'my_created_at',
     created_by: 'my_created_by',
