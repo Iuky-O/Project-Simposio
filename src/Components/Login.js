@@ -37,6 +37,7 @@ const Login = () => {
     if (!email || !password) {
       if (!email) setEmailError(true);
       if (!password) setPasswordError(true);
+      alert('Todos os campos devem ser preenchidos!');
       setError('Todos os campos devem ser preenchidos!');
       return;
     }
@@ -53,10 +54,10 @@ const Login = () => {
       const response = await login(email, password);
       if (response.success) {
         setAttempts(0);
-        navigate('/'); 
-      } 
+        navigate('/');
+      }
     } catch (error) {
-      setError(error.message || "Erro ao efetuar login! Email ou Senha está errado!");
+      setError("Erro ao efetuar login! Email ou Senha está errado!");
       setAttempts((prevAttempts) => prevAttempts + 1);
     } finally {
       setLoading(false);
@@ -99,7 +100,7 @@ const Login = () => {
                       onChange={(e) => setPassword(e.target.value)}
                       className={passwordError ? 'input-error' : ''}
                     />
-                    <span className="eye-icon" onClick={togglePasswordVisibility}>
+                    <span className="eye-icon" onClick={togglePasswordVisibility} data-testid="toggle-password-visibility">
                       {showPassword ? <FaEyeSlash /> : <FaEye />}
                     </span>
                   </div>
