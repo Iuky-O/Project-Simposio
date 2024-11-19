@@ -9,7 +9,16 @@ import Submite from './Components/SubmiteTimelineArea';
 function App() {
   return (
     <div className="App">
-     <AuthProvider>
+      <Router>
+        <Submite/>
+      </Router>
+    </div>
+  );
+}
+
+export default App;
+/*
+<AuthProvider>
         <Authenticator>
           <Router>
             <Navbar />
@@ -17,13 +26,5 @@ function App() {
           </Router>
         </Authenticator>
       </AuthProvider>
-    </div>
-  );
-}
 
-export default App;
-/*
- <Router>
-    <Submite/>
-  </Router>
 */
