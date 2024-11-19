@@ -5,7 +5,7 @@ import Image2 from "../Assets/Fundo-Guaraná.jpeg";
 import Image3 from "../Assets/Tucano.jpg";
 
 const About = () => {
-  const [step, setStep] = useState(0); // Controla o estado da etapa atual
+  const [step, setStep] = useState(0);
   const sections = [
     {
       title: "Sobre o Evento",
@@ -37,6 +37,10 @@ const About = () => {
     setStep((prevStep) => (prevStep + 1) % sections.length); // Volta ao início
   };
 
+  const handlePreviousStep = () => {
+    setStep((prevStep) => (prevStep - 1 + sections.length) % sections.length); // Volta para o passo anterior
+  };
+  
   // Avança automaticamente a cada 10 segundos
   useEffect(() => {
     const interval = setInterval(() => {
@@ -71,9 +75,15 @@ const About = () => {
                 ></span>
               ))}
             </div>
-            <button onClick={handleNextStep} className="btn-prosseguir">
-              Prosseguir
-            </button>
+            <div className="Buttons-next">
+                <button onClick={handlePreviousStep} className="btn-prosseguir">
+                Voltar
+                </button>
+
+                <button onClick={handleNextStep} className="btn-prosseguir">
+                Prosseguir
+                </button>
+            </div>
           </div>
         </div>
       </div>
