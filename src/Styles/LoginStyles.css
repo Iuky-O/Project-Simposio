@@ -6,6 +6,17 @@
     justify-content: center;
 }
 
+.input-error {
+    border: 2px solid red;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+
+  
 .container-login {
     margin-top: 2rem;
     width: 100%;

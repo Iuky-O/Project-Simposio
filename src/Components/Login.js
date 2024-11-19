@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import "../Styles/LoginStyles.css";
 import { SiCodenewbie } from "react-icons/si";
@@ -15,6 +15,10 @@ const Login = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  // Novos estados para controlar erros nos campos
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -25,10 +29,20 @@ const Login = () => {
   const userLogin = async (e) => {
     e.preventDefault();
 
-    if (email === '' || password === '') {
+    // Resetando os erros
+    setEmailError(false);
+    setPasswordError(false);
+
+    // Validação dos campos
+    if (!email || !password) {
+      if (!email) setEmailError(true);
+      if (!password) setPasswordError(true);
       alert('Todos os campos devem ser preenchidos!');
+      setError('Todos os campos devem ser preenchidos!');
       return;
-    } else if (attempts >= MAX_ATTEMPTS) {
+    }
+
+    if (attempts >= MAX_ATTEMPTS) {
       alert('Você atingiu o número máximo de tentativas. Tente novamente mais tarde.');
       return;
     }
@@ -40,13 +54,11 @@ const Login = () => {
       const response = await login(email, password);
       if (response.success) {
         setAttempts(0);
-        navigate('/'); 
-      } //else {
-       // throw new Error(response.message);
-     // }
+        navigate('/');
+      }
     } catch (error) {
-      setError(error.message || "Erro ao efetuar login! Email ou Senha está errado!");
-      setAttempts(prevAttempts => prevAttempts + 1);
+      setError("Erro ao efetuar login! Email ou Senha está errado!");
+      setAttempts((prevAttempts) => prevAttempts + 1);
     } finally {
       setLoading(false);
     }
@@ -74,8 +86,7 @@ const Login = () => {
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className={error ? 'input-error' : ''}
+                    className={emailError ? 'input-error' : ''}
                   />
                 </div>
                 <div className="input-group-login">
@@ -87,8 +98,7 @@ const Login = () => {
                       placeholder="Password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      required
-                      className={error ? 'input-error' : ''}
+                      className={passwordError ? 'input-error' : ''}
                     />
                     <span className="eye-icon" onClick={togglePasswordVisibility} data-testid="toggle-password-visibility">
                       {showPassword ? <FaEyeSlash /> : <FaEye />}

@@ -44,9 +44,11 @@ function RoutesComponet() {
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/user" element={<PrivateRoute><Userpage /></PrivateRoute>} />
-      <Route path="/adm" element={<PrivateRoute><Admin /></PrivateRoute>} />
       <Route path="/article" element={<Article/>} //depois adicionar o </PrivateRoute>
       />
+
+      <Route path="/admin/*" element={<Admin />}//depois adicionar o </PrivateRoute> porque esta com problema
+      /> 
 
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
