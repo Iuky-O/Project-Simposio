@@ -1,82 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../Styles/TimelineArea.css';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
-
-const programa = [
-  {
-    dia: 'DIA 1',
-    dia_desc: 'Segunda-feira',
-    data: '21/10/2024',
-    palestra_1_horario: '17:00 PM',
-    palestra_1_local: 'UEPA',
-    palestra_1: 'Inteligência Artificial e Machine Learning no Desenvolvimento de Software',
-    palestra_2_horario: '18:00 PM',
-    palestra_2_local: 'UEPA',
-    palestra_2: 'DevOps: Cultura e Ferramentas',
-    curso_horario: '18:00 PM',
-    curso_local: 'Online via Meet',
-    curso: 'Introdução a robótica',
-  },
-  {
-    dia: 'DIA 2',
-    dia_desc: 'Terça-feira',
-    data: '22/10/2024',
-    palestra_1_horario: '17:00 PM',
-    palestra_1_local: 'UEPA',
-    palestra_1: 'Microservices e Arquitetura Orientada a Serviços',
-    palestra_2_horario: '18:00 PM',
-    palestra_2_local: 'UEPA',
-    palestra_2: 'Tendências em Desenvolvimento Mobile',
-    curso_horario: '',
-    curso_local: '',
-    curso: '',
-  },
-  {
-    dia: 'DIA 3',
-    dia_desc: 'Quarta-feira',
-    data: '23/10/2024',
-    palestra_1_horario: '17:00 PM',
-    palestra_1_local: 'UEPA',
-    palestra_1: 'Automação de Testes de Software',
-    palestra_2_horario: '18:00 PM',
-    palestra_2_local: 'UEPA',
-    palestra_2: 'Cloud Computing: A Jornada para a Escalabilidade e Redução de Custos',
-    curso_horario: '18:00 PM',
-    curso_local: 'Online via Meet',
-    curso: 'Testes Automatizados com Python',
-  },
-  {
-    dia: 'DIA 4',
-    dia_desc: 'Quinta-feira',
-    data: '24/10/2024',
-    palestra_1_horario: '17:00 PM',
-    palestra_1_local: 'UEPA',
-    palestra_1: 'Programação Funcional vs. Programação Orientada a Objetos',
-    palestra_2_horario: '18:00 PM',
-    palestra_2_local: 'UEPA',
-    palestra_2: 'Segurança em Aplicações Web: Protegendo seus Sistemas Contra Ameaças Atuais',
-    curso_horario: '18:00 PM',
-    curso_local: 'Online via Meet',
-    curso: 'Segurança em Aplicações Web na Prática',
-  },
-  {
-    dia: 'DIA 5',
-    dia_desc: 'Sexta-feira',
-    data: '25/10/2024',
-    palestra_1_horario: '17:00 PM',
-    palestra_1_local: 'UEPA',
-    palestra_1: 'Caminhos de Carreira na Engenharia de Software',
-    palestra_2_horario: '',
-    palestra_2_local: '',
-    palestra_2: '',
-    curso_horario: '18:00 PM',
-    curso_local: 'Online via Meet',
-    curso: 'Preparação para Entrevistas Técnicas',
-  }
-];
+import { db } from '../Firebase/firebaseConfig';
+import { collection, getDocs } from 'firebase/firestore';
 
 const TimelineArea = () => {
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Meses começam em 0
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
+  
+  const [programa, setPrograma] = useState([]);
   const [activeDay, setActiveDay] = useState(0);
+
+  const fetchCronograma = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, 'cronograma'));
+      const data = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      // Ordenar os documentos pelo ID (se necessário)
+      data.sort((a, b) => a.id.localeCompare(b.id));
+      setPrograma(data);
+    } catch (error) {
+      console.error('Erro ao buscar cronograma:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCronograma();
+  }, []);
 
   const handleDayClick = (index) => {
     setActiveDay(index);
@@ -90,9 +49,13 @@ const TimelineArea = () => {
     setActiveDay((prev) => (prev - 1 + programa.length) % programa.length);
   };
 
+  if (programa.length === 0) {
+    return <div className="timeline-area">Carregando...</div>;
+  }
+
   return (
     <div className="timeline-area">
-      <div className='title'>
+      <div className="title">
         <h1>Programação</h1>
       </div>
       <div className="timeline">
@@ -102,10 +65,10 @@ const TimelineArea = () => {
         {programa.map((item, index) => (
           <div
             key={index}
-            className={`day ${activeDay === index ? 'active' : ''}`}
+            className={`day ${activeDay === index ? "active" : ""}`}
             onClick={() => handleDayClick(index)}
           >
-            {item.dia}
+            {`Dia ${item.id}`}
           </div>
         ))}
         <button className="arrow" onClick={handleNextDay}>
@@ -113,37 +76,23 @@ const TimelineArea = () => {
         </button>
       </div>
       <div className="details">
-        <div className='container-dia'>
-          <h2>{programa[activeDay].dia}</h2>
-          <h2>{programa[activeDay].dia_desc}</h2>
-          <h2>({programa[activeDay].data})</h2>
+        <div className="container-dia">
+          <h2>DIA {programa[activeDay].id}</h2>
+          <h2>{programa[activeDay].dia_desc || "Descrição do Dia"}</h2>
+          <h2>({formatDate(programa[activeDay].data)})</h2>
         </div>
-        
-        <div className='container_info_pc'>
-          <p className='text-palestra'>Palestra</p>
-          <p className='text-infoo'>{programa[activeDay].palestra_1_horario}</p>
-          <p className='text-principal'>{programa[activeDay].palestra_1}</p>
-          <p className='text-infoo'>({programa[activeDay].palestra_1_local})</p>
-        </div>
-        {programa[activeDay].palestra_2 && (
-          <div className='container_info_pc'>
-            <p className='text-palestra'>Palestra</p>
-            <p className='text-infoo'>{programa[activeDay].palestra_2_horario}</p>
-            <p className='text-principal'>{programa[activeDay].palestra_2}</p>
-            <p className='text-infoo'>({programa[activeDay].palestra_2_local})</p>
+  
+        {programa[activeDay].atividades.map((atividade, index) => (
+          <div key={index} className="container_info_pc">
+            <p className={`text-${atividade.tipo}`}>{atividade.tipo}</p>
+            <p className="text-infoo">{atividade.horario}</p>
+            <p className="text-principal">{atividade.titulo}</p>
+            <p className="text-infoo">({atividade.local})</p>
           </div>
-        )}
-        {programa[activeDay].curso && (
-          <div className='container_info_pc'>
-            <p className='text-curso'>Curso</p>
-            <p className='text-infoo'>{programa[activeDay].curso_horario}</p>
-            <p className='text-principal'>{programa[activeDay].curso}</p>
-            <p className='text-infoo'>({programa[activeDay].curso_local})</p>
-          </div>
-        )}
+        ))}
       </div>
     </div>
-  );
-};
+  );  
+};  
 
 export default TimelineArea;

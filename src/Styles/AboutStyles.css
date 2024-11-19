@@ -78,6 +78,12 @@
   line-height: 1.5;
 }
 
+.Buttons-next{
+  display: flex;
+  justify-content: space-between; 
+  width: 100%;
+}
+
 /* Botão fixado na parte inferior */
 .btn-prosseguir {
   margin-top: 20px;
