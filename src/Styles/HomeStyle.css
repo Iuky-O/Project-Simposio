@@ -1,27 +1,15 @@
 @import "/src/Styles/index.css";
 
 .home {
-  
 
   width: 100%;
-  min-height: 100vh; 
+  min-height: 100vh;
+  max-height: 100%;
   margin: 0; 
   padding: 0;
   position: relative; 
   overflow-x: hidden; 
 }
-/*
-.home::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.751);
-  z-index: -0; 
-}
-  */
 
 .home-container{
   margin-top: 2rem;
@@ -69,7 +57,11 @@
     z-index: -2;
     max-width: 700px;
   }
-  .home-image-section {
+
+  .home-image-section{
+    overflow: hidden;
+  }
+  .home-image-section .slider {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -77,9 +69,19 @@
     gap: 20px; /* Espaçamento entre os losangos */
     margin-right: 10rem;
     padding-top: 2rem;
+    
+
+
+ 
+   /*
+    animation-fill-mode: forwards;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-name: slidedown;*/
   }
   
-  .home-image-section img {
+  .home-image-section .slider img {
     width: 400px; 
     height: 300px; 
     object-fit: cover;
@@ -161,6 +163,15 @@
     background-color: #e48f0f;
   }
 
+  @keyframes slidedown {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-70%); /* Move o conjunto de imagens para cima */
+    }
+  }
+
 
   @media (max-width: 1200px){
 
@@ -176,14 +187,7 @@
 }
 
 @media (max-width: 895px){
- 
-  /*
-  .home-image-section {
-    flex-direction: row;
-    gap: 0px;
-    margin-right: 0;
-    padding-top: 0;
-  }*/
+
   .home-image-section{
     display: none;
   }

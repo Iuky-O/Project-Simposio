@@ -18,6 +18,12 @@ label {
     border: 2px solid red; 
 }
 
+.required{
+    color: red;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
 
 .background-rotated {
     position: absolute;
@@ -59,11 +65,19 @@ label {
     flex-direction: column;
 }
 
-.section-info img {
+.section-info .info-parts-res {
     max-width: 100%;
-    height: auto;
     border-radius: 10px;
     margin-bottom: 10px;
+
+    color: #ffffff;
+}
+
+.section-info .info-parts-res{
+    font-size: 5rem;
+}
+.section-info .info-parts-res:hover{
+    transition: 1s ease-out;
 }
 
 .section-info p {

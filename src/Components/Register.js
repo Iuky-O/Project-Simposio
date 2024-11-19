@@ -4,7 +4,8 @@ import "../Styles/RegisterStyles.css";
 import { db, auth } from '../Firebase/firebaseConfig';
 import { collection, addDoc } from 'firebase/firestore';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import Image from "../Assets/Open Peeps - Bust.png";
+import { Link } from 'react-router-dom';
+import { SiCodenewbie } from "react-icons/si";
 
 const Register = () => {
     const navigate = useNavigate();
@@ -155,9 +156,12 @@ const Register = () => {
             <div className="container-register">
                 <div className="sections-container">
                     <div className="section-info">
-                        <div className="info-parts-res">
-                            <img src={Image} alt="" />
-                        </div>
+                        <Link to="/" className="info-parts-res">
+                            <SiCodenewbie/>
+                        </Link>
+
+                        <h2 style={{color: 'white'}}>I Simpósio Regional de <span>Engenharia de Software</span></h2>
+                        <p>Embarque nessa jornada com a gente!</p>
                     </div>
                     <div className="section-form">
                         <form className="form-cadastro">
@@ -167,7 +171,7 @@ const Register = () => {
                             {step === 1 && (
                                 <>
                                     <div>
-                                        <label htmlFor="nome">Nome:</label>
+                                        <label htmlFor="nome">Nome: <span className="required">*</span></label>
                                         <div className="input-group">
                                             <input
                                                 type="text"
@@ -182,7 +186,7 @@ const Register = () => {
                                     </div>
 
                                     <div>
-                                        <label htmlFor="sobrenome">Sobrenome:</label>
+                                        <label htmlFor="sobrenome">Sobrenome: <span className="required">*</span></label>
                                         <div className="input-group">
                                             <input
                                                 type="text"
@@ -197,7 +201,7 @@ const Register = () => {
                                     </div>
 
                                     <div>
-                                        <label htmlFor="email">Email:</label>
+                                        <label htmlFor="email">Email: <span className="required">*</span></label>
                                         <div className="input-group">
                                             <input
                                                 type="text"
@@ -212,7 +216,7 @@ const Register = () => {
                                     </div>
 
                                     <div>
-                                        <label htmlFor="numero">Número:</label>
+                                        <label htmlFor="numero">Número: <span className="required">*</span></label>
                                         <div className="input-group">
                                             <input
                                                 type="text"
@@ -231,7 +235,7 @@ const Register = () => {
                             {step === 2 && (
                                 <>
                                     <div>
-                                        <label htmlFor="pais">País:</label>
+                                        <label htmlFor="pais">País: <span className="required">*</span></label>
                                         <div className="input-group">
                                             <input
                                                 type="text"
@@ -246,7 +250,7 @@ const Register = () => {
                                     </div>
 
                                     <div>
-                                        <label htmlFor="estado">Estado:</label>
+                                        <label htmlFor="estado">Estado: <span className="required">*</span></label>
                                         <div className="input-group">
                                             <input
                                                 type="text"
@@ -261,7 +265,7 @@ const Register = () => {
                                     </div>
 
                                     <div>
-                                        <label htmlFor="cidade">Cidade:</label>
+                                        <label htmlFor="cidade">Cidade: <span className="required">*</span></label>
                                         <div className="input-group">
                                             <input
                                                 type="text"
@@ -280,7 +284,7 @@ const Register = () => {
                             {step === 3 && (
                                 <>
                                     <div>
-                                        <label htmlFor="tipoUsuario">Tipo de Usuário:</label>
+                                        <label htmlFor="tipoUsuario">Tipo de Usuário: <span className="required">*</span></label>
                                         <div className="input-group">
                                             <select
                                                 id="tipoUsuario"
@@ -300,7 +304,7 @@ const Register = () => {
                                     </div>
 
                                     <div>
-                                        <label htmlFor="vinculo">Vínculo:</label>
+                                        <label htmlFor="vinculo">Vínculo: <span className="required">*</span></label>
                                         <div className="input-group">
                                             <input
                                                 type="text"
@@ -315,7 +319,7 @@ const Register = () => {
                                     </div>
 
                                     <div>
-                                        <label htmlFor="escolaridade">Escolaridade:</label>
+                                        <label htmlFor="escolaridade">Escolaridade: <span className="required">*</span></label>
                                         <div className="input-group">
                                             <select
                                                 id="escolaridade"
@@ -338,7 +342,7 @@ const Register = () => {
                             {step === 4 && (
                                 <>
                                     <div>
-                                        <label htmlFor="sexo">Sexo:</label>
+                                        <label htmlFor="sexo">Sexo: <span className="required">*</span></label>
                                         <div className="input-group">
                                             <select
                                                 id="sexo"
@@ -369,7 +373,7 @@ const Register = () => {
                                     </div>
 
                                     <div>
-                                        <label htmlFor="password">Senha:</label>
+                                        <label htmlFor="password">Senha: <span className="required">*</span></label>
                                         <div className="input-group">
                                             <input
                                                 type="password"

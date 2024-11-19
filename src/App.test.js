@@ -3,7 +3,8 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Login from './Components/Login';
-import Register from './Components/Register'; 
+import Register from './Components/Register';
+import Article from './Components/Article'
 import { useAuth } from "./Scripts/AuthContext";
 
 jest.mock('./Scripts/AuthContext', () => ({
@@ -144,30 +145,65 @@ describe('Register Component', () => {
       expect(screen.getByLabelText('Estado:')).toHaveClass('error');
       expect(screen.getByLabelText('Cidade:')).toHaveClass('error');
   });
+});
 
-  /*
-  it('deve submeter o formulário corretamente quando todos os campos forem preenchidos', () => {
+describe('Article Component', () => {
+  const setup = () => {
+    useAuth.mockReturnValue({
+      user: { uid: '123', email: 'test@example.com' },
+      loading: false,
+    });
+      return render(
+          <Router>
+              <Article />
+          </Router>
+      );
+  };
+
+ 
+  it('Verifica se adiciona autores corretamente', () => {
+    setup();
+      const authorInput = screen.getByPlaceholderText(/Digite o nome dos autores e clique em adicionar./i);
+
+      const addButton = screen.getByText(/Adicionar Autor/i);
+    
+      fireEvent.change(authorInput, { target: { value: 'John Doe' } });
+      fireEvent.click(addButton);
+    
+      expect(screen.getByText(/John Doe/i)).toBeInTheDocument();
+    });
+ 
+    it('Deve mostrar erro se o formulário for enviado vazio', () => {
+
       setup();
 
-      fireEvent.change(screen.getByLabelText('Nome:'), { target: { value: 'John' } });
-      fireEvent.change(screen.getByLabelText('Sobrenome:'), { target: { value: 'Doe' } });
-      fireEvent.change(screen.getByLabelText('Email:'), { target: { value: 'john@example.com' } });
-      fireEvent.change(screen.getByLabelText('Número:'), { target: { value: '123456789' } });
-      fireEvent.click(screen.getByText('Próximo'));
+      const alertMock = jest.spyOn(window, 'alert').mockImplementation(() => {});
+      fireEvent.submit(screen.getByRole('button', { name: /Submeter/i }));
+      expect(alertMock).toHaveBeenCalledWith('Por favor, preencha todos os campos obrigatórios!');
+      alertMock.mockRestore();
+    });
 
-      fireEvent.change(screen.getByLabelText('País:'), { target: { value: 'Brasil' } });
-      fireEvent.change(screen.getByLabelText('Estado:'), { target: { value: 'SP' } });
-      fireEvent.change(screen.getByLabelText('Cidade:'), { target: { value: 'São Paulo' } });
-      fireEvent.click(screen.getByText('Próximo'));
+    it("valida o formulário ao submeter", () => {
+      setup();
 
-      fireEvent.change(screen.getByLabelText('Tipo de Usuário:'), { target: { value: 'Aluno' } });
-      fireEvent.change(screen.getByLabelText('Vínculo:'), { target: { value: 'Universidade' } });
-      fireEvent.change(screen.getByLabelText('Escolaridade:'), { target: { value: 'Superior' } });
-      fireEvent.click(screen.getByText('Próximo'));
+      const submitButton = screen.getByText(/Submeter/i);
+      fireEvent.click(submitButton);
 
-      fireEvent.change(screen.getByLabelText('Sexo:'), { target: { value: 'Masculino' } });
-      fireEvent.change(screen.getByLabelText('Senha:'), { target: { value: 'password123' } });
-      fireEvent.click(screen.getByText('Cadastrar'));
-      expect(screen.queryByText('Cadastro realizado com sucesso!')).toBeInTheDocument();
-  });*/
+      expect(screen.getByPlaceholderText(/Adicione o Título do artigo/i)).toHaveClass("error");
+      expect(screen.getByPlaceholderText(/Digite o nome dos autores/i)).toHaveClass("error");
+      expect(screen.getByPlaceholderText(/Adicione o Resumo/i)).toHaveClass("error");
+  });
+
+
+    it('Aceita apenas arquivos PDF', () => {
+      setup();
+    
+      const fileInput = screen.getByLabelText(/Upload/i);
+    
+      const file = new File(['dummy content'], 'example.pdf', { type: 'application/pdf' });
+      fireEvent.change(fileInput, { target: { files: [file] } });
+    
+      expect(fileInput.files[0].name).toBe('example.pdf');
+    });
+ 
 });

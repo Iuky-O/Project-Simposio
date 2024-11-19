@@ -1,85 +1,118 @@
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
-import Article from '../Components/Article';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Login from './Components/Login';
+import Register from './Components/Register';
+import Article from './Components/Article'
+import { useAuth } from "./Scripts/AuthContext";
+
+jest.mock('./Scripts/AuthContext', () => ({
+  useAuth: jest.fn()
+}));
+
+jest.mock("../functions/firebaseFileHandler", () => ({
+  salvarArtigoNoFirestore: jest.fn()
+}));
+
+const mockNavigate = jest.fn();
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockNavigate,
+}));
 
 describe('Article Component', () => {
-    const setup = () => {
-        return render(
-            <Router>
-                <Article />
-            </Router>
-        );
-    };
+  const setup = () => {
+    useAuth.mockReturnValue({
+      user: { uid: '123', email: 'test@example.com' },
+      loading: false,
+    });
+      return render(
+          <Router>
+              <Article />
+          </Router>
+      );
+  };
 
-    it('renders Article form fields correctly', () => {
-        expect(screen.getByLabelText(/Título/i)).toBeInTheDocument();
-        expect(screen.getByLabelText(/Autores/i)).toBeInTheDocument();
-        expect(screen.getByLabelText(/Resumo/i)).toBeInTheDocument();
-        expect(screen.getByLabelText(/Upload/i)).toBeInTheDocument();
-        expect(screen.getByText(/Submeter/i)).toBeInTheDocument();
+ 
+  it('Verifica se adiciona autores corretamente', () => {
+    setup();
+      const authorInput = screen.getByPlaceholderText(/Digite o nome dos autores e clique em adicionar./i);
+
+      const addButton = screen.getByText(/Adicionar Autor/i);
+    
+      fireEvent.change(authorInput, { target: { value: 'John Doe' } });
+      fireEvent.click(addButton);
+    
+      expect(screen.getByText(/John Doe/i)).toBeInTheDocument();
+    });
+ 
+    it('Deve mostrar erro se o formulário for enviado vazio', () => {
+
+      setup();
+
+      const alertMock = jest.spyOn(window, 'alert').mockImplementation(() => {});
+      fireEvent.submit(screen.getByRole('button', { name: /Submeter/i }));
+      expect(alertMock).toHaveBeenCalledWith('Por favor, preencha todos os campos obrigatórios!');
+      alertMock.mockRestore();
     });
 
-    it('adds an author to the list', () => {
-        const authorInput = screen.getByPlaceholderText(/Digite o nome dos autores/i);
-        const addButton = screen.getByText(/Adicionar Autor/i);
-      
-        fireEvent.change(authorInput, { target: { value: 'John Doe' } });
-        fireEvent.click(addButton);
-      
-        expect(screen.getByText(/John Doe/i)).toBeInTheDocument();
-      });
-      
-      it('displays an error when adding more than 10 authors', () => {
-        render(
-          <BrowserRouter>
-            <Article />
-          </BrowserRouter>
-        );
-      
-        const authorInput = screen.getByPlaceholderText(/Digite o nome dos autores/i);
-        const addButton = screen.getByText(/Adicionar Autor/i);
-      
-        // Adicionando 10 autores
-        for (let i = 0; i < 10; i++) {
-          fireEvent.change(authorInput, { target: { value: `Author ${i}` } });
-          fireEvent.click(addButton);
-        }
-      
-        expect(screen.getByText(/Limite de 10 autores atingido/i)).toBeInTheDocument();
-      });
+    it("valida o formulário ao submeter", () => {
+      setup();
+
+      const submitButton = screen.getByText(/Submeter/i);
+      fireEvent.click(submitButton);
+
+      expect(screen.getByPlaceholderText(/Adicione o Título do artigo/i)).toHaveClass("error");
+      expect(screen.getByPlaceholderText(/Digite o nome dos autores/i)).toHaveClass("error");
+      expect(screen.getByPlaceholderText(/Adicione o Resumo/i)).toHaveClass("error");
+  });
 
 
-      it('shows validation error when required fields are empty', () => {
-        render(
-          <BrowserRouter>
-            <Article />
-          </BrowserRouter>
-        );
-      
-        const submitButton = screen.getByText(/Submeter/i);
-        fireEvent.click(submitButton);
-      
-        expect(screen.getByText(/Por favor, preencha todos os campos obrigatórios!/i)).toBeInTheDocument();
+    it('Aceita apenas arquivos PDF', () => {
+      setup();
+    
+      const fileInput = screen.getByLabelText(/Upload/i);
+    
+      const file = new File(['dummy content'], 'example.pdf', { type: 'application/pdf' });
+      fireEvent.change(fileInput, { target: { files: [file] } });
+    
+      expect(fileInput.files[0].name).toBe('example.pdf');
+    });
+
+    it("submete o artigo com dados válidos", async () => {
+      const salvarArtigoNoFirestore = require("../functions/firebaseFileHandler").salvarArtigoNoFirestore;
+      setup();
+
+      fireEvent.change(screen.getByPlaceholderText(/Adicione o Título do artigo/i), {
+          target: { value: "Título Teste" },
       });
 
+      const authorInput = screen.getByPlaceholderText(/Digite o nome dos autores e clique em adicionar./i);
+      fireEvent.change(authorInput, { target: { value: "Autor Teste" } });
+      fireEvent.click(screen.getByText(/Adicionar Autor/i));
 
-      it('accepts only PDF file types', () => {
-        render(
-          <BrowserRouter>
-            <Article />
-          </BrowserRouter>
-        );
-      
-        const fileInput = screen.getByLabelText(/Upload/i);
-      
-        const file = new File(['dummy content'], 'example.pdf', { type: 'application/pdf' });
-        fireEvent.change(fileInput, { target: { files: [file] } });
-      
-        expect(fileInput.files[0].name).toBe('example.pdf');
+      fireEvent.change(screen.getByPlaceholderText(/Adicione o Resumo de no máximo 10 linhas/i), {
+          target: { value: "Resumo do artigo" },
       });
-      
-      
-})
 
+      const validFile = new File(["PDF content"], "file.pdf", { type: "application/pdf" });
+      fireEvent.change(screen.getByLabelText(/Upload/i), { target: { files: [validFile] } });
+
+      await act(async () => {
+          fireEvent.click(screen.getByText(/Submeter/i));
+      });
+
+      expect(salvarArtigoNoFirestore).toHaveBeenCalled();
+      expect(salvarArtigoNoFirestore).toHaveBeenCalledWith({
+          titulo: "Título Teste",
+          autores: ["Autor Teste"],
+          resumo: "Resumo do artigo",
+          arquivo: expect.any(String),
+          usuarioId: "testUserId",
+          usuarioEmail: "test@example.com",
+      });
+  });
+    
+    
+});
