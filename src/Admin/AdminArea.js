@@ -6,7 +6,6 @@ import { Dashboard } from './Dashboard';
 import UserIcon from '@mui/icons-material/Group';
 import customTheme from './CustomTheme';
 import { ThemeProvider } from '@mui/material/styles';
-import { AuthProvider } from '../Scripts/AuthContext';
 
 const AdminArea = () => (
   <ThemeProvider theme={customTheme}>
