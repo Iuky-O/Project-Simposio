@@ -18,6 +18,7 @@ import Login from './Login';
 import Admin from '../Admin/AdminArea'
 import Article from "../Components/Article"
 import EnrollmentArea2 from './EnrollmentArea2';
+import SubmiteTimeline from './SubmiteTimelineArea'
 import { AuthContext } from '../Scripts/AuthContext';
 
 function PrivateRoute({ children }) {
@@ -43,6 +44,7 @@ function RoutesComponet() {
       <Route path="/lectures" element={<PrivateRoute><Lectures /></PrivateRoute>} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/submitetimeline" element={<SubmiteTimeline />} />
       <Route path="/user" element={<PrivateRoute><Userpage /></PrivateRoute>} />
       <Route path="/article" element={<Article/>} //depois adicionar o </PrivateRoute>
       />

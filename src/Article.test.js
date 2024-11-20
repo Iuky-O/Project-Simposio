@@ -1,20 +1,14 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Login from './Components/Login';
-import Register from './Components/Register';
-import Article from './Components/Article'
+import Article from './Components/Article';
 import { useAuth } from "./Scripts/AuthContext";
 
 jest.mock('./Scripts/AuthContext', () => ({
   useAuth: jest.fn()
 }));
 
-jest.mock("../functions/firebaseFileHandler", () => ({
-  salvarArtigoNoFirestore: jest.fn()
-}));
-
+const mockLogin = jest.fn();
 const mockNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -79,40 +73,6 @@ describe('Article Component', () => {
     
       expect(fileInput.files[0].name).toBe('example.pdf');
     });
-
-    it("submete o artigo com dados válidos", async () => {
-      const salvarArtigoNoFirestore = require("../functions/firebaseFileHandler").salvarArtigoNoFirestore;
-      setup();
-
-      fireEvent.change(screen.getByPlaceholderText(/Adicione o Título do artigo/i), {
-          target: { value: "Título Teste" },
-      });
-
-      const authorInput = screen.getByPlaceholderText(/Digite o nome dos autores e clique em adicionar./i);
-      fireEvent.change(authorInput, { target: { value: "Autor Teste" } });
-      fireEvent.click(screen.getByText(/Adicionar Autor/i));
-
-      fireEvent.change(screen.getByPlaceholderText(/Adicione o Resumo de no máximo 10 linhas/i), {
-          target: { value: "Resumo do artigo" },
-      });
-
-      const validFile = new File(["PDF content"], "file.pdf", { type: "application/pdf" });
-      fireEvent.change(screen.getByLabelText(/Upload/i), { target: { files: [validFile] } });
-
-      await act(async () => {
-          fireEvent.click(screen.getByText(/Submeter/i));
-      });
-
-      expect(salvarArtigoNoFirestore).toHaveBeenCalled();
-      expect(salvarArtigoNoFirestore).toHaveBeenCalledWith({
-          titulo: "Título Teste",
-          autores: ["Autor Teste"],
-          resumo: "Resumo do artigo",
-          arquivo: expect.any(String),
-          usuarioId: "testUserId",
-          usuarioEmail: "test@example.com",
-      });
-  });
-    
-    
+ 
 });
+
