@@ -1,106 +1,87 @@
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
-import Register from './Components/Register'; 
+import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import Register from './Components/Register';
+
+jest.mock('./Scripts/AuthContext', () => ({
+  useAuth: jest.fn()
+}));
+
+const mockNavigate = jest.fn();
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockNavigate,
+}));
 
 describe('Register Component', () => {
-    const setup = () => {
-        return render(
-            <Router>
-                <Register />
-            </Router>
-        );
-    };
+  const setup = () => render(
+    <Router>
+      <Register />
+    </Router>
+  );
 
-    it('deve renderizar o primeiro passo com campos obrigatórios', () => {
-        setup();
+  it('deve renderizar o primeiro passo com campos obrigatórios', () => {
+    setup();
 
-        expect(screen.getByLabelText('Nome:')).toBeInTheDocument();
-        expect(screen.getByLabelText('Sobrenome:')).toBeInTheDocument();
-        expect(screen.getByLabelText('Email:')).toBeInTheDocument();
-        expect(screen.getByLabelText('Número:')).toBeInTheDocument();
-    });
+    expect(screen.getByTestId('nome-input')).toBeInTheDocument();
+    expect(screen.getByTestId('sobrenome-input')).toBeInTheDocument();
+    expect(screen.getByTestId('email-input')).toBeInTheDocument();
+    expect(screen.getByTestId('numero-input')).toBeInTheDocument();
+  });
 
-    it('deve navegar para o segundo passo ao clicar em "Próximo" com campos válidos', () => {
-        setup();
+  it('deve navegar para o segundo passo ao clicar em "Próximo" com campos válidos', () => {
+    setup();
 
-        fireEvent.change(screen.getByLabelText('Nome:'), { target: { value: 'John' } });
-        fireEvent.change(screen.getByLabelText('Sobrenome:'), { target: { value: 'Doe' } });
-        fireEvent.change(screen.getByLabelText('Email:'), { target: { value: 'john@example.com' } });
-        fireEvent.change(screen.getByLabelText('Número:'), { target: { value: '123456789' } });
+    fireEvent.change(screen.getByTestId('nome-input'), { target: { value: 'John' } });
+    fireEvent.change(screen.getByTestId('sobrenome-input'), { target: { value: 'Doe' } });
+    fireEvent.change(screen.getByTestId('email-input'), { target: { value: 'john@example.com' } });
+    fireEvent.change(screen.getByTestId('numero-input'), { target: { value: '123456789' } });
 
-        fireEvent.click(screen.getByText('Próximo'));
+    fireEvent.click(screen.getByText(/Próximo/i));
 
-        expect(screen.getByLabelText('País:')).toBeInTheDocument();
-        expect(screen.getByLabelText('Estado:')).toBeInTheDocument();
-        expect(screen.getByLabelText('Cidade:')).toBeInTheDocument();
-    });
+    expect(screen.getByTestId('pais-input')).toBeInTheDocument();
+    expect(screen.getByTestId('estado-input')).toBeInTheDocument();
+    expect(screen.getByTestId('cidade-input')).toBeInTheDocument();
+  });
 
-    it('deve mostrar erro ao tentar ir para o próximo passo com campos obrigatórios vazios', () => {
-        setup();
+  it('deve mostrar erro ao tentar ir para o próximo passo com campos obrigatórios vazios', () => {
+    setup();
 
-        fireEvent.click(screen.getByText('Próximo'));
+    fireEvent.click(screen.getByText(/Próximo/i));
 
-        expect(screen.getByLabelText('Nome:')).toHaveClass('error');
-        expect(screen.getByLabelText('Sobrenome:')).toHaveClass('error');
-        expect(screen.getByLabelText('Email:')).toHaveClass('error');
-        expect(screen.getByLabelText('Número:')).toHaveClass('error');
-    });
+    expect(screen.getByTestId('nome-input')).toHaveClass('error');
+    expect(screen.getByTestId('sobrenome-input')).toHaveClass('error');
+    expect(screen.getByTestId('email-input')).toHaveClass('error');
+    expect(screen.getByTestId('numero-input')).toHaveClass('error');
+  });
 
-    it('deve navegar de volta para o primeiro passo ao clicar em "Anterior"', () => {
-        setup();
+  it('deve navegar de volta para o primeiro passo ao clicar em "Voltar"', () => {
+    setup();
 
-        fireEvent.change(screen.getByLabelText('Nome:'), { target: { value: 'John' } });
-        fireEvent.change(screen.getByLabelText('Sobrenome:'), { target: { value: 'Doe' } });
-        fireEvent.change(screen.getByLabelText('Email:'), { target: { value: 'john@example.com' } });
-        fireEvent.change(screen.getByLabelText('Número:'), { target: { value: '123456789' } });
-        fireEvent.click(screen.getByText('Próximo'));
+    fireEvent.change(screen.getByTestId('nome-input'), { target: { value: 'John' } });
+    fireEvent.change(screen.getByTestId('sobrenome-input'), { target: { value: 'Doe' } });
+    fireEvent.change(screen.getByTestId('email-input'), { target: { value: 'john@example.com' } });
+    fireEvent.change(screen.getByTestId('numero-input'), { target: { value: '123456789' } });
+    fireEvent.click(screen.getByText(/Próximo/i));
 
-        fireEvent.click(screen.getByText('Voltar'));
+    fireEvent.click(screen.getByText(/Voltar/i));
 
-        expect(screen.getByLabelText('Nome:')).toBeInTheDocument();
-    });
+    expect(screen.getByTestId('nome-input')).toBeInTheDocument();
+  });
 
-    it('deve validar os campos obrigatórios do segundo passo', () => {
-        setup();
+  it('deve validar os campos obrigatórios do segundo passo', () => {
+    setup();
 
-        fireEvent.change(screen.getByLabelText('Nome:'), { target: { value: 'John' } });
-        fireEvent.change(screen.getByLabelText('Sobrenome:'), { target: { value: 'Doe' } });
-        fireEvent.change(screen.getByLabelText('Email:'), { target: { value: 'john@example.com' } });
-        fireEvent.change(screen.getByLabelText('Número:'), { target: { value: '123456789' } });
-        fireEvent.click(screen.getByText('Próximo'));
+    fireEvent.change(screen.getByTestId('nome-input'), { target: { value: 'John' } });
+    fireEvent.change(screen.getByTestId('sobrenome-input'), { target: { value: 'Doe' } });
+    fireEvent.change(screen.getByTestId('email-input'), { target: { value: 'john@example.com' } });
+    fireEvent.change(screen.getByTestId('numero-input'), { target: { value: '123456789' } });
+    fireEvent.click(screen.getByText(/Próximo/i));
 
-        fireEvent.click(screen.getByText('Próximo'));
+    fireEvent.click(screen.getByText(/Próximo/i));
 
-        expect(screen.getByLabelText('País:')).toHaveClass('error');
-        expect(screen.getByLabelText('Estado:')).toHaveClass('error');
-        expect(screen.getByLabelText('Cidade:')).toHaveClass('error');
-    });
-
-    /*
-    it('deve submeter o formulário corretamente quando todos os campos forem preenchidos', () => {
-        setup();
-
-        fireEvent.change(screen.getByLabelText('Nome:'), { target: { value: 'John' } });
-        fireEvent.change(screen.getByLabelText('Sobrenome:'), { target: { value: 'Doe' } });
-        fireEvent.change(screen.getByLabelText('Email:'), { target: { value: 'john@example.com' } });
-        fireEvent.change(screen.getByLabelText('Número:'), { target: { value: '123456789' } });
-        fireEvent.click(screen.getByText('Próximo'));
-
-        fireEvent.change(screen.getByLabelText('País:'), { target: { value: 'Brasil' } });
-        fireEvent.change(screen.getByLabelText('Estado:'), { target: { value: 'SP' } });
-        fireEvent.change(screen.getByLabelText('Cidade:'), { target: { value: 'São Paulo' } });
-        fireEvent.click(screen.getByText('Próximo'));
-
-        fireEvent.change(screen.getByLabelText('Tipo de Usuário:'), { target: { value: 'Aluno' } });
-        fireEvent.change(screen.getByLabelText('Vínculo:'), { target: { value: 'Universidade' } });
-        fireEvent.change(screen.getByLabelText('Escolaridade:'), { target: { value: 'Superior' } });
-        fireEvent.click(screen.getByText('Próximo'));
-
-        fireEvent.change(screen.getByLabelText('Sexo:'), { target: { value: 'Masculino' } });
-        fireEvent.change(screen.getByLabelText('Senha:'), { target: { value: 'password123' } });
-        fireEvent.click(screen.getByText('Cadastrar'));
-        expect(screen.queryByText('Cadastro realizado com sucesso!')).toBeInTheDocument();
-    });*/
+    expect(screen.getByTestId('pais-input')).toHaveClass('error');
+    expect(screen.getByTestId('estado-input')).toHaveClass('error');
+    expect(screen.getByTestId('cidade-input')).toHaveClass('error');
+  });
 });

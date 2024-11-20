@@ -178,6 +178,7 @@ const Register = () => {
                                                 id="nome"
                                                 name="nome"
                                                 required
+                                                data-testid="nome-input"
                                                 className={errorFields.nome ? "error" : ""}
                                                 value={formData.nome}
                                                 onChange={handleChange}
@@ -193,6 +194,7 @@ const Register = () => {
                                                 id="sobrenome"
                                                 name="sobrenome"
                                                 required
+                                                data-testid="sobrenome-input"
                                                 className={errorFields.sobrenome ? "error" : ""}
                                                 value={formData.sobrenome}
                                                 onChange={handleChange}
@@ -208,6 +210,7 @@ const Register = () => {
                                                 id="email"
                                                 name="email"
                                                 required
+                                                data-testid="email-input"
                                                 className={errorFields.email ? "error" : ""}
                                                 value={formData.email}
                                                 onChange={handleChange}
@@ -223,6 +226,7 @@ const Register = () => {
                                                 id="numero"
                                                 name="numero"
                                                 required
+                                                data-testid="numero-input"
                                                 className={errorFields.numero ? "error" : ""}
                                                 value={formData.numero}
                                                 onChange={handleChange}
@@ -242,6 +246,7 @@ const Register = () => {
                                                 id="pais"
                                                 name="pais"
                                                 required
+                                                data-testid="pais-input"
                                                 className={errorFields.pais ? "error" : ""}
                                                 value={formData.pais}
                                                 onChange={handleChange}
@@ -257,6 +262,7 @@ const Register = () => {
                                                 id="estado"
                                                 name="estado"
                                                 required
+                                                data-testid="estado-input"
                                                 className={errorFields.estado ? "error" : ""}
                                                 value={formData.estado}
                                                 onChange={handleChange}
@@ -272,6 +278,7 @@ const Register = () => {
                                                 id="cidade"
                                                 name="cidade"
                                                 required
+                                                data-testid="cidade-input" 
                                                 className={errorFields.cidade ? "error" : ""}
                                                 value={formData.cidade}
                                                 onChange={handleChange}
@@ -290,6 +297,7 @@ const Register = () => {
                                                 id="tipoUsuario"
                                                 name="tipoUsuario"
                                                 required
+                                                data-testid="tipousuario-input"
                                                 className={errorFields.tipoUsuario ? "error" : ""}
                                                 value={formData.tipoUsuario}
                                                 onChange={handleChange}
@@ -311,6 +319,7 @@ const Register = () => {
                                                 id="vinculo"
                                                 name="vinculo"
                                                 required
+                                                data-testid="vinculo-input"
                                                 className={errorFields.vinculo ? "error" : ""}
                                                 value={formData.vinculo}
                                                 onChange={handleChange}
@@ -325,6 +334,7 @@ const Register = () => {
                                                 id="escolaridade"
                                                 name="escolaridade"
                                                 required
+                                                data-testid="escolaridade-input"
                                                 className={errorFields.escolaridade ? "error" : ""}
                                                 value={formData.escolaridade}
                                                 onChange={handleChange}
@@ -348,6 +358,7 @@ const Register = () => {
                                                 id="sexo"
                                                 name="sexo"
                                                 required
+                                                data-testid="sexo-input"
                                                 className={errorFields.sexo ? "error" : ""} // Aqui você está verificando o erro
                                                 value={formData.sexo}
                                                 onChange={handleChange}
@@ -366,6 +377,7 @@ const Register = () => {
                                                 type="text"
                                                 id="nomeSocial"
                                                 name="nomeSocial"
+                                                data-testid="nomesocial-input"
                                                 value={formData.nomeSocial}
                                                 onChange={handleChange}
                                             />
@@ -380,6 +392,7 @@ const Register = () => {
                                                 id="password"
                                                 name="password"
                                                 required
+                                                data-testid="senha-input"
                                                 className={errorFields.password ? "error" : ""} // Aqui você está verificando o erro
                                                 value={formData.password}
                                                 onChange={handleChange}

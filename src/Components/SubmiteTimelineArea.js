@@ -75,7 +75,7 @@ const SubmitTimeline = () => {
             navigate('/timeline');
         } catch (error) {
             alert('Erro ao atualizar o cronograma.');
-            console.error(error);
+            //console.error(error);
         }
     };
 
