@@ -85,7 +85,7 @@ const SubmitTimeline = () => {
                 <h1>Editar Cronograma</h1>
 
                 <div>
-                    <label htmlFor="dia" className="required">Dia:</label>
+                    <label htmlFor="dia" className="required">*Dia:</label>
                     <div className="input">
                         <input
                             type="text"
@@ -99,7 +99,7 @@ const SubmitTimeline = () => {
                 </div>
 
                 <div>
-                    <label htmlFor="dia_desc" className="required">Dia da semana:</label>
+                    <label htmlFor="dia_desc" className="required">*Dia da semana:</label>
                     <div className="input">
                         <input
                             type="text"
@@ -113,7 +113,7 @@ const SubmitTimeline = () => {
                 </div>
 
                 <div>
-                    <label htmlFor="data" className="required">Data:</label>
+                    <label htmlFor="data" className="required">*Data:</label>
                     <div className="input">
                         <input
                             type="date"
@@ -130,7 +130,7 @@ const SubmitTimeline = () => {
                 {formData.atividades.map((atividade, index) => (
                     <div key={index} className="activity-section">
                         <div>
-                            <label htmlFor={`tipo-${index}`} className="required">Tipo: </label>
+                            <label htmlFor={`tipo-${index}`} className="required">*Tipo: </label>
                             <div className="input">
                                 <select
                                     id={`tipo-${index}`}
@@ -139,7 +139,7 @@ const SubmitTimeline = () => {
                                     value={atividade.tipo}
                                     onChange={(e) => handleChange(e, index)}
                                 >
-                                    <option value="" className="required">Selecione</option>
+                                    <option value="" className="required">*Selecione</option>
                                     <option value="palestra">Palestra</option>
                                     <option value="curso">Curso</option>
                                 </select>
@@ -147,7 +147,7 @@ const SubmitTimeline = () => {
                         </div>
 
                         <div>
-                            <label htmlFor={`local-${index}`} className="required">Local:</label>
+                            <label htmlFor={`local-${index}`} className="required">*Local:</label>
                             <div className="input">
                                 <select
                                     id={`local-${index}`}
@@ -166,7 +166,7 @@ const SubmitTimeline = () => {
                         </div>
 
                         <div>
-                            <label htmlFor={`titulo-${index}`} className="required">Título:</label>
+                            <label htmlFor={`titulo-${index}`} className="required">*Título:</label>
                             <div className="input">
                                 <input
                                     type="text"
@@ -180,7 +180,7 @@ const SubmitTimeline = () => {
                         </div>
 
                         <div>
-                            <label htmlFor={`horario-${index}`} className="required">Horário:</label>
+                            <label htmlFor={`horario-${index}`} className="required">*Horário:</label>
                             <div className="input">
                                 <input
                                     type="time"
@@ -199,7 +199,7 @@ const SubmitTimeline = () => {
                         >
                             Remover Atividade
                         </button>
-                        {/* Quebra de linha entre atividades */}
+                        
                         <hr />
                     </div>
                 ))}

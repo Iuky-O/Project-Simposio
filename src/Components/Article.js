@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Styles/ArticleStyles.css";
-import { db } from '../Firebase/firebaseConfig';
-import { collection, addDoc } from 'firebase/firestore';
-import Image from "../Assets/Open Peeps - Bust.png";
+import { SiCodenewbie } from "react-icons/si";
+import { GrClose } from "react-icons/gr";
+import { useAuth } from "../Scripts/AuthContext";
+import { salvarArtigoNoFirestore } from "../functions/firebaseFileHandler";
+import { Link } from 'react-router-dom';
 
 const Article = () => {
     const navigate = useNavigate();
@@ -11,19 +13,15 @@ const Article = () => {
         titulo: "",
         autores: [],
         resumo: "",
-        arquivo: ""
+        arquivo: null,
     });
     const [authorInput, setAuthorInput] = useState("");
     const [errorFields, setErrorFields] = useState({});
+    const { user, loading } = useAuth();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-
-        if (name === "resumo" && value.length > 500) {
-            // Limite de caracteres para evitar exceder 10 linhas
-            return;
-        }
-
+        if (name === "resumo" && value.length > 1000) return;
         setFormData({ ...formData, [name]: value });
         setErrorFields({ ...errorFields, [name]: false });
     };
@@ -32,11 +30,13 @@ const Article = () => {
         if (authorInput.trim() && formData.autores.length < 10) {
             setFormData({
                 ...formData,
-                autores: [...formData.autores, authorInput]
+                autores: [...formData.autores, authorInput],
             });
             setAuthorInput("");
+            setErrorFields((prevErrors) => ({ ...prevErrors, autores: false }));
         }
     };
+    
 
     const handleAuthorInputChange = (e) => {
         setAuthorInput(e.target.value);
@@ -50,46 +50,89 @@ const Article = () => {
         });
     };
 
-    async function addArticle(e) {
+    const handleFileUpload = (e) => {
+        const file = e.target.files[0];
+        if (file && file.type === "application/pdf") {
+            const reader = new FileReader();
+            reader.onload = () => {
+                setFormData({ ...formData, arquivo: reader.result.split(",")[1] });
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const validateForm = () => {
+        const errors = {};
+        if (!formData.titulo.trim()) errors.titulo = true;
+        if (formData.autores.length === 0) errors.autores = true;
+        if (!formData.resumo.trim()) errors.resumo = true;
+        if (!formData.arquivo) errors.arquivo = true;
+        setErrorFields(errors);
+        return Object.keys(errors).length === 0;
+    };
+
+    const addArticle = async (e) => {
         e.preventDefault();
-        const userData = {
-            titulo: formData.titulo,
-            autores: formData.autores,
-            resumo: formData.resumo,
-            arquivo: formData.arquivo
-        };
+
+        if (loading) {
+            alert("Carregando, aguarde...");
+            return;
+        }
+        if (!user) {
+            alert("Você precisa estar logado para submeter um artigo!");
+            return;
+        }
+        if (!validateForm()) {
+            alert("Por favor, preencha todos os campos obrigatórios!");
+            return;
+        }
 
         try {
-            await addDoc(collection(db, "articles"), userData);
-            setFormData({
-                titulo: "",
-                autores: [],
-                resumo: "",
-                arquivo: ""
+            await salvarArtigoNoFirestore({
+                titulo: formData.titulo,
+                autores: formData.autores,
+                resumo: formData.resumo,
+                arquivo: formData.arquivo,
+                usuarioId: user.uid,
+                usuarioEmail: user.email
             });
-            alert('Artigo submetido com sucesso!');
+
+            alert("Artigo submetido com sucesso!");
         } catch (error) {
-            alert('Erro ao submeter artigo');
+            alert("Erro ao submeter artigo: " + (error.message || error));
             console.error(error);
         }
-    }
+    };
 
     return (
         <div className="article">
-            <div className="background-overlay"></div>
             <div className="container-article">
                 <div className="sections-wrapper">
                     <div className="section-details">
-                        <div className="details-image">
-                            <img src={Image} alt="" />
+                        <Link to="/" className="details-image">
+                            <SiCodenewbie style={{ fontSize: '5rem', color: 'var(--Primary-Color)' }} />
+                        </Link>
+                        <h3>Regras de Submissão de Artigo</h3>
+                        <div className="text-details">
+                            <p>Caro autor, para garantir uma submissão válida, siga as regras abaixo:</p>
+                            <ul>
+                                <li>Cada artigo pode ter no máximo 10 autores.</li>
+                                <li>O envio do arquivo completo do artigo em formato PDF é obrigatório.</li>
+                                <li>O envio do arquivo completo do artigo não deve exceder 1MB.</li>
+                                <li>Todos os campos do formulário devem ser preenchidos corretamente para que a submissão seja aceita.</li>
+                            </ul>
+                            <p>Certifique-se de revisar as informações antes de enviar. Obrigado por contribuir!</p>
                         </div>
                     </div>
+
                     <div className="section-content">
                         <form className="form-article" onSubmit={addArticle}>
-                            <h1>Cadastro de Artigo</h1>
+                            <h1></h1>
 
                             <div>
-                                <label htmlFor="titulo">Título:</label>
+                                <label htmlFor="titulo">
+                                    Título: <span className="required">*</span>
+                                </label>
                                 <div className="input-group">
                                     <input
                                         type="text"
@@ -105,19 +148,23 @@ const Article = () => {
                             </div>
 
                             <div>
-                                <label htmlFor="autores">Autores:</label>
+                                <label htmlFor="autores">
+                                    Autores: <span className="required">*</span>
+                                </label>
                                 <div className="input-group">
                                     <input
                                         type="text"
                                         id="authorInput"
+                                        className={`input-group ${errorFields.autores ? "error" : ""}`}
                                         value={authorInput}
                                         onChange={handleAuthorInputChange}
-                                        placeholder="Digite o nome dos autores. Limite de 10 autores."
+                                        placeholder="Digite o nome dos autores e clique em adicionar."
                                     />
-                                    <button type="button" onClick={handleAddAuthor}>
-                                        Adicionar Autor
-                                    </button>
                                 </div>
+                                <button type="button" onClick={handleAddAuthor}>
+                                    Adicionar Autor
+                                </button>
+
                                 {formData.autores.length === 10 && (
                                     <p style={{ color: 'red' }}>Limite de 10 autores atingido.</p>
                                 )}
@@ -136,7 +183,7 @@ const Article = () => {
                                                     cursor: 'pointer'
                                                 }}
                                             >
-                                                ✖
+                                                <GrClose style={{color:'black'}}/>
                                             </button>
                                         </li>
                                     ))}
@@ -144,7 +191,9 @@ const Article = () => {
                             </div>
 
                             <div>
-                                <label htmlFor="resumo">Resumo:</label>
+                                <label htmlFor="resumo">
+                                    Resumo: <span className="required">*</span>
+                                </label>
                                 <div className="input-group">
                                     <textarea
                                         id="resumo"
@@ -155,30 +204,35 @@ const Article = () => {
                                         onChange={handleChange}
                                         placeholder="Adicione o Resumo de no máximo 10 linhas"
                                         rows="10"
-                                        style={{ resize: 'none' }}
+                                        style={{height:'35vh', width: '50vw', }}
                                     />
-                                    <small>{formData.resumo.length}/500 caracteres</small>
+                                    <small>{formData.resumo.length}/1000 caracteres</small>
                                 </div>
                             </div>
 
                             <div>
-                                <label htmlFor="arquivo">Upload:</label>
+                                <label htmlFor="arquivo">
+                                    Upload: <span className="required">*</span>
+                                </label>
                                 <div className="input-group-pdf">
                                     <input
                                         type="file"
-                                        accept="artigo/*"
+                                        accept="application/pdf"
                                         id="arquivo"
                                         name="arquivo"
                                         required
                                         className={errorFields.arquivo ? "error" : ""}
-                                        onChange={(e) => setFormData({ ...formData, arquivo: e.target.files[0] })}
+                                        onChange={handleFileUpload}
                                     />
                                 </div>
                             </div>
                             
-                            <button type="submit">
-                                Submeter
-                            </button>
+                            <div className="navigation-submit">
+                                <button type="submit" className="btn-article">
+                                    Submeter
+                                </button>
+                            </div>
+                            
                         </form>
                     </div>
                 </div>
