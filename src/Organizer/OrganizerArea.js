@@ -3,11 +3,13 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from '../Firebase/firebaseConfig';
 import styles from "./OrganizerArea.module.css";
 import { baixarArquivoDoArtigo } from '../functions/firebaseFileHandler';
+import { useNavigate } from 'react-router-dom';
 
 function OrganizerArea() {
   const [users, setUsers] = useState([]);
   const [articles, setArticles] = useState([]);
   const [selectedArticle, setSelectedArticle] = useState(null);
+  const navigate = useNavigate();
 
   // Função para converter base64 em Blob
   function base64ToBlob(base64, mimeType) {
@@ -135,7 +137,7 @@ function OrganizerArea() {
       </section>
 
       <section>
-        <button className={styles.button} onClick={handleAddSchedule} style={{ padding: '10px 20px', fontSize: '16px' }}>
+        <button className={styles.button} onClick={() => navigate ('/submitetimeline') } style={{ padding: '10px 20px', fontSize: '16px' }}>
           Cadastrar Cronograma
         </button>
       </section>
