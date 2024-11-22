@@ -20,6 +20,7 @@ import Article from "../Components/Article"
 import EnrollmentArea2 from './EnrollmentArea2';
 import SubmiteTimeline from './SubmiteTimelineArea'
 import { AuthContext } from '../Scripts/AuthContext';
+import Organizer from '../Organizer/OrganizerArea'
 
 function PrivateRoute({ children }) {
   const { user } = useContext(AuthContext);
@@ -48,9 +49,10 @@ function RoutesComponet() {
       <Route path="/user" element={<PrivateRoute><Userpage /></PrivateRoute>} />
       <Route path="/article" element={<Article/>} //depois adicionar o </PrivateRoute>
       />
+      
+      <Route path="/Organizer/*" element={<Organizer />} />
 
-      <Route path="/admin/*" element={<Admin />}//depois adicionar o </PrivateRoute> porque esta com problema
-      /> 
+      <Route path="/admin/*" element={<Admin />} />
 
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>

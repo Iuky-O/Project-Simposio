@@ -5,7 +5,7 @@ import Navbar from './Components/Navbar';
 import RoutesComponent from './Components/RoutesComponet';
 import Authenticator from './hook/Authenticator';
 import AdminArea from './Admin/AdminArea'; // Importando o React Admin
-import Submite from './Components/SubmiteTimelineArea';
+
 function App() {
   return (
     <div className="App">
