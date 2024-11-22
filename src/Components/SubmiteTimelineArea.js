@@ -80,7 +80,7 @@ const SubmitTimeline = () => {
     };
 
     return (
-        <div className="section-form">
+        <div className="container-form">
             <form className="form-timeline" onSubmit={handleSubmit}>
                 <h1>Editar Cronograma</h1>
 
