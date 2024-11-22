@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs } from "firebase/firestore";
 import { db } from '../Firebase/firebaseConfig';
-import "./OrganizerArea.module.css";
+import styles from "./OrganizerArea.module.css";
 import { baixarArquivoDoArtigo } from '../functions/firebaseFileHandler';
 
 function OrganizerArea() {
@@ -77,25 +77,27 @@ function OrganizerArea() {
   };
 
   return (
-    <div style={{ padding: '20px', marginTop: '20px' }}>
-      <h1>Página do Organizador</h1>
+    <body className={styles.body} style={{ padding: '80px'}}>
+
+    <div className={`${styles.div}`} style={{ padding: '20px', marginTop: '150px' }}>
+      <h1 className={styles.h1}>Página do Organizador</h1>
 
       <section>
-        <h2>Usuários Cadastrados</h2>
-        <table border="1" style={{ width: '100%', marginBottom: '20px' }}>
+        <h2 className={styles.h2}>Usuários Cadastrados</h2>
+        <table className={styles.table} border="1" style={{ width: '100%', marginBottom: '20px' }}>
           <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nome</th>
-              <th>Email</th>
+            <tr className={styles.tr}>
+              <th className={styles.th}>ID</th>
+              <th className={styles.th}>Nome</th>
+              <th className={styles.th}>Email</th>
             </tr>
           </thead>
           <tbody>
             {users.map(user => (
-              <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
+              <tr className={styles.tr} key={user.id}>
+                <td className= {styles.td}>{user.id}</td>
+                <td className= {styles.td}>{user.name}</td>
+                <td className= {styles.td}>{user.email}</td>
               </tr>
             ))}
           </tbody>
@@ -103,26 +105,26 @@ function OrganizerArea() {
       </section>
 
       <section>
-        <h2>Artigos Submetidos</h2>
-        <table border="1" style={{ width: '100%', marginBottom: '20px' }}>
+        <h2 className={styles.h2}>Artigos Submetidos</h2>
+        <table className={styles.table} border="1" style={{ width: '100%', marginBottom: '20px' }}>
           <thead>
-            <tr>
-              <th>ID</th>
-              <th>Título</th>
-              <th>Resumo</th>
-              <th>Autores</th>
-              <th>Arquivo</th>
+            <tr className={styles.tr}>
+              <th className={styles.th}>ID</th>
+              <th className={styles.th}>Título</th>
+              <th className={styles.th}>Resumo</th>
+              <th className={styles.th}>Autores</th>
+              <th className={styles.th}>Arquivo</th>
             </tr>
           </thead>
           <tbody>
             {articles.map((article) => (
-              <tr key={article.id}>
-                <td>{article.id}</td>
-                <td>{article.titulo}</td>
-                <td>{article.resumo}</td>
-                <td>{article.autores.join(", ")}</td> {/* Junta os nomes dos autores em uma string */}
-                <td>
-                  <button onClick={() => handleDownload(article.id)}>
+              <tr className={styles.tr} key={article.id}>
+                <td className={styles.td}>{article.id}</td>
+                <td className={styles.td}>{article.titulo}</td>
+                <td className={styles.td}>{article.resumo}</td>
+                <td className={styles.td}>{article.autores.join(", ")}</td> {/* Junta os nomes dos autores em uma string */}
+                <td className={styles.td}>
+                  <button  className={styles.button} onClick={() => handleDownload(article.id)}>
                     Baixar
                   </button>
                 </td>
@@ -133,11 +135,12 @@ function OrganizerArea() {
       </section>
 
       <section>
-        <button onClick={handleAddSchedule} style={{ padding: '10px 20px', fontSize: '16px' }}>
+        <button className={styles.button} onClick={handleAddSchedule} style={{ padding: '10px 20px', fontSize: '16px' }}>
           Cadastrar Cronograma
         </button>
       </section>
     </div>
+    </body>
   );
 }
 
